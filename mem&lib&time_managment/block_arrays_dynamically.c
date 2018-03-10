@@ -1,19 +1,14 @@
+//
+// Created by radekkoziol on 28.02.18.
+//
+
 #include "library.h"
 
 #include <stdio.h>
 #include <malloc.h>
 #include <stdbool.h>
 #include <stdlib.h>
-
-
-struct Block{
-
-    //Actual string
-    char *       string;
-    //Size
-    unsigned int size;
-
-};
+#include "block.h"
 
 struct Block * create_array(){
 
@@ -29,7 +24,7 @@ void delete_array(struct Block * array){
     free(array);
 }
 
-void add_block(struct Block ** array, struct Block block){
+void add_block_d(struct Block ** array, struct Block block){
 
     // If string is empty it is not added
     if(block.string == NULL)
@@ -69,7 +64,29 @@ void add_block(struct Block ** array, struct Block block){
 
 }
 
-struct Block closest_block_sum_to(int x, struct Block * array){
+
+
+
+void delete_block_d(struct Block ** array, struct Block * blocks){
+
+    struct Block * temp_array = *array;
+    // Size of allocated array
+    int size = temp_array[0].size;
+
+    // We check each block with to_delete_array blocks [o(n^2)]
+    for(int i = 1; i < size; i++){
+        for(int j = 1; j < blocks->size; j++){
+            if(are_equal_blocks(temp_array[i],blocks[j]))
+                temp_array[i].size = 0;
+
+        }
+    }
+
+    *array = temp_array;
+}
+
+
+struct Block closest_block_sum_to_d(int x, struct Block * array){
 
     /*
         Idea is to calculate sum of each block and compare to closest sum we found earlier
@@ -97,46 +114,7 @@ struct Block closest_block_sum_to(int x, struct Block * array){
     return closest_block;
 }
 
-
-bool are_equal_blocks(struct Block block1, struct Block block2) {
-
-    /*
-        If blocks differ in size then false
-        else we check each char
-     */
-    if(block1.size != block2.size)
-        return false;
-    else
-        for(int i = 0; i < block1.size; i++) {
-            if (block1.string[i] != block2.string[i])
-                return false;
-        }
-
-    return true;
-}
-
-
-void delete_block(struct Block ** array, struct Block * blocks){
-
-    struct Block * temp_array = *array;
-    // Size of allocated array
-    int size = temp_array[0].size;
-
-    // We check each block with to_delete_array blocks [o(n^2)]
-    for(int i = 1; i < size; i++){
-        for(int j = 1; j < blocks->size; j++){
-            if(are_equal_blocks(temp_array[i],blocks[j]))
-                temp_array[i].size = 0;
-
-        }
-    }
-
-    *array = temp_array;
-}
-
-
-
-void hello(void) {
+void hello1(void) {
 
 
     struct Block ex1;
@@ -164,15 +142,15 @@ void hello(void) {
     struct Block * blocks = create_array();
 
 
-    add_block(&blocks, ex1);
-    add_block(&blocks, ex2);
-    add_block(&blocks, ex2);
-    add_block(&blocks, ex3);
-    add_block(&blocks, ex3);
-    add_block(&blocks, ex3);
+    add_block_d(&blocks, ex1);
+    add_block_d(&blocks, ex2);
+    add_block_d(&blocks, ex2);
+    add_block_d(&blocks, ex3);
+    add_block_d(&blocks, ex3);
+    add_block_d(&blocks, ex3);
 
 
-    struct Block block2 = closest_block_sum_to(197,blocks);
+    struct Block block2 = closest_block_sum_to_d(197,blocks);
 
     printf("%c", block2.string[1]);
 

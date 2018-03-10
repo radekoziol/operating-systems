@@ -118,7 +118,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library.c">
+		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/block.h">
+			<Option target="mem_lib_time_managment"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/block_arrays_dynamically.c">
+			<Option target="mem_lib_time_managment"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/block_arrays_statically.c">
 			<Option target="mem_lib_time_managment"/>
 		</Unit>
 		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library.h">

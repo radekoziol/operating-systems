@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/block_arrays_statically.c
+library.h
+/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/library.h
+stdio.h
+-
+malloc.h
+-
+stdbool.h
+-
+stdlib.h
+-
+
+/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/library.h
+

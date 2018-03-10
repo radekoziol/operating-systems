@@ -136,32 +136,59 @@ mem_lib_time_managment/fast:
 	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/build
 .PHONY : mem_lib_time_managment/fast
 
-library.o: library.c.o
+block_arrays_dynamically.o: block_arrays_dynamically.c.o
 
-.PHONY : library.o
+.PHONY : block_arrays_dynamically.o
 
 # target to build an object file
-library.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/library.c.o
-.PHONY : library.c.o
+block_arrays_dynamically.c.o:
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o
+.PHONY : block_arrays_dynamically.c.o
 
-library.i: library.c.i
+block_arrays_dynamically.i: block_arrays_dynamically.c.i
 
-.PHONY : library.i
+.PHONY : block_arrays_dynamically.i
 
 # target to preprocess a source file
-library.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/library.c.i
-.PHONY : library.c.i
+block_arrays_dynamically.c.i:
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.i
+.PHONY : block_arrays_dynamically.c.i
 
-library.s: library.c.s
+block_arrays_dynamically.s: block_arrays_dynamically.c.s
 
-.PHONY : library.s
+.PHONY : block_arrays_dynamically.s
 
 # target to generate assembly for a file
-library.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/library.c.s
-.PHONY : library.c.s
+block_arrays_dynamically.c.s:
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.s
+.PHONY : block_arrays_dynamically.c.s
+
+block_arrays_statically.o: block_arrays_statically.c.o
+
+.PHONY : block_arrays_statically.o
+
+# target to build an object file
+block_arrays_statically.c.o:
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o
+.PHONY : block_arrays_statically.c.o
+
+block_arrays_statically.i: block_arrays_statically.c.i
+
+.PHONY : block_arrays_statically.i
+
+# target to preprocess a source file
+block_arrays_statically.c.i:
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.i
+.PHONY : block_arrays_statically.c.i
+
+block_arrays_statically.s: block_arrays_statically.c.s
+
+.PHONY : block_arrays_statically.s
+
+# target to generate assembly for a file
+block_arrays_statically.c.s:
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.s
+.PHONY : block_arrays_statically.c.s
 
 main.o: main.c.o
 
@@ -203,9 +230,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... main"
 	@echo "... mem_lib_time_managment"
-	@echo "... library.o"
-	@echo "... library.i"
-	@echo "... library.s"
+	@echo "... block_arrays_dynamically.o"
+	@echo "... block_arrays_dynamically.i"
+	@echo "... block_arrays_dynamically.s"
+	@echo "... block_arrays_statically.o"
+	@echo "... block_arrays_statically.i"
+	@echo "... block_arrays_statically.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

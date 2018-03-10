@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/block_arrays_statically.dir/block_arrays_statically.c.o  -o block_arrays_statically 

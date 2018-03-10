@@ -1,2 +1,2 @@
-/usr/bin/ar qc libmem_lib_time_managment.a  CMakeFiles/mem_lib_time_managment.dir/library.c.o CMakeFiles/mem_lib_time_managment.dir/main.c.o
+/usr/bin/ar qc libmem_lib_time_managment.a  CMakeFiles/mem_lib_time_managment.dir/main.c.o CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o
 /usr/bin/ranlib libmem_lib_time_managment.a
