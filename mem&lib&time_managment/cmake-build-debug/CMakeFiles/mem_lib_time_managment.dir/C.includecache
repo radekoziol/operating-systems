@@ -13,7 +13,9 @@ stdio.h
 -
 malloc.h
 -
-string.h
+stdbool.h
+-
+stdlib.h
 -
 
 /home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/library.h
