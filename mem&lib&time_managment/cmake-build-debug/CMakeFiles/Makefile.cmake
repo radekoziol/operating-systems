@@ -7,9 +7,6 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "../CMakeLists.txt"
-  "CMakeFiles/3.9.6/CMakeCCompiler.cmake"
-  "CMakeFiles/3.9.6/CMakeSystem.cmake"
   "/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/share/cmake-3.9/Modules/CMakeCInformation.cmake"
   "/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/share/cmake-3.9/Modules/CMakeCommonLanguageInclude.cmake"
   "/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/share/cmake-3.9/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake"
@@ -26,6 +23,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/share/cmake-3.9/Modules/Platform/Linux.cmake"
   "/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/share/cmake-3.9/Modules/Platform/UnixPaths.cmake"
   "/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/share/cmake-3.9/Modules/ProcessorCount.cmake"
+  "../CMakeLists.txt"
+  "CMakeFiles/3.9.6/CMakeCCompiler.cmake"
+  "CMakeFiles/3.9.6/CMakeSystem.cmake"
   )
 
 # The corresponding makefile is:
@@ -41,6 +41,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/test1.dir/DependInfo.cmake"
   "CMakeFiles/main.dir/DependInfo.cmake"
   "CMakeFiles/mem_lib_time_managment.dir/DependInfo.cmake"
   )

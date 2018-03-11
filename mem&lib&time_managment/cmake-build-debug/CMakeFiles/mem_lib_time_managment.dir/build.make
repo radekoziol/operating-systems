@@ -43,10 +43,10 @@ RM = /home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment"
+CMAKE_SOURCE_DIR = "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug"
+CMAKE_BINARY_DIR = "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/mem_lib_time_managment.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/mem_lib_time_managment.dir/flags.make
 
 CMakeFiles/mem_lib_time_managment.dir/main.c.o: CMakeFiles/mem_lib_time_managment.dir/flags.make
 CMakeFiles/mem_lib_time_managment.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mem_lib_time_managment.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mem_lib_time_managment.dir/main.c.o   -c "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mem_lib_time_managment.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mem_lib_time_managment.dir/main.c.o   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/main.c"
 
 CMakeFiles/mem_lib_time_managment.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mem_lib_time_managment.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/main.c" > CMakeFiles/mem_lib_time_managment.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/main.c" > CMakeFiles/mem_lib_time_managment.dir/main.c.i
 
 CMakeFiles/mem_lib_time_managment.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mem_lib_time_managment.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/main.c" -o CMakeFiles/mem_lib_time_managment.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/main.c" -o CMakeFiles/mem_lib_time_managment.dir/main.c.s
 
 CMakeFiles/mem_lib_time_managment.dir/main.c.o.requires:
 
@@ -81,69 +81,147 @@ CMakeFiles/mem_lib_time_managment.dir/main.c.o.provides: CMakeFiles/mem_lib_time
 CMakeFiles/mem_lib_time_managment.dir/main.c.o.provides.build: CMakeFiles/mem_lib_time_managment.dir/main.c.o
 
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o: CMakeFiles/mem_lib_time_managment.dir/flags.make
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o: ../block_arrays_dynamically.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o   -c "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/block_arrays_dynamically.c"
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o: CMakeFiles/mem_lib_time_managment.dir/flags.make
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o: ../library\ (ex\ 1)/block_arrays_dynamically.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o"   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_dynamically.c"
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/block_arrays_dynamically.c" > CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.i
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_dynamically.c" > "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.i"
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/block_arrays_dynamically.c" -o CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.s
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_dynamically.c" -o "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.s"
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o.requires:
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o.requires:
 
-.PHONY : CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o.requires
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o.requires
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o.provides: CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o.requires
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o.provides.build
-.PHONY : CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o.provides
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o.provides: CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o.requires
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o.provides.build"
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o.provides
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o.provides.build: CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o.provides.build: CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o
 
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o: CMakeFiles/mem_lib_time_managment.dir/flags.make
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o: ../block_arrays_statically.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o   -c "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/block_arrays_statically.c"
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o: CMakeFiles/mem_lib_time_managment.dir/flags.make
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o: ../library\ (ex\ 1)/block_arrays_statically.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o"   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_statically.c"
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/block_arrays_statically.c" > CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.i
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_statically.c" > "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.i"
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/block_arrays_statically.c" -o CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.s
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_statically.c" -o "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.s"
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o.requires:
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o.requires:
 
-.PHONY : CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o.requires
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o.requires
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o.provides: CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o.requires
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o.provides.build
-.PHONY : CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o.provides
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o.provides: CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o.requires
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o.provides.build"
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o.provides
 
-CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o.provides.build: CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o
+CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o.provides.build: CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o
+
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o: CMakeFiles/mem_lib_time_managment.dir/flags.make
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o: ../test\ (ex\ 2)/dynamic_arrays_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o"   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/dynamic_arrays_test.c"
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/dynamic_arrays_test.c" > "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.i"
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/dynamic_arrays_test.c" -o "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.s"
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o.requires:
+
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o.requires
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o.provides: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o.requires
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o.provides.build"
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o.provides
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o.provides.build: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o
+
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o: CMakeFiles/mem_lib_time_managment.dir/flags.make
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o: ../test\ (ex\ 2)/static_arrays_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o"   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/static_arrays_test.c"
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/static_arrays_test.c" > "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.i"
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/static_arrays_test.c" -o "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.s"
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o.requires:
+
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o.requires
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o.provides: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o.requires
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o.provides.build"
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o.provides
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o.provides.build: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o
+
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o: CMakeFiles/mem_lib_time_managment.dir/flags.make
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o: ../test\ (ex\ 2)/random.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o"   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.c"
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.c" > "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.i"
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.c" -o "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.s"
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o.requires:
+
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o.requires
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o.provides: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o.requires
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o.provides.build"
+.PHONY : CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o.provides
+
+CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o.provides.build: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o
 
 
 # Object files for target mem_lib_time_managment
 mem_lib_time_managment_OBJECTS = \
 "CMakeFiles/mem_lib_time_managment.dir/main.c.o" \
-"CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o" \
-"CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o"
+"CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o" \
+"CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o" \
+"CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o" \
+"CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o" \
+"CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o"
 
 # External object files for target mem_lib_time_managment
 mem_lib_time_managment_EXTERNAL_OBJECTS =
 
 libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/main.c.o
-libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o
-libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o
+libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o
+libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o
+libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o
+libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o
+libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o
 libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/build.make
 libmem_lib_time_managment.a: CMakeFiles/mem_lib_time_managment.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libmem_lib_time_managment.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libmem_lib_time_managment.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/mem_lib_time_managment.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mem_lib_time_managment.dir/link.txt --verbose=$(VERBOSE)
 
@@ -153,8 +231,11 @@ CMakeFiles/mem_lib_time_managment.dir/build: libmem_lib_time_managment.a
 .PHONY : CMakeFiles/mem_lib_time_managment.dir/build
 
 CMakeFiles/mem_lib_time_managment.dir/requires: CMakeFiles/mem_lib_time_managment.dir/main.c.o.requires
-CMakeFiles/mem_lib_time_managment.dir/requires: CMakeFiles/mem_lib_time_managment.dir/block_arrays_dynamically.c.o.requires
-CMakeFiles/mem_lib_time_managment.dir/requires: CMakeFiles/mem_lib_time_managment.dir/block_arrays_statically.c.o.requires
+CMakeFiles/mem_lib_time_managment.dir/requires: CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o.requires
+CMakeFiles/mem_lib_time_managment.dir/requires: CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o.requires
+CMakeFiles/mem_lib_time_managment.dir/requires: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o.requires
+CMakeFiles/mem_lib_time_managment.dir/requires: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o.requires
+CMakeFiles/mem_lib_time_managment.dir/requires: CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o.requires
 
 .PHONY : CMakeFiles/mem_lib_time_managment.dir/requires
 
@@ -163,6 +244,6 @@ CMakeFiles/mem_lib_time_managment.dir/clean:
 .PHONY : CMakeFiles/mem_lib_time_managment.dir/clean
 
 CMakeFiles/mem_lib_time_managment.dir/depend:
-	cd "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment" "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment" "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug" "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug" "/home/radekkoziol/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/mem_lib_time_managment.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/mem_lib_time_managment.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/mem_lib_time_managment.dir/depend
 

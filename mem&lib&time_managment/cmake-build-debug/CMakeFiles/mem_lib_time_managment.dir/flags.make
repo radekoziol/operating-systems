@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu99
 
 C_DEFINES = 
 
-C_INCLUDES = 
+C_INCLUDES = -I"/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test" -I"/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/(" -I"/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/ex" -I"/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/2" -I"/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/)" -I"/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library" -I"/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/1" -I"/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/include" 
 

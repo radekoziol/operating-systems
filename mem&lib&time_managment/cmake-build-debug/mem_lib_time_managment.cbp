@@ -8,42 +8,106 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
+				<Option working_dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
+				<Option working_dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
+				<Option working_dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test1">
+				<Option output="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/test1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/("/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/ex"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/2"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/)"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/1"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 test1"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test1/fast">
+				<Option output="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/test1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/("/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/ex"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/2"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/)"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/1"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 test1/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="main">
-				<Option output="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
+				<Option output="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/("/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/ex"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/2"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/)"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/1"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -51,19 +115,27 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="main/fast">
-				<Option output="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
+				<Option output="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/("/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/ex"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/2"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/)"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/1"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -71,19 +143,27 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="mem_lib_time_managment">
-				<Option output="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/libmem_lib_time_managment.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
+				<Option output="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/libmem_lib_time_managment.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/("/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/ex"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/2"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/)"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/1"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -91,19 +171,27 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 mem_lib_time_managment"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 mem_lib_time_managment"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="mem_lib_time_managment/fast">
-				<Option output="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/libmem_lib_time_managment.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
+				<Option output="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug/libmem_lib_time_managment.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/("/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/ex"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/2"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/)"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/1"/>
+					<Add directory="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -111,30 +199,45 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 mem_lib_time_managment/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 mem_lib_time_managment/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/radekkoziol/Projects/CLionProjects/Operating\ systems/mem&amp;lib&amp;time_managment/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/block.h">
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library (ex 1)/block_arrays_dynamically.c">
 			<Option target="mem_lib_time_managment"/>
 		</Unit>
-		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/block_arrays_dynamically.c">
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library (ex 1)/block_arrays_dynamically.h">
 			<Option target="mem_lib_time_managment"/>
 		</Unit>
-		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/block_arrays_statically.c">
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library (ex 1)/block_arrays_statically.c">
 			<Option target="mem_lib_time_managment"/>
 		</Unit>
-		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library.h">
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/library (ex 1)/block_arrays_statically.h">
 			<Option target="mem_lib_time_managment"/>
 		</Unit>
-		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/main.c">
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/main.c">
 			<Option target="main"/>
 			<Option target="mem_lib_time_managment"/>
 		</Unit>
-		<Unit filename="/home/radekkoziol/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/CMakeLists.txt">
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test (ex 2)/dynamic_arrays_test.c">
+			<Option target="mem_lib_time_managment"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test (ex 2)/random.c">
+			<Option target="mem_lib_time_managment"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test (ex 2)/static_arrays_test.c">
+			<Option target="mem_lib_time_managment"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test (ex 2)/test.c">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/test (ex 2)/test.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&amp;lib&amp;time_managment/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

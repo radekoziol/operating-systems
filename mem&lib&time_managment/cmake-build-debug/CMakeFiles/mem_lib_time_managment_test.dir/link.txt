@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmem_lib_time_managment_test.a  "CMakeFiles/mem_lib_time_managment_test.dir/test_(ex_2)/test.c.o"
+/usr/bin/ranlib libmem_lib_time_managment_test.a

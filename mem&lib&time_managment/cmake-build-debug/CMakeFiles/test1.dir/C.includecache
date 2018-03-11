@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/main.c
-test (ex 2)/test.c
 /home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/test.c
-
-/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/test.c
+malloc.h
+-
+block.h
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/block.h
 

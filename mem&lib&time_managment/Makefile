@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -51,26 +51,15 @@ EQUALS = =
 CMAKE_SOURCE_DIR = "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug"
+CMAKE_BINARY_DIR = "/home/radekkoziol/Projects/CLionProjects/Operating systems"
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,11 +67,22 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/radekkoziol/Projects/CLionProjects/Operating systems/CMakeFiles" "/home/radekkoziol/Projects/CLionProjects/Operating systems/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/radekkoziol/Projects/CLionProjects/Operating systems/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test1
-
-# Build rule for target.
-test1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test1
-.PHONY : test1
-
-# fast build rule for target.
-test1/fast:
-	$(MAKE) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/build
-.PHONY : test1/fast
-
-#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -148,6 +135,19 @@ mem_lib_time_managment: cmake_check_build_system
 mem_lib_time_managment/fast:
 	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/build
 .PHONY : mem_lib_time_managment/fast
+
+#=============================================================================
+# Target rules for targets named mem_lib_time_managment_test
+
+# Build rule for target.
+mem_lib_time_managment_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mem_lib_time_managment_test
+.PHONY : mem_lib_time_managment_test
+
+# fast build rule for target.
+mem_lib_time_managment_test/fast:
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment_test.dir/build.make CMakeFiles/mem_lib_time_managment_test.dir/build
+.PHONY : mem_lib_time_managment_test/fast
 
 library_(ex_1)/block_arrays_dynamically.o: library_(ex_1)/block_arrays_dynamically.c.o
 
@@ -233,94 +233,13 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/main.c.s
 .PHONY : main.c.s
 
-test_(ex_2)/dynamic_arrays_test.o: test_(ex_2)/dynamic_arrays_test.c.o
-
-.PHONY : test_(ex_2)/dynamic_arrays_test.o
-
-# target to build an object file
-test_(ex_2)/dynamic_arrays_test.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o"
-.PHONY : test_(ex_2)/dynamic_arrays_test.c.o
-
-test_(ex_2)/dynamic_arrays_test.i: test_(ex_2)/dynamic_arrays_test.c.i
-
-.PHONY : test_(ex_2)/dynamic_arrays_test.i
-
-# target to preprocess a source file
-test_(ex_2)/dynamic_arrays_test.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.i"
-.PHONY : test_(ex_2)/dynamic_arrays_test.c.i
-
-test_(ex_2)/dynamic_arrays_test.s: test_(ex_2)/dynamic_arrays_test.c.s
-
-.PHONY : test_(ex_2)/dynamic_arrays_test.s
-
-# target to generate assembly for a file
-test_(ex_2)/dynamic_arrays_test.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.s"
-.PHONY : test_(ex_2)/dynamic_arrays_test.c.s
-
-test_(ex_2)/random.o: test_(ex_2)/random.c.o
-
-.PHONY : test_(ex_2)/random.o
-
-# target to build an object file
-test_(ex_2)/random.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o"
-.PHONY : test_(ex_2)/random.c.o
-
-test_(ex_2)/random.i: test_(ex_2)/random.c.i
-
-.PHONY : test_(ex_2)/random.i
-
-# target to preprocess a source file
-test_(ex_2)/random.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.i"
-.PHONY : test_(ex_2)/random.c.i
-
-test_(ex_2)/random.s: test_(ex_2)/random.c.s
-
-.PHONY : test_(ex_2)/random.s
-
-# target to generate assembly for a file
-test_(ex_2)/random.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.s"
-.PHONY : test_(ex_2)/random.c.s
-
-test_(ex_2)/static_arrays_test.o: test_(ex_2)/static_arrays_test.c.o
-
-.PHONY : test_(ex_2)/static_arrays_test.o
-
-# target to build an object file
-test_(ex_2)/static_arrays_test.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o"
-.PHONY : test_(ex_2)/static_arrays_test.c.o
-
-test_(ex_2)/static_arrays_test.i: test_(ex_2)/static_arrays_test.c.i
-
-.PHONY : test_(ex_2)/static_arrays_test.i
-
-# target to preprocess a source file
-test_(ex_2)/static_arrays_test.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.i"
-.PHONY : test_(ex_2)/static_arrays_test.c.i
-
-test_(ex_2)/static_arrays_test.s: test_(ex_2)/static_arrays_test.c.s
-
-.PHONY : test_(ex_2)/static_arrays_test.s
-
-# target to generate assembly for a file
-test_(ex_2)/static_arrays_test.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.s"
-.PHONY : test_(ex_2)/static_arrays_test.c.s
-
 test_(ex_2)/test.o: test_(ex_2)/test.c.o
 
 .PHONY : test_(ex_2)/test.o
 
 # target to build an object file
 test_(ex_2)/test.c.o:
-	$(MAKE) -f CMakeFiles/test1.dir/build.make "CMakeFiles/test1.dir/test_(ex_2)/test.c.o"
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment_test.dir/build.make "CMakeFiles/mem_lib_time_managment_test.dir/test_(ex_2)/test.c.o"
 .PHONY : test_(ex_2)/test.c.o
 
 test_(ex_2)/test.i: test_(ex_2)/test.c.i
@@ -329,7 +248,7 @@ test_(ex_2)/test.i: test_(ex_2)/test.c.i
 
 # target to preprocess a source file
 test_(ex_2)/test.c.i:
-	$(MAKE) -f CMakeFiles/test1.dir/build.make "CMakeFiles/test1.dir/test_(ex_2)/test.c.i"
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment_test.dir/build.make "CMakeFiles/mem_lib_time_managment_test.dir/test_(ex_2)/test.c.i"
 .PHONY : test_(ex_2)/test.c.i
 
 test_(ex_2)/test.s: test_(ex_2)/test.c.s
@@ -338,7 +257,7 @@ test_(ex_2)/test.s: test_(ex_2)/test.c.s
 
 # target to generate assembly for a file
 test_(ex_2)/test.c.s:
-	$(MAKE) -f CMakeFiles/test1.dir/build.make "CMakeFiles/test1.dir/test_(ex_2)/test.c.s"
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment_test.dir/build.make "CMakeFiles/mem_lib_time_managment_test.dir/test_(ex_2)/test.c.s"
 .PHONY : test_(ex_2)/test.c.s
 
 # Help Target
@@ -347,11 +266,11 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test1"
 	@echo "... main"
 	@echo "... mem_lib_time_managment"
+	@echo "... rebuild_cache"
+	@echo "... mem_lib_time_managment_test"
 	@echo "... library_(ex_1)/block_arrays_dynamically.o"
 	@echo "... library_(ex_1)/block_arrays_dynamically.i"
 	@echo "... library_(ex_1)/block_arrays_dynamically.s"
@@ -361,15 +280,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... test_(ex_2)/dynamic_arrays_test.o"
-	@echo "... test_(ex_2)/dynamic_arrays_test.i"
-	@echo "... test_(ex_2)/dynamic_arrays_test.s"
-	@echo "... test_(ex_2)/random.o"
-	@echo "... test_(ex_2)/random.i"
-	@echo "... test_(ex_2)/random.s"
-	@echo "... test_(ex_2)/static_arrays_test.o"
-	@echo "... test_(ex_2)/static_arrays_test.i"
-	@echo "... test_(ex_2)/static_arrays_test.s"
 	@echo "... test_(ex_2)/test.o"
 	@echo "... test_(ex_2)/test.i"
 	@echo "... test_(ex_2)/test.s"

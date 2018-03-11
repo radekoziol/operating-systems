@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/main.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/main.dir/main.c.o"
+  "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/test.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/mem_lib_time_managment_test.dir/test_(ex_2)/test.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -17,7 +17,6 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../)"
   "../library"
   "../1"
-  "../include"
   )
 
 # Targets to which this target links.
