@@ -3,8 +3,117 @@
 //
 #include "test (ex 2)/test.c"
 
+int main(int argc, char **args){
 
-main(){
+    //There should be 6 args
+
+
+
+    static char *argv[7] = { "100", "10", "dynamic", "-create", "-find_block",
+                             "789", "-add_and_delete", NULL };
+    argc = 6;
+
+
+    if(argv[0] == "-help"){
+        printf("Arguments are: \n <array size> <block size> "
+                       "<array allocation method (static or dynamic)> "
+                       "<operation 1> " "<operation2> <num> " "<operation3>\n");
+        printf("Possible operations: \n");
+        printf("  -create  -  creates array with blocks\n");
+        printf("  -find_block <num> -  find closest sum of characters in block(ASCII) to given number\n");
+        printf("  -add_and_delete  -  deletes blocks and then add newly generated\n");
+    }
+    if(argc < 4){
+        printf("You did not input enough arguments!\nFor more information write -help");
+        exit(0);
+    }
+
+    char *ptr;
+    int ret;
+
+    ret = (int) strtol(argv[0], &ptr, 10);
+    unsigned int array_size = (unsigned int) ret;
+    if(ret == 0 ){
+        printf("Something's wrong with your first argument!");
+    }
+
+    ret = (int) strtol(argv[1], &ptr, 10);
+    unsigned int block_size = (unsigned int) ret;
+    if(ret == 0 ){
+        printf("Something's wrong with your second argument!");
+    }
+
+    char *allocation = argv[2];
+
+
+    if(allocation == "dynamic") {
+        struct DynamicBlock *blocks = create_array_d(array_size);
+
+        printf("Blocks array was successfully allocated!\n");
+
+        struct DynamicBlock *add_blocks = generate_blocks_array(array_size, block_size);
+        add_blocks_d(&blocks, add_blocks);
+
+        free(add_blocks);
+        printf("Blocks were successfully added!\n");
+
+        if (argv[4] == "-find_block") {
+
+            ret = (int) strtol(argv[5], &ptr, 10);
+            if(ret == 0 ){
+                printf("Something's wrong with your fifth argument!");
+            }
+
+            struct DynamicBlock block = closest_block_sum_to_d(ret,blocks);
+
+            printf("Closet block to %d:\n", ret);
+            int sum = 0;
+            for(int i = 0; i < block.size; i++){
+                printf("%c", block.string[i]);
+                sum += block.string[i];
+            }
+            printf(" with block sum = %d", sum);
+            printf("\n");
+
+        }
+
+        if (argv[6] == "-add_and_delete") {
+
+            struct DynamicBlock *test_blocks = generate_blocks_array(array_size, block_size);
+
+            delete_blocks_d(&blocks, test_blocks);
+
+            add_blocks_d(&blocks, test_blocks);
+
+            free(test_blocks);
+
+            printf("Adding and deleting went successfully!\n");
+        }
+
+
+        free(blocks);
+    }
+
+
+
+
+    printf("\n");
+    printf("Now some test will be performed!");
+
+
+    if (freopen("../report2.txt", "w", stdout) == NULL)
+    {
+        perror("freopen() failed");
+        return EXIT_FAILURE;
+    }
+
     test();
+
+    fclose(stdout);
+
+
+
+
+
 
 }

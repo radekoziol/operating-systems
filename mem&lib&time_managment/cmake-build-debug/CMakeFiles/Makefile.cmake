@@ -41,6 +41,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/MyLib_static.dir/DependInfo.cmake"
+  "CMakeFiles/MyLib_shared.dir/DependInfo.cmake"
+  "CMakeFiles/objlib.dir/DependInfo.cmake"
   "CMakeFiles/main.dir/DependInfo.cmake"
-  "CMakeFiles/mem_lib_time_managment.dir/DependInfo.cmake"
   )

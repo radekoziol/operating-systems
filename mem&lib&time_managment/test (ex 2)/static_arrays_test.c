@@ -2,13 +2,13 @@
 // Created by radekkoziol on 11.03.18.
 //
 
-#define ARR_SIZE 1000
-
 
 #include <time.h>
 #include <stdio.h>
 #include "../library (ex 1)/block_arrays_statically.c"
 #include "random.h"
+
+
 
 struct StaticBlock blocks[ARR_SIZE];
 

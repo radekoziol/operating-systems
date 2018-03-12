@@ -47,6 +47,8 @@ string.h
 /home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.c
 stdlib.h
 -
+stdio.h
+-
 
 /home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.h
 

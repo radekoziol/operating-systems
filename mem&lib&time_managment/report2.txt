@@ -1,0 +1,47 @@
+After 10 tests, the results are:
+
+Creating array dynamically time measurement 
+Real time : 0.000004
+User time : 0.320000
+System time : 0.320000
+
+Adding blocks dynamically array time measurement 
+Real time : 0.002820
+User time : 0.266990
+System time : 0.266990
+
+Adding blocks statically time measurement 
+Real time : 0.000004
+User time : 0.120000
+System time : 0.120000
+
+Deleting blocks dynamically array time measurement 
+Real time : 0.022311
+User time : 0.220880
+System time : 0.220880
+
+Deleting blocks statically array time measurement 
+Real time : 0.005189
+User time : 0.512720
+System time : 0.512720
+
+Finding (dynamic array) closet sum to given argument time measurement 
+Real time : 0.001484
+User time : 0.193200
+System time : 0.193200
+
+Finding (static array) closet sum to given argument time measurement 
+Real time : 0.000005
+User time : 0.430000
+System time : 0.430000
+
+Adding, deleting and adding again blocks (dynamic array) time measurement 
+Real time : 0.036863
+User time : 0.208069
+System time : 0.208069
+
+Adding, deleting and adding again blocks (static array) time measurement 
+Real time : 0.000022
+User time : 0.207000
+System time : 0.207000
+

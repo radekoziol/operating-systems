@@ -11,6 +11,26 @@
 #include <sys/resource.h>
 
 
+char * parse_to_string(struct timeval start, struct timeval end){
+
+    __time_t sec_diff = end.tv_sec - start.tv_sec;
+    __suseconds_t usec_diff = end.tv_usec - start.tv_usec ;
+
+    static char array1[10];
+    char array2[10];
+    char dot [2] = ".";
+
+    sprintf(array1, "%ld", sec_diff);
+    sprintf(array2, "%ld", usec_diff);
+
+    strcat(array1,dot);
+    strcat(array1,array2);
+
+
+    return array1;
+}
+
+
 double * run_time_test(void (*f)()){
 
     struct rusage usage;
@@ -46,6 +66,7 @@ double * run_time_test(void (*f)()){
 }
 
 void print_average_time(int test_number, double results [9][3]) {
+
 
     printf("After %d tests, the results are:\n\n", test_number);
 
@@ -155,27 +176,7 @@ void print_average_time(int test_number, double results [9][3]) {
 
 void test(){
 
-    /*
-       Jako argumenty przekaż liczbę elementów tablicy, rozmiar bloku, sposób alokacji
-        pamięci oraz spis wykonywanych operacji. Zakładamy, że możliwe jest zlecenie
-        trzech operacji (np. stworzenie tablicy, wyszukanie elementu oraz usunięcie i
-        dodanie zadanej liczby bloków albo stworzenie tablicy, usunięcie i dodanie zadanej
-        liczby bloków i naprzemienne usunięcie i dodanie zadanej liczby bloków).
-     */
-
-    unsigned int array_size = 1000;
-    unsigned int block_size = 10;
-    // static = 's' or dynamic = 'd'
-    char allocation = 's';
-    /*
-     * Possible input :
-     * 'c' = create array (with blocks)
-     * 'b' = finding block
-     * 'd' = delete blocks and then add them again
-     */
-    char operations [3] = {'c','b','d'};
-
-    int test_number = 1000;
+    int test_number = 10;
     double results [9][3];
 
     int i,j;
@@ -255,17 +256,5 @@ void test(){
     print_average_time(test_number, results);
 
 
-
-    /*
-     * W programie zmierz, wypisz na konsolę i zapisz  do pliku
-     * z raportem  czasy realizacji podstawowych operacji:
--       stworzenie tablicy z zadaną liczbą bloków o zdanym rozmiarze i
-     przy pomocy wybranej funkcji alokującej,
--    wyszukanie najbardziej podobnego elementu z punktu widzenia
-     sumy znaków do elementu zadanego jako argument
--   usunięcie kolejno zadanej liczby bloków a następnie dodanie
-     na ich miejsce nowych bloków
--   na przemian usunięcie i dodanie zadanej liczby bloków
-     */
 
 }

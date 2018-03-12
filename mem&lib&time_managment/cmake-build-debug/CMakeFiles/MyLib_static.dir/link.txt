@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMyLib_static.a  CMakeFiles/objlib.dir/main.c.o "CMakeFiles/objlib.dir/library_(ex_1)/block_arrays_dynamically.c.o" "CMakeFiles/objlib.dir/library_(ex_1)/block_arrays_statically.c.o" "CMakeFiles/objlib.dir/test_(ex_2)/dynamic_arrays_test.c.o" "CMakeFiles/objlib.dir/test_(ex_2)/static_arrays_test.c.o" "CMakeFiles/objlib.dir/test_(ex_2)/random.c.o" "CMakeFiles/objlib.dir/test_(ex_2)/test.c.o"
+/usr/bin/ranlib libMyLib_static.a

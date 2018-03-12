@@ -2,6 +2,7 @@
 // Created by radekkoziol on 11.03.18.
 //
 #include <stdlib.h>
+#include <stdio.h>
 
 char get_random_char(){
     return (char) ('A' + (random() % 26));

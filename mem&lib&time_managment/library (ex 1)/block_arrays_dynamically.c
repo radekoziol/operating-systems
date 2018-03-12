@@ -35,12 +35,12 @@ bool are_equal_blocks_d(struct DynamicBlock block1, struct DynamicBlock block2) 
 }
 
 
-struct DynamicBlock * create_array_d(){
+struct DynamicBlock * create_array_d(int size){
 
-    struct DynamicBlock* blocks = malloc(1 * sizeof *(blocks));
+    struct DynamicBlock* blocks = malloc(size * sizeof *(blocks));
 
     // On first element we store size of array blocks
-    blocks[0].size = (unsigned int) 1;
+    blocks->size = (unsigned int) size;
 
     return blocks;
 }
@@ -48,13 +48,6 @@ struct DynamicBlock * create_array_d(){
 void delete_array_d(struct DynamicBlock * array){
     free(array);
 }
-
-void add_blocks_d(struct DynamicBlock ** array, struct DynamicBlock* blocks){
-
-    for(int i = 0; i < blocks->size; i++)
-        add_block_d(array,blocks[i]);
-}
-
 
 void add_block_d(struct DynamicBlock ** array, struct DynamicBlock block){
 
@@ -71,7 +64,7 @@ void add_block_d(struct DynamicBlock ** array, struct DynamicBlock block){
 
     while(it < size){
         //Because calloc initializes so, it consider this as empty
-        if(temp_array[it].size == 0){
+        if(temp_array[it].size == 0 ){
             temp_array[it] = block;
             break;
         } else
@@ -95,21 +88,29 @@ void add_block_d(struct DynamicBlock ** array, struct DynamicBlock block){
 
     }
 
+
+
 }
 
+void add_blocks_d(struct DynamicBlock ** array, struct DynamicBlock* blocks){
 
+    for(int i = 0; i < blocks->size; i++)
+        add_block_d(array,blocks[i]);
+
+
+}
 
 
 void delete_blocks_d(struct DynamicBlock ** array, struct DynamicBlock * blocks){
 
     struct DynamicBlock * temp_array = *array;
     // Size of allocated array
-    int size = temp_array[0].size;
+    int size = temp_array->size;
 
     // We check each block with to_delete_array blocks [o(n^2)]
     for(int i = 1; i < size; i++){
-        for(int j = 1; j < blocks->size; j++){
-            if(are_equal_blocks_d(temp_array[i],blocks[j]))
+        for(int j = 0; j < blocks->size; j++){
+            if(are_equal_blocks_d(temp_array[i],blocks[j])){}
                 temp_array[i].size = 0;
 
         }

@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = "/home/radekkoziol/Projects/CLionProjects/Operating systems/m
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/home/radekkoziol/IDE/clion-2017.3.3/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,6 +111,45 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named MyLib_static
+
+# Build rule for target.
+MyLib_static: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 MyLib_static
+.PHONY : MyLib_static
+
+# fast build rule for target.
+MyLib_static/fast:
+	$(MAKE) -f CMakeFiles/MyLib_static.dir/build.make CMakeFiles/MyLib_static.dir/build
+.PHONY : MyLib_static/fast
+
+#=============================================================================
+# Target rules for targets named MyLib_shared
+
+# Build rule for target.
+MyLib_shared: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 MyLib_shared
+.PHONY : MyLib_shared
+
+# fast build rule for target.
+MyLib_shared/fast:
+	$(MAKE) -f CMakeFiles/MyLib_shared.dir/build.make CMakeFiles/MyLib_shared.dir/build
+.PHONY : MyLib_shared/fast
+
+#=============================================================================
+# Target rules for targets named objlib
+
+# Build rule for target.
+objlib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 objlib
+.PHONY : objlib
+
+# fast build rule for target.
+objlib/fast:
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/build
+.PHONY : objlib/fast
+
+#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -123,26 +162,13 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
-#=============================================================================
-# Target rules for targets named mem_lib_time_managment
-
-# Build rule for target.
-mem_lib_time_managment: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mem_lib_time_managment
-.PHONY : mem_lib_time_managment
-
-# fast build rule for target.
-mem_lib_time_managment/fast:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/build
-.PHONY : mem_lib_time_managment/fast
-
 library_(ex_1)/block_arrays_dynamically.o: library_(ex_1)/block_arrays_dynamically.c.o
 
 .PHONY : library_(ex_1)/block_arrays_dynamically.o
 
 # target to build an object file
 library_(ex_1)/block_arrays_dynamically.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.o"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/library_(ex_1)/block_arrays_dynamically.c.o"
 .PHONY : library_(ex_1)/block_arrays_dynamically.c.o
 
 library_(ex_1)/block_arrays_dynamically.i: library_(ex_1)/block_arrays_dynamically.c.i
@@ -151,7 +177,7 @@ library_(ex_1)/block_arrays_dynamically.i: library_(ex_1)/block_arrays_dynamical
 
 # target to preprocess a source file
 library_(ex_1)/block_arrays_dynamically.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.i"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/library_(ex_1)/block_arrays_dynamically.c.i"
 .PHONY : library_(ex_1)/block_arrays_dynamically.c.i
 
 library_(ex_1)/block_arrays_dynamically.s: library_(ex_1)/block_arrays_dynamically.c.s
@@ -160,7 +186,7 @@ library_(ex_1)/block_arrays_dynamically.s: library_(ex_1)/block_arrays_dynamical
 
 # target to generate assembly for a file
 library_(ex_1)/block_arrays_dynamically.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_dynamically.c.s"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/library_(ex_1)/block_arrays_dynamically.c.s"
 .PHONY : library_(ex_1)/block_arrays_dynamically.c.s
 
 library_(ex_1)/block_arrays_statically.o: library_(ex_1)/block_arrays_statically.c.o
@@ -169,7 +195,7 @@ library_(ex_1)/block_arrays_statically.o: library_(ex_1)/block_arrays_statically
 
 # target to build an object file
 library_(ex_1)/block_arrays_statically.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.o"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/library_(ex_1)/block_arrays_statically.c.o"
 .PHONY : library_(ex_1)/block_arrays_statically.c.o
 
 library_(ex_1)/block_arrays_statically.i: library_(ex_1)/block_arrays_statically.c.i
@@ -178,7 +204,7 @@ library_(ex_1)/block_arrays_statically.i: library_(ex_1)/block_arrays_statically
 
 # target to preprocess a source file
 library_(ex_1)/block_arrays_statically.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.i"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/library_(ex_1)/block_arrays_statically.c.i"
 .PHONY : library_(ex_1)/block_arrays_statically.c.i
 
 library_(ex_1)/block_arrays_statically.s: library_(ex_1)/block_arrays_statically.c.s
@@ -187,7 +213,7 @@ library_(ex_1)/block_arrays_statically.s: library_(ex_1)/block_arrays_statically
 
 # target to generate assembly for a file
 library_(ex_1)/block_arrays_statically.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/library_(ex_1)/block_arrays_statically.c.s"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/library_(ex_1)/block_arrays_statically.c.s"
 .PHONY : library_(ex_1)/block_arrays_statically.c.s
 
 main.o: main.c.o
@@ -196,8 +222,8 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/main.c.o
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.o
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -206,8 +232,8 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/main.c.i
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.i
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -216,8 +242,8 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/main.c.s
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.s
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make CMakeFiles/mem_lib_time_managment.dir/main.c.s
 .PHONY : main.c.s
 
 test_(ex_2)/dynamic_arrays_test.o: test_(ex_2)/dynamic_arrays_test.c.o
@@ -226,7 +252,7 @@ test_(ex_2)/dynamic_arrays_test.o: test_(ex_2)/dynamic_arrays_test.c.o
 
 # target to build an object file
 test_(ex_2)/dynamic_arrays_test.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/dynamic_arrays_test.c.o"
 .PHONY : test_(ex_2)/dynamic_arrays_test.c.o
 
 test_(ex_2)/dynamic_arrays_test.i: test_(ex_2)/dynamic_arrays_test.c.i
@@ -235,7 +261,7 @@ test_(ex_2)/dynamic_arrays_test.i: test_(ex_2)/dynamic_arrays_test.c.i
 
 # target to preprocess a source file
 test_(ex_2)/dynamic_arrays_test.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.i"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/dynamic_arrays_test.c.i"
 .PHONY : test_(ex_2)/dynamic_arrays_test.c.i
 
 test_(ex_2)/dynamic_arrays_test.s: test_(ex_2)/dynamic_arrays_test.c.s
@@ -244,7 +270,7 @@ test_(ex_2)/dynamic_arrays_test.s: test_(ex_2)/dynamic_arrays_test.c.s
 
 # target to generate assembly for a file
 test_(ex_2)/dynamic_arrays_test.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.s"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/dynamic_arrays_test.c.s"
 .PHONY : test_(ex_2)/dynamic_arrays_test.c.s
 
 test_(ex_2)/random.o: test_(ex_2)/random.c.o
@@ -253,7 +279,7 @@ test_(ex_2)/random.o: test_(ex_2)/random.c.o
 
 # target to build an object file
 test_(ex_2)/random.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/random.c.o"
 .PHONY : test_(ex_2)/random.c.o
 
 test_(ex_2)/random.i: test_(ex_2)/random.c.i
@@ -262,7 +288,7 @@ test_(ex_2)/random.i: test_(ex_2)/random.c.i
 
 # target to preprocess a source file
 test_(ex_2)/random.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.i"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/random.c.i"
 .PHONY : test_(ex_2)/random.c.i
 
 test_(ex_2)/random.s: test_(ex_2)/random.c.s
@@ -271,7 +297,7 @@ test_(ex_2)/random.s: test_(ex_2)/random.c.s
 
 # target to generate assembly for a file
 test_(ex_2)/random.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.s"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/random.c.s"
 .PHONY : test_(ex_2)/random.c.s
 
 test_(ex_2)/static_arrays_test.o: test_(ex_2)/static_arrays_test.c.o
@@ -280,7 +306,7 @@ test_(ex_2)/static_arrays_test.o: test_(ex_2)/static_arrays_test.c.o
 
 # target to build an object file
 test_(ex_2)/static_arrays_test.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/static_arrays_test.c.o"
 .PHONY : test_(ex_2)/static_arrays_test.c.o
 
 test_(ex_2)/static_arrays_test.i: test_(ex_2)/static_arrays_test.c.i
@@ -289,7 +315,7 @@ test_(ex_2)/static_arrays_test.i: test_(ex_2)/static_arrays_test.c.i
 
 # target to preprocess a source file
 test_(ex_2)/static_arrays_test.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.i"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/static_arrays_test.c.i"
 .PHONY : test_(ex_2)/static_arrays_test.c.i
 
 test_(ex_2)/static_arrays_test.s: test_(ex_2)/static_arrays_test.c.s
@@ -298,7 +324,7 @@ test_(ex_2)/static_arrays_test.s: test_(ex_2)/static_arrays_test.c.s
 
 # target to generate assembly for a file
 test_(ex_2)/static_arrays_test.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.s"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/static_arrays_test.c.s"
 .PHONY : test_(ex_2)/static_arrays_test.c.s
 
 test_(ex_2)/test.o: test_(ex_2)/test.c.o
@@ -307,7 +333,7 @@ test_(ex_2)/test.o: test_(ex_2)/test.c.o
 
 # target to build an object file
 test_(ex_2)/test.c.o:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/test.c.o"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/test.c.o"
 .PHONY : test_(ex_2)/test.c.o
 
 test_(ex_2)/test.i: test_(ex_2)/test.c.i
@@ -316,7 +342,7 @@ test_(ex_2)/test.i: test_(ex_2)/test.c.i
 
 # target to preprocess a source file
 test_(ex_2)/test.c.i:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/test.c.i"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/test.c.i"
 .PHONY : test_(ex_2)/test.c.i
 
 test_(ex_2)/test.s: test_(ex_2)/test.c.s
@@ -325,7 +351,7 @@ test_(ex_2)/test.s: test_(ex_2)/test.c.s
 
 # target to generate assembly for a file
 test_(ex_2)/test.c.s:
-	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/test.c.s"
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make "CMakeFiles/objlib.dir/test_(ex_2)/test.c.s"
 .PHONY : test_(ex_2)/test.c.s
 
 # Help Target
@@ -334,10 +360,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... MyLib_static"
+	@echo "... MyLib_shared"
+	@echo "... rebuild_cache"
+	@echo "... objlib"
 	@echo "... main"
-	@echo "... mem_lib_time_managment"
 	@echo "... library_(ex_1)/block_arrays_dynamically.o"
 	@echo "... library_(ex_1)/block_arrays_dynamically.i"
 	@echo "... library_(ex_1)/block_arrays_dynamically.s"
