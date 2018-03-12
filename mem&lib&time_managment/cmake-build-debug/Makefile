@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test1
-
-# Build rule for target.
-test1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test1
-.PHONY : test1
-
-# fast build rule for target.
-test1/fast:
-	$(MAKE) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/build
-.PHONY : test1/fast
-
-#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -320,7 +307,7 @@ test_(ex_2)/test.o: test_(ex_2)/test.c.o
 
 # target to build an object file
 test_(ex_2)/test.c.o:
-	$(MAKE) -f CMakeFiles/test1.dir/build.make "CMakeFiles/test1.dir/test_(ex_2)/test.c.o"
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/test.c.o"
 .PHONY : test_(ex_2)/test.c.o
 
 test_(ex_2)/test.i: test_(ex_2)/test.c.i
@@ -329,7 +316,7 @@ test_(ex_2)/test.i: test_(ex_2)/test.c.i
 
 # target to preprocess a source file
 test_(ex_2)/test.c.i:
-	$(MAKE) -f CMakeFiles/test1.dir/build.make "CMakeFiles/test1.dir/test_(ex_2)/test.c.i"
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/test.c.i"
 .PHONY : test_(ex_2)/test.c.i
 
 test_(ex_2)/test.s: test_(ex_2)/test.c.s
@@ -338,7 +325,7 @@ test_(ex_2)/test.s: test_(ex_2)/test.c.s
 
 # target to generate assembly for a file
 test_(ex_2)/test.c.s:
-	$(MAKE) -f CMakeFiles/test1.dir/build.make "CMakeFiles/test1.dir/test_(ex_2)/test.c.s"
+	$(MAKE) -f CMakeFiles/mem_lib_time_managment.dir/build.make "CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/test.c.s"
 .PHONY : test_(ex_2)/test.c.s
 
 # Help Target
@@ -349,7 +336,6 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test1"
 	@echo "... main"
 	@echo "... mem_lib_time_managment"
 	@echo "... library_(ex_1)/block_arrays_dynamically.o"

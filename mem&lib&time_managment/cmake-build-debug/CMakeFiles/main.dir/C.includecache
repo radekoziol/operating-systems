@@ -6,9 +6,73 @@
 
 #IncludeRegexTransform: 
 
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_dynamically.c
+stdio.h
+-
+malloc.h
+-
+stdbool.h
+-
+stdlib.h
+-
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_statically.c
+stdio.h
+-
+block_arrays_statically.h
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_statically.h
+stdlib.h
+-
+stdbool.h
+-
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_statically.h
+
 /home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/main.c
 test (ex 2)/test.c
 /home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/test.c
 
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/dynamic_arrays_test.c
+time.h
+-
+../library (ex 1)/block_arrays_dynamically.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_dynamically.c
+../library (ex 1)/block_arrays_statically.h
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_statically.h
+random.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.c
+string.h
+-
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.c
+stdlib.h
+-
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.h
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/static_arrays_test.c
+time.h
+-
+stdio.h
+-
+../library (ex 1)/block_arrays_statically.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/library (ex 1)/block_arrays_statically.c
+random.h
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.h
+
 /home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/test.c
+malloc.h
+-
+time.h
+-
+dynamic_arrays_test.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/dynamic_arrays_test.c
+stdarg.h
+-
+static_arrays_test.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/static_arrays_test.c
+sys/time.h
+-
+sys/resource.h
+-
 

@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/dynamic_arrays_test.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/dynamic_arrays_test.c.o"
   "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/random.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/random.c.o"
   "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/static_arrays_test.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/static_arrays_test.c.o"
+  "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/test (ex 2)/test.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/mem_lib_time_managment.dir/test_(ex_2)/test.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -22,7 +23,6 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../)"
   "../library"
   "../1"
-  "../include"
   )
 
 # Targets to which this target links.

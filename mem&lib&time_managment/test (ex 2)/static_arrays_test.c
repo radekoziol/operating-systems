@@ -5,9 +5,10 @@
 #define ARR_SIZE 1000
 
 
-#include "../library (ex 1)/block_arrays_statically.h"
-#include "random.c"
-#include "../library (ex 1)/block_arrays_dynamically.h"
+#include <time.h>
+#include <stdio.h>
+#include "../library (ex 1)/block_arrays_statically.c"
+#include "random.h"
 
 struct StaticBlock blocks[ARR_SIZE];
 
@@ -24,40 +25,55 @@ void generate_blocks_array_s() {
 }
 
 
-struct StaticBlock *get_random_blocks_from_s(struct StaticBlock blocks[ARR_SIZE], unsigned int size){
+struct StaticBlock *get_random_blocks_from_s(const int size){
+
+    struct StaticBlock* block = (struct StaticBlock*) calloc(size, sizeof(struct StaticBlock));
 
     for(int i = 0; i < size; i++){
-        unsigned int n = rand() % (size * 2);
-        add_block_s(blocks,blocks[n]);
+        unsigned int n = (unsigned int) (rand() % (size * 2));
+        add_block_s(block,blocks[n]);
     }
 
-    return blocks;
+    return block;
 }
 
-void add_blocks_s_test(struct StaticBlock *test_blocks) {
+void add_blocks_s_test() {
 
-    add_blocks_s(blocks, test_blocks);
+    struct StaticBlock test_blocks [ARR_SIZE];
 
-}
-
-void delete_blocks_d_test(struct StaticBlock *test_blocks ){
-
+    add_blocks_s(test_blocks, blocks);
 
 }
 
+void delete_blocks_s_test(){
 
-struct StaticBlock closest_block_sum_to_d_test(unsigned int x){
+    struct StaticBlock *test_blocks= get_random_blocks_from_s(ARR_SIZE/2);
+    test_blocks->size = ARR_SIZE/2;
+
+    delete_blocks_s(blocks, test_blocks);
+
+}
+
+
+void closest_block_sum_to_s_test(){
+
+    int x = 1234;
 
     struct StaticBlock block = closest_block_sum_to_s(x,blocks);
 
 }
 
-void re_adding_to_array_s_test(struct StaticBlock *test_blocks){
+void re_adding_to_array_s_test(){
 
-    delete_blocks_s(blocks,test_blocks);
+    struct StaticBlock *test_blocks = get_random_blocks_from_s(ARR_SIZE/2);
+
+    delete_blocks_s(blocks, test_blocks);
 
     add_blocks_s(blocks, test_blocks);
 
 }
+
+
+
 
 

@@ -1,8 +1,6 @@
 //
 // Created by radekkoziol on 11.03.18.
 //
-
-
 #include <stdlib.h>
 
 char get_random_char(){

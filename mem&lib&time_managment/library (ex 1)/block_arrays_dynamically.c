@@ -2,13 +2,10 @@
 // Created by radekkoziol on 28.02.18.
 //
 
-#include "library.h"
-
 #include <stdio.h>
 #include <malloc.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "block.h"
 
 struct DynamicBlock{
 
@@ -148,53 +145,6 @@ struct DynamicBlock closest_block_sum_to_d(int x, struct DynamicBlock * array){
     }
 
     return closest_block;
-}
-
-void hello1(void) {
-
-
-//    struct Block ex1;
-//    struct Block ex2;
-//    struct Block ex3;
-//
-//    ex1.size = 2;
-//    ex1.string = (char *)calloc((size_t) ex1.size, sizeof(char *));
-//
-//    ex1.string[0] = 'a';
-//    ex1.string[1] = 'a';
-//
-//    ex2.size = 2;
-//    ex2.string = (char *)calloc((size_t) ex2.size, sizeof(char *));
-//
-//    ex2.string[0] = 'b';
-//    ex2.string[1] = 'b';
-//
-//    ex3.size = 100;
-//    ex3.string = (char *)calloc((size_t) ex3.size, sizeof(char *));
-//
-//    ex3.string[0] = 'c';
-//    ex3.string[1] = 'c';
-//
-//    struct Block * blocks = create_array();
-//
-//
-//    add_block_d(&blocks, ex1);
-//    add_block_d(&blocks, ex2);
-//    add_block_d(&blocks, ex2);
-//    add_block_d(&blocks, ex3);
-//    add_block_d(&blocks, ex3);
-//    add_block_d(&blocks, ex3);
-//
-//
-//    struct Block block2 = closest_block_sum_to_d(197,blocks);
-//
-//    printf("%c", block2.string[1]);
-//
-//
-//
-//    delete_array(blocks);
-
-
 }
 
 

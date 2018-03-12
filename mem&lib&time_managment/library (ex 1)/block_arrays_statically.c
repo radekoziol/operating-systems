@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define ARR_SIZE 1000
+
 
 
 struct StaticBlock blocks[ARR_SIZE];
@@ -22,11 +22,13 @@ void add_blocks_s(struct StaticBlock array [], struct StaticBlock* blocks){
 
 void add_block_s(struct StaticBlock array [], struct StaticBlock block){
 
-    for(int i = 0; i < ARR_SIZE; i++)
-        if(array[i].size == 0){
+    for(int i = 0; i < ARR_SIZE; i++) {
+        if (array[i].size == 0){
             array[i] = block;
             return;
         }
+    }
+
 
     printf("Block array is full!");
 
@@ -49,7 +51,7 @@ bool are_equal_blocks_s(struct StaticBlock block1, struct StaticBlock block2) {
     return true;
 }
 
-void delete_block_s(struct StaticBlock array [], struct StaticBlock * blocks){
+void delete_blocks_s(struct StaticBlock array [], struct StaticBlock * blocks){
 
     int i,j;
     for(i = 0; i < ARR_SIZE; i++){

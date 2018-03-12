@@ -17,7 +17,6 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../)"
   "../library"
   "../1"
-  "../include"
   )
 
 # Targets to which this target links.
