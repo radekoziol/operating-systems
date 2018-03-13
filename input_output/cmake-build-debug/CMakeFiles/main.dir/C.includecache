@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/lib_io.c
+stdio.h
+-
+stdlib.h
+-
+fcntl.h
+-
+zconf.h
+-
+utils.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/main.c
+stdio.h
+-
+library/lib_io.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/lib_io.c
+
