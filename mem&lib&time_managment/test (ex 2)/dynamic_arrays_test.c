@@ -78,11 +78,11 @@ void delete_blocks_d_test(){
 
 void closest_block_sum_to_d_test(){
 
-    int x = 1233;
+    int x = 798;
 
     struct DynamicBlock* blocks = generate_blocks_array(ARR_SIZE,BLOCK_SIZE);
 
-    struct DynamicBlock block = closest_block_sum_to_d(x,blocks);
+    closest_block_sum_to_d(x,blocks);
 
     free(blocks);
 

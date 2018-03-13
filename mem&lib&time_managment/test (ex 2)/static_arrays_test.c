@@ -59,7 +59,7 @@ void closest_block_sum_to_s_test(){
 
     int x = 1234;
 
-    struct StaticBlock block = closest_block_sum_to_s(x,blocks);
+    closest_block_sum_to_s(x,blocks);
 
 }
 

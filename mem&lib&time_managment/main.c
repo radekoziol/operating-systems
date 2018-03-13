@@ -3,18 +3,9 @@
 //
 #include "test (ex 2)/test.c"
 
-int main(int argc, char **args){
+int main(int argc, char **argv){
 
-    //There should be 6 args
-
-
-
-    static char *argv[7] = { "100", "10", "dynamic", "-create", "-find_block",
-                             "789", "-add_and_delete", NULL };
-    argc = 6;
-
-
-    if(argv[0] == "-help"){
+    if( (argv[1] == NULL)  || strcmp(argv[1], "-help" ) == 0 ) {
         printf("Arguments are: \n <array size> <block size> "
                        "<array allocation method (static or dynamic)> "
                        "<operation 1> " "<operation2> <num> " "<operation3>\n");
@@ -22,31 +13,32 @@ int main(int argc, char **args){
         printf("  -create  -  creates array with blocks\n");
         printf("  -find_block <num> -  find closest sum of characters in block(ASCII) to given number\n");
         printf("  -add_and_delete  -  deletes blocks and then add newly generated\n");
+        exit(0);
     }
-    if(argc < 4){
-        printf("You did not input enough arguments!\nFor more information write -help");
+    if(argc < 5){
+        printf("You did not input enough arguments!\nFor more information write -help\n");
         exit(0);
     }
 
     char *ptr;
     int ret;
 
-    ret = (int) strtol(argv[0], &ptr, 10);
+    ret = (int) strtol(argv[1], &ptr, 10);
     unsigned int array_size = (unsigned int) ret;
     if(ret == 0 ){
         printf("Something's wrong with your first argument!");
     }
 
-    ret = (int) strtol(argv[1], &ptr, 10);
+    ret = (int) strtol(argv[2], &ptr, 10);
     unsigned int block_size = (unsigned int) ret;
     if(ret == 0 ){
         printf("Something's wrong with your second argument!");
     }
 
-    char *allocation = argv[2];
+    char *allocation = argv[3];
 
 
-    if(allocation == "dynamic") {
+    if(strcmp(allocation,"dynamic") == 0 || strcmp(allocation,"static") == 0) {
         struct DynamicBlock *blocks = create_array_d(array_size);
 
         printf("Blocks array was successfully allocated!\n");
@@ -57,9 +49,9 @@ int main(int argc, char **args){
         free(add_blocks);
         printf("Blocks were successfully added!\n");
 
-        if (argv[4] == "-find_block") {
+        if (strcmp(argv[5] , "-find_block") == 0) {
 
-            ret = (int) strtol(argv[5], &ptr, 10);
+            ret = (int) strtol(argv[6], &ptr, 10);
             if(ret == 0 ){
                 printf("Something's wrong with your fifth argument!");
             }
@@ -77,7 +69,7 @@ int main(int argc, char **args){
 
         }
 
-        if (argv[6] == "-add_and_delete") {
+        if (strcmp(argv[7], "-add_and_delete") == 0) {
 
             struct DynamicBlock *test_blocks = generate_blocks_array(array_size, block_size);
 

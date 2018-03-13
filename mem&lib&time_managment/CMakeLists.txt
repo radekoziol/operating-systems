@@ -27,4 +27,3 @@ add_library(MyLib_shared SHARED $<TARGET_OBJECTS:objlib>)
 add_library(MyLib_static STATIC $<TARGET_OBJECTS:objlib>)
 
 
-

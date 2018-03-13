@@ -30,7 +30,6 @@ char * parse_to_string(struct timeval start, struct timeval end){
     return array1;
 }
 
-
 double * run_time_test(void (*f)()){
 
     struct rusage usage;
@@ -172,8 +171,6 @@ void print_average_time(int test_number, double results [9][3]) {
 
 }
 
-
-
 void test(){
 
     int test_number = 10;
@@ -254,7 +251,5 @@ void test(){
     }
 
     print_average_time(test_number, results);
-
-
 
 }
