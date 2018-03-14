@@ -15,10 +15,16 @@ fcntl.h
 -
 zconf.h
 -
+string.h
+-
 utils.c
 /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c
 
 /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c
+stdlib.h
+-
+stdio.h
+-
 
 /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/main.c
 stdio.h
