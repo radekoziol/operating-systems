@@ -33,6 +33,8 @@ stdlib.h
 -
 stdio.h
 -
+sys/stat.h
+-
 utils.h
 /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.h
 

@@ -6,7 +6,9 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/stat.h>
 #include "utils.h"
+
 
 
 void generate_sys(char *path, unsigned int record_num, unsigned int record_length){
@@ -26,6 +28,24 @@ void generate_sys(char *path, unsigned int record_num, unsigned int record_lengt
         write(fd, records[i] ,sizeof(char)*record_length);
         write(fd, "\n" ,sizeof(char)*1);
     }
+
+}
+
+void copy_sys(char *from, char *to, size_t file_size){
+
+
+    int f1,f2;
+    f1=open(from, O_RDONLY);
+    f2=open(to,O_WRONLY|O_CREAT,S_IRUSR|S_IWUSR);
+
+    struct stat st;
+
+    stat("my_file.txt", &st);
+    char copy[file_size];
+
+    read(f1, copy , file_size);
+
+    write(f2, copy , file_size);
 
 }
 
@@ -86,10 +106,15 @@ void hello1(){
     unsigned int record_length = 10;
     unsigned int record_num = 100;
 
-    char pathname[100] = "../file.txt";
+    char path1[50] = "../file.txt";
+
+    char path2[50] = "../file1.txt";
 
 
-    generate_sys(pathname, record_num, record_length);
 
-    sort_sys(pathname,record_num,record_length);
+    generate_sys(path1, record_num, record_length);
+
+    sort_sys(path1,record_num,record_length);
+
+    copy_sys(path1,path2, record_length * record_num);
 }

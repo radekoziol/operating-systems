@@ -83,17 +83,42 @@ void sort_lib(char *path, unsigned int record_num, unsigned int record_length) {
         fclose(f);
 }
 
+void copy_lib(char *from, char *to, size_t file_size){
+
+
+    FILE *f1 = fopen(from, "r");
+    FILE *f2 = fopen(from, "w");
+
+    if ((f1 == NULL) || (f2 == NULL) ) {
+        printf("Error opening file!\n");
+        exit(1);
+    }
+
+    char copy[file_size];
+
+    fread(copy, file_size, 1, f1);
+
+    fwrite(copy, sizeof(char), file_size , f2);
+
+    close(f1);
+    close(f2);
+
+}
 
 void hello() {
 
     unsigned int record_length = 10;
     unsigned int record_num = 100;
 
-    char pathname[100] = "../file.txt";
+    char path1[50] = "../file.txt";
+
+    char path2[50] = "../file1.txt";
 
 
-//    generate_lib(pathname, record_num, record_length);
+    generate_lib(path1, record_num, record_length);
 
+    sort_lib(path1, record_num, record_length);
 
+    copy_lib(path1,path2,record_length*record_num);
 
 }
