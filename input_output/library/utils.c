@@ -5,6 +5,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
+#include <stdbool.h>
 
 char get_random_char(){
     return (char) ('A' + (random() % 26));
@@ -29,4 +31,17 @@ char ** generate_array(unsigned int record_num, unsigned int record_length ){
     return records;
 
 
+}
+
+
+bool sorted(unsigned int length, const char string1[length], const char string2[length]) {
+
+    for (int i = 0; i < length; i++) {
+        if (string1[i] < string2[i])
+            return true;
+        else if (string1[i] > string2[i])
+            return false;
+    }
+    // Are equal
+    return true;
 }

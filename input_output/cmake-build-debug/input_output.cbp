@@ -127,6 +127,9 @@
 		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c">
 			<Option target="input_output"/>
 		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.h">
+			<Option target="input_output"/>
+		</Unit>
 		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/main.c">
 			<Option target="main"/>
 		</Unit>

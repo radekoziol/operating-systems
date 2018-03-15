@@ -4,7 +4,13 @@
 
 #include <stdio.h>
 #include "library/lib_io.c"
+#include "library/sys_io.c"
+
 
 int main(){
-    hello();
+
+//    hello();
+
+    hello1();
+
 }
