@@ -6,7 +6,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/lib_io.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/input_output.dir/library/lib_io.c.o"
   "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/sys_io.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/input_output.dir/library/sys_io.c.o"
-  "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/input_output.dir/library/utils.c.o"
+  "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/lib_test.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/input_output.dir/test/lib_test.c.o"
+  "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/sys_test.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/input_output.dir/test/sys_test.c.o"
+  "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/test.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/input_output.dir/test/test.c.o"
+  "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/utils.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/input_output.dir/test/utils.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -3,7 +3,9 @@
 
 CMakeFiles/main.dir/main.c.o: ../library/lib_io.c
 CMakeFiles/main.dir/main.c.o: ../library/sys_io.c
-CMakeFiles/main.dir/main.c.o: ../library/utils.c
-CMakeFiles/main.dir/main.c.o: ../library/utils.h
 CMakeFiles/main.dir/main.c.o: ../main.c
+CMakeFiles/main.dir/main.c.o: ../test/lib_test.c
+CMakeFiles/main.dir/main.c.o: ../test/sys_test.c
+CMakeFiles/main.dir/main.c.o: ../test/test.c
+CMakeFiles/main.dir/main.c.o: ../test/utils.c
 

@@ -4,6 +4,8 @@
 CMakeFiles/main.dir/main.c.o
  /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/lib_io.c
  /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/sys_io.c
- /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c
- /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.h
  /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/main.c
+ /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/lib_test.c
+ /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/sys_test.c
+ /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/test.c
+ /home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/utils.c

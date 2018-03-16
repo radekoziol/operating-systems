@@ -190,33 +190,6 @@ library/sys_io.c.s:
 	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/library/sys_io.c.s
 .PHONY : library/sys_io.c.s
 
-library/utils.o: library/utils.c.o
-
-.PHONY : library/utils.o
-
-# target to build an object file
-library/utils.c.o:
-	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/library/utils.c.o
-.PHONY : library/utils.c.o
-
-library/utils.i: library/utils.c.i
-
-.PHONY : library/utils.i
-
-# target to preprocess a source file
-library/utils.c.i:
-	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/library/utils.c.i
-.PHONY : library/utils.c.i
-
-library/utils.s: library/utils.c.s
-
-.PHONY : library/utils.s
-
-# target to generate assembly for a file
-library/utils.c.s:
-	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/library/utils.c.s
-.PHONY : library/utils.c.s
-
 main.o: main.c.o
 
 .PHONY : main.o
@@ -244,6 +217,114 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.s
 .PHONY : main.c.s
 
+test/lib_test.o: test/lib_test.c.o
+
+.PHONY : test/lib_test.o
+
+# target to build an object file
+test/lib_test.c.o:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/lib_test.c.o
+.PHONY : test/lib_test.c.o
+
+test/lib_test.i: test/lib_test.c.i
+
+.PHONY : test/lib_test.i
+
+# target to preprocess a source file
+test/lib_test.c.i:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/lib_test.c.i
+.PHONY : test/lib_test.c.i
+
+test/lib_test.s: test/lib_test.c.s
+
+.PHONY : test/lib_test.s
+
+# target to generate assembly for a file
+test/lib_test.c.s:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/lib_test.c.s
+.PHONY : test/lib_test.c.s
+
+test/sys_test.o: test/sys_test.c.o
+
+.PHONY : test/sys_test.o
+
+# target to build an object file
+test/sys_test.c.o:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/sys_test.c.o
+.PHONY : test/sys_test.c.o
+
+test/sys_test.i: test/sys_test.c.i
+
+.PHONY : test/sys_test.i
+
+# target to preprocess a source file
+test/sys_test.c.i:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/sys_test.c.i
+.PHONY : test/sys_test.c.i
+
+test/sys_test.s: test/sys_test.c.s
+
+.PHONY : test/sys_test.s
+
+# target to generate assembly for a file
+test/sys_test.c.s:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/sys_test.c.s
+.PHONY : test/sys_test.c.s
+
+test/test.o: test/test.c.o
+
+.PHONY : test/test.o
+
+# target to build an object file
+test/test.c.o:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/test.c.o
+.PHONY : test/test.c.o
+
+test/test.i: test/test.c.i
+
+.PHONY : test/test.i
+
+# target to preprocess a source file
+test/test.c.i:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/test.c.i
+.PHONY : test/test.c.i
+
+test/test.s: test/test.c.s
+
+.PHONY : test/test.s
+
+# target to generate assembly for a file
+test/test.c.s:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/test.c.s
+.PHONY : test/test.c.s
+
+test/utils.o: test/utils.c.o
+
+.PHONY : test/utils.o
+
+# target to build an object file
+test/utils.c.o:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/utils.c.o
+.PHONY : test/utils.c.o
+
+test/utils.i: test/utils.c.i
+
+.PHONY : test/utils.i
+
+# target to preprocess a source file
+test/utils.c.i:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/utils.c.i
+.PHONY : test/utils.c.i
+
+test/utils.s: test/utils.c.s
+
+.PHONY : test/utils.s
+
+# target to generate assembly for a file
+test/utils.c.s:
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/utils.c.s
+.PHONY : test/utils.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,12 +341,21 @@ help:
 	@echo "... library/sys_io.o"
 	@echo "... library/sys_io.i"
 	@echo "... library/sys_io.s"
-	@echo "... library/utils.o"
-	@echo "... library/utils.i"
-	@echo "... library/utils.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... test/lib_test.o"
+	@echo "... test/lib_test.i"
+	@echo "... test/lib_test.s"
+	@echo "... test/sys_test.o"
+	@echo "... test/sys_test.i"
+	@echo "... test/sys_test.s"
+	@echo "... test/test.o"
+	@echo "... test/test.i"
+	@echo "... test/test.s"
+	@echo "... test/utils.o"
+	@echo "... test/utils.i"
+	@echo "... test/utils.s"
 .PHONY : help
 
 

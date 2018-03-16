@@ -1,35 +1,12 @@
 //
 // Created by radekkoziol on 13.03.18.
 //
-#include <bits/types/FILE.h>
 #include <zconf.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/stat.h>
-#include "utils.h"
-
-
-
-void generate_sys(char *path, unsigned int record_num, unsigned int record_length){
-
-    char ** records;
-
-    records = generate_array(record_num, record_length);
-
-    int fd = open(path, O_WRONLY);
-
-    if(fd < 0){
-        printf("Error opening file!\n");
-        exit(-1);
-    }
-
-    for(int i = 0; i < record_num; i++) {
-        write(fd, records[i] ,sizeof(char)*record_length);
-        write(fd, "\n" ,sizeof(char)*1);
-    }
-
-}
+#include "../test/utils.c"
 
 void copy_sys(char *from, char *to, size_t file_size){
 
@@ -47,6 +24,18 @@ void copy_sys(char *from, char *to, size_t file_size){
 
     write(f2, copy , file_size);
 
+}
+
+bool sorted_sys(unsigned int length, const char string1[length], const char string2[length]) {
+
+    for (int i = 0; i < length; i++) {
+        if (string1[i] < string2[i])
+            return true;
+        else if (string1[i] > string2[i])
+            return false;
+    }
+    // Are equal
+    return true;
 }
 
 void sort_sys(char *path, unsigned int record_num, unsigned int record_length) {
@@ -80,9 +69,8 @@ void sort_sys(char *path, unsigned int record_num, unsigned int record_length) {
             read(fd, blocks[1] , sizeof(char)*string_l);
 
             // If not sorted swap them
-            if (!sorted(record_length, blocks[1], blocks[0])) {
+            if (!sorted_sys(record_length, blocks[1], blocks[0])) {
 
-                // Note that compared do lib, offset cannot be negative!
                 lseek(fd, j*string_l , SEEK_SET);
                 write(fd, blocks[0] , sizeof(char) * record_length);
 
@@ -101,20 +89,3 @@ void sort_sys(char *path, unsigned int record_num, unsigned int record_length) {
 
 }
 
-void hello1(){
-
-    unsigned int record_length = 10;
-    unsigned int record_num = 100;
-
-    char path1[50] = "../file.txt";
-
-    char path2[50] = "../file1.txt";
-
-
-
-    generate_sys(path1, record_num, record_length);
-
-    sort_sys(path1,record_num,record_length);
-
-    copy_sys(path1,path2, record_length * record_num);
-}

@@ -121,17 +121,41 @@
 		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/lib_io.c">
 			<Option target="input_output"/>
 		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/lib_io.h">
+			<Option target="input_output"/>
+		</Unit>
 		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/sys_io.c">
 			<Option target="input_output"/>
 		</Unit>
-		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c">
-			<Option target="input_output"/>
-		</Unit>
-		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.h">
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/sys_io.h">
 			<Option target="input_output"/>
 		</Unit>
 		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/main.c">
 			<Option target="main"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/lib_test.c">
+			<Option target="input_output"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/lib_test.h">
+			<Option target="input_output"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/sys_test.c">
+			<Option target="input_output"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/sys_test.h">
+			<Option target="input_output"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/test.c">
+			<Option target="input_output"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/test.h">
+			<Option target="input_output"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/utils.c">
+			<Option target="input_output"/>
+		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/utils.h">
+			<Option target="input_output"/>
 		</Unit>
 		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

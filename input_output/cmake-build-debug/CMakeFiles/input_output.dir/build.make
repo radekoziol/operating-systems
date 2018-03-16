@@ -105,45 +105,123 @@ CMakeFiles/input_output.dir/library/sys_io.c.o.provides: CMakeFiles/input_output
 CMakeFiles/input_output.dir/library/sys_io.c.o.provides.build: CMakeFiles/input_output.dir/library/sys_io.c.o
 
 
-CMakeFiles/input_output.dir/library/utils.c.o: CMakeFiles/input_output.dir/flags.make
-CMakeFiles/input_output.dir/library/utils.c.o: ../library/utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/input_output.dir/library/utils.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/input_output.dir/library/utils.c.o   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c"
+CMakeFiles/input_output.dir/test/utils.c.o: CMakeFiles/input_output.dir/flags.make
+CMakeFiles/input_output.dir/test/utils.c.o: ../test/utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/input_output.dir/test/utils.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/input_output.dir/test/utils.c.o   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/utils.c"
 
-CMakeFiles/input_output.dir/library/utils.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/input_output.dir/library/utils.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c" > CMakeFiles/input_output.dir/library/utils.c.i
+CMakeFiles/input_output.dir/test/utils.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/input_output.dir/test/utils.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/utils.c" > CMakeFiles/input_output.dir/test/utils.c.i
 
-CMakeFiles/input_output.dir/library/utils.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/input_output.dir/library/utils.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/library/utils.c" -o CMakeFiles/input_output.dir/library/utils.c.s
+CMakeFiles/input_output.dir/test/utils.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/input_output.dir/test/utils.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/utils.c" -o CMakeFiles/input_output.dir/test/utils.c.s
 
-CMakeFiles/input_output.dir/library/utils.c.o.requires:
+CMakeFiles/input_output.dir/test/utils.c.o.requires:
 
-.PHONY : CMakeFiles/input_output.dir/library/utils.c.o.requires
+.PHONY : CMakeFiles/input_output.dir/test/utils.c.o.requires
 
-CMakeFiles/input_output.dir/library/utils.c.o.provides: CMakeFiles/input_output.dir/library/utils.c.o.requires
-	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/library/utils.c.o.provides.build
-.PHONY : CMakeFiles/input_output.dir/library/utils.c.o.provides
+CMakeFiles/input_output.dir/test/utils.c.o.provides: CMakeFiles/input_output.dir/test/utils.c.o.requires
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/utils.c.o.provides.build
+.PHONY : CMakeFiles/input_output.dir/test/utils.c.o.provides
 
-CMakeFiles/input_output.dir/library/utils.c.o.provides.build: CMakeFiles/input_output.dir/library/utils.c.o
+CMakeFiles/input_output.dir/test/utils.c.o.provides.build: CMakeFiles/input_output.dir/test/utils.c.o
+
+
+CMakeFiles/input_output.dir/test/test.c.o: CMakeFiles/input_output.dir/flags.make
+CMakeFiles/input_output.dir/test/test.c.o: ../test/test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/input_output.dir/test/test.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/input_output.dir/test/test.c.o   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/test.c"
+
+CMakeFiles/input_output.dir/test/test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/input_output.dir/test/test.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/test.c" > CMakeFiles/input_output.dir/test/test.c.i
+
+CMakeFiles/input_output.dir/test/test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/input_output.dir/test/test.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/test.c" -o CMakeFiles/input_output.dir/test/test.c.s
+
+CMakeFiles/input_output.dir/test/test.c.o.requires:
+
+.PHONY : CMakeFiles/input_output.dir/test/test.c.o.requires
+
+CMakeFiles/input_output.dir/test/test.c.o.provides: CMakeFiles/input_output.dir/test/test.c.o.requires
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/test.c.o.provides.build
+.PHONY : CMakeFiles/input_output.dir/test/test.c.o.provides
+
+CMakeFiles/input_output.dir/test/test.c.o.provides.build: CMakeFiles/input_output.dir/test/test.c.o
+
+
+CMakeFiles/input_output.dir/test/lib_test.c.o: CMakeFiles/input_output.dir/flags.make
+CMakeFiles/input_output.dir/test/lib_test.c.o: ../test/lib_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/input_output.dir/test/lib_test.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/input_output.dir/test/lib_test.c.o   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/lib_test.c"
+
+CMakeFiles/input_output.dir/test/lib_test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/input_output.dir/test/lib_test.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/lib_test.c" > CMakeFiles/input_output.dir/test/lib_test.c.i
+
+CMakeFiles/input_output.dir/test/lib_test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/input_output.dir/test/lib_test.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/lib_test.c" -o CMakeFiles/input_output.dir/test/lib_test.c.s
+
+CMakeFiles/input_output.dir/test/lib_test.c.o.requires:
+
+.PHONY : CMakeFiles/input_output.dir/test/lib_test.c.o.requires
+
+CMakeFiles/input_output.dir/test/lib_test.c.o.provides: CMakeFiles/input_output.dir/test/lib_test.c.o.requires
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/lib_test.c.o.provides.build
+.PHONY : CMakeFiles/input_output.dir/test/lib_test.c.o.provides
+
+CMakeFiles/input_output.dir/test/lib_test.c.o.provides.build: CMakeFiles/input_output.dir/test/lib_test.c.o
+
+
+CMakeFiles/input_output.dir/test/sys_test.c.o: CMakeFiles/input_output.dir/flags.make
+CMakeFiles/input_output.dir/test/sys_test.c.o: ../test/sys_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/input_output.dir/test/sys_test.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/input_output.dir/test/sys_test.c.o   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/sys_test.c"
+
+CMakeFiles/input_output.dir/test/sys_test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/input_output.dir/test/sys_test.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/sys_test.c" > CMakeFiles/input_output.dir/test/sys_test.c.i
+
+CMakeFiles/input_output.dir/test/sys_test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/input_output.dir/test/sys_test.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/test/sys_test.c" -o CMakeFiles/input_output.dir/test/sys_test.c.s
+
+CMakeFiles/input_output.dir/test/sys_test.c.o.requires:
+
+.PHONY : CMakeFiles/input_output.dir/test/sys_test.c.o.requires
+
+CMakeFiles/input_output.dir/test/sys_test.c.o.provides: CMakeFiles/input_output.dir/test/sys_test.c.o.requires
+	$(MAKE) -f CMakeFiles/input_output.dir/build.make CMakeFiles/input_output.dir/test/sys_test.c.o.provides.build
+.PHONY : CMakeFiles/input_output.dir/test/sys_test.c.o.provides
+
+CMakeFiles/input_output.dir/test/sys_test.c.o.provides.build: CMakeFiles/input_output.dir/test/sys_test.c.o
 
 
 # Object files for target input_output
 input_output_OBJECTS = \
 "CMakeFiles/input_output.dir/library/lib_io.c.o" \
 "CMakeFiles/input_output.dir/library/sys_io.c.o" \
-"CMakeFiles/input_output.dir/library/utils.c.o"
+"CMakeFiles/input_output.dir/test/utils.c.o" \
+"CMakeFiles/input_output.dir/test/test.c.o" \
+"CMakeFiles/input_output.dir/test/lib_test.c.o" \
+"CMakeFiles/input_output.dir/test/sys_test.c.o"
 
 # External object files for target input_output
 input_output_EXTERNAL_OBJECTS =
 
 libinput_output.a: CMakeFiles/input_output.dir/library/lib_io.c.o
 libinput_output.a: CMakeFiles/input_output.dir/library/sys_io.c.o
-libinput_output.a: CMakeFiles/input_output.dir/library/utils.c.o
+libinput_output.a: CMakeFiles/input_output.dir/test/utils.c.o
+libinput_output.a: CMakeFiles/input_output.dir/test/test.c.o
+libinput_output.a: CMakeFiles/input_output.dir/test/lib_test.c.o
+libinput_output.a: CMakeFiles/input_output.dir/test/sys_test.c.o
 libinput_output.a: CMakeFiles/input_output.dir/build.make
 libinput_output.a: CMakeFiles/input_output.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libinput_output.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libinput_output.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/input_output.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/input_output.dir/link.txt --verbose=$(VERBOSE)
 
@@ -154,7 +232,10 @@ CMakeFiles/input_output.dir/build: libinput_output.a
 
 CMakeFiles/input_output.dir/requires: CMakeFiles/input_output.dir/library/lib_io.c.o.requires
 CMakeFiles/input_output.dir/requires: CMakeFiles/input_output.dir/library/sys_io.c.o.requires
-CMakeFiles/input_output.dir/requires: CMakeFiles/input_output.dir/library/utils.c.o.requires
+CMakeFiles/input_output.dir/requires: CMakeFiles/input_output.dir/test/utils.c.o.requires
+CMakeFiles/input_output.dir/requires: CMakeFiles/input_output.dir/test/test.c.o.requires
+CMakeFiles/input_output.dir/requires: CMakeFiles/input_output.dir/test/lib_test.c.o.requires
+CMakeFiles/input_output.dir/requires: CMakeFiles/input_output.dir/test/sys_test.c.o.requires
 
 .PHONY : CMakeFiles/input_output.dir/requires
 
