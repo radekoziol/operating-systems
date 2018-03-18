@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_sys.c
+zconf.h
+-
+stdlib.h
+-
+stdio.h
+-
+dirent.h
+-
+sys/stat.h
+-
+string.h
+-
+time.h
+-
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/main.c
+library/dir_sys.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_sys.c
+
