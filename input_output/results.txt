@@ -1,0 +1,101 @@
+records_number/records_length
+
+512/4
+
+After 15 tests, the results are:
+
+Sorting file with system functions time measurement
+Real time : 4.786157
+User time : 1.092166
+System time : 1.092166
+
+Sorting file with library functions time measurement
+Real time : 0.428839
+User time : 0.341092
+System time : 0.341092
+
+Copying file with system functions time measurement
+Real time : 0.000024
+User time : 0.536000
+System time : 0.536000
+
+Copying file with library functions time measurement
+Real time : 0.000091
+User time : 0.239333
+System time : 0.239333
+
+200/512
+
+After 15 tests, the results are:
+
+Sorting file with system functions time measurement
+Real time : 0.620056
+User time : 0.452096
+System time : 0.452096
+
+Sorting file with library functions time measurement
+Real time : 0.195643
+User time : 0.655175
+System time : 0.655175
+
+Copying file with system functions time measurement
+Real time : 0.000069
+User time : 0.166000
+System time : 0.166000
+
+Copying file with library functions time measurement
+Real time : 0.000186
+User time : 0.452667
+System time : 0.452667
+
+
+150/4096
+
+After 15 tests, the results are:
+
+Sorting file with system functions time measurement
+Real time : 0.342907
+User time : 0.513704
+System time : 0.513704
+
+Sorting file with library functions time measurement
+Real time : 0.385873
+User time : 0.610636
+System time : 0.610636
+
+Copying file with system functions time measurement
+Real time : 0.000380
+User time : 0.623867
+System time : 0.623867
+
+Copying file with library functions time measurement
+Real time : 0.000747
+User time : 0.171800
+System time : 0.171800
+
+85/8192
+
+After 15 tests, the results are:
+
+Sorting file with system functions time measurement
+Real time : 0.079311
+User time : 0.312176
+System time : 0.312176
+
+Sorting file with library functions time measurement
+Real time : 0.121842
+User time : 0.309872
+System time : 0.309872
+
+Copying file with system functions time measurement
+Real time : 0.000348
+User time : 0.452067
+System time : 0.452067
+
+Copying file with library functions time measurement
+Real time : 0.000691
+User time : 0.080400
+System time : 0.080400
+
+
+

@@ -115,9 +115,23 @@ void print_average_time(int test_number, double results [9][3]) {
 
 }
 
-void test(char * path1, char * path2, unsigned int record_num, unsigned int record_length){
+void test(){
 
-    int test_number = 10;
+
+    if (freopen("../report.txt", "w", stdout) == NULL)
+    {
+        perror("freopen() failed");
+        exit(-1);
+    }
+
+    char * path1 = "../file.txt";
+    char * path2 = "../file1.txt";
+    unsigned int record_num = 85;
+    unsigned int record_length = 123;
+
+    generate("../tmp.txt",record_num,record_length);
+
+    int test_number = 15;
     double results [4][3];
 
     int i,j;
@@ -128,7 +142,7 @@ void test(char * path1, char * path2, unsigned int record_num, unsigned int reco
 
     for(i = 0; i < test_number; i++) {
 
-        generate(path1,record_num,record_length);
+        copy_sys("../tmp.txt", path1, record_num*record_length);
 
 //        "Sorting file with system functions time measurement"
         double * result = run_time_test(
@@ -138,7 +152,7 @@ void test(char * path1, char * path2, unsigned int record_num, unsigned int reco
             results[0][j] += result[j];
         }
 
-        generate(path1,record_num,record_length);
+        copy_sys("../tmp.txt", path1, record_num*record_length);
 
 //        "Sorting file with library functions time measurement"
         result = run_time_test((void (*)(char *, char *, int, int)) sort_lib_test,
@@ -169,5 +183,7 @@ void test(char * path1, char * path2, unsigned int record_num, unsigned int reco
     }
 
     print_average_time(test_number, results);
+
+    fclose(stdout);
 
 }

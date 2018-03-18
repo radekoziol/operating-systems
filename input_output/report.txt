@@ -1,22 +1,22 @@
-After 10 tests, the results are:
+After 15 tests, the results are:
 
 Sorting file with system functions time measurement 
-Real time : 0.078296
-User time : 0.302902
-System time : 0.302902
+Real time : 0.045681
+User time : 0.273602
+System time : 0.273602
 
 Sorting file with library functions time measurement 
-Real time : 0.017288
-User time : 0.499920
-System time : 0.499920
+Real time : 0.013745
+User time : 0.545777
+System time : 0.545777
 
 Copying file with system functions time measurement 
-Real time : 0.000017
-User time : 0.560000
-System time : 0.560000
+Real time : 0.000014
+User time : 0.300000
+System time : 0.300000
 
 Copying file with library functions time measurement 
-Real time : 0.000044
-User time : 0.147000
-System time : 0.147000
+Real time : 0.000071
+User time : 0.144667
+System time : 0.144667
 

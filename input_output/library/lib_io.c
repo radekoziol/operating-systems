@@ -68,7 +68,7 @@ void copy_lib(char *from, char *to, size_t file_size) {
 
 
     FILE *f1 = fopen(from, "r");
-    FILE *f2 = fopen(from, "w");
+    FILE *f2 = fopen(to, "w");
 
     if ((f1 == NULL) || (f2 == NULL)) {
         printf("Error opening file!\n");
