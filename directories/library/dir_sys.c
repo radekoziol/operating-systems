@@ -12,10 +12,25 @@
 #include <string.h>
 #include <stdbool.h>
 
+time_t* get_args(time_t time1, time_t time2){
+
+    time_t * time = calloc(2, sizeof(time_t));
+    time[0] = time1;
+    time[1] = time2;
+
+    return time;
+}
+
+
+bool is_directory(const char *path) {
+    struct stat path_stat;
+    stat(path, &path_stat);
+    return S_ISDIR(path_stat.st_mode);
+}
+
 
 /*
  * Prints required file info
- * File can not be linked
  */
 void print_file_info(char *path) {
 
@@ -41,15 +56,11 @@ void print_file_info(char *path) {
     printf(" %li bytes", fileStat.st_size);
     printf(" %s\n", ctime(&fileStat.st_mtime));
 
+
 }
 
-bool is_directory(const char *path) {
-    struct stat path_stat;
-    stat(path, &path_stat);
-    return S_ISDIR(path_stat.st_mode);
-}
 
-void list_directories(char *path) {
+void list_directories(char *path, bool (*f)(time_t*), time_t arg) {
 
     DIR *dir = opendir(path);
     struct dirent *dirent;
@@ -64,18 +75,21 @@ void list_directories(char *path) {
                 ( strcmp(dirent->d_name,".") != 0) &&
                 ( strcmp(dirent->d_name,"..") != 0)){
 
-            char *temp_path;
+            char *temp_path = calloc(256, sizeof(char));
+
             strcpy(temp_path, path);
 
             strcat(temp_path, dirent->d_name);
 
             if(!S_ISLNK(file.st_mode)) {
+
                 stat(temp_path, &file);
 
-                print_file_info(temp_path);
+                if(f(get_args(file.st_mtime, arg)))
+                    print_file_info(temp_path);
 
                 if(is_directory(temp_path)) {
-                    list_directories(temp_path);
+                    list_directories(temp_path,f,arg);
                 }
 
             }
@@ -86,15 +100,4 @@ void list_directories(char *path) {
             }
         }
     }
-}
-
-void hello() {
-
-    char path[256] = "../test_dir";
-
-//    print_file_info(path);
-
-    list_directories(path);
-
-
 }

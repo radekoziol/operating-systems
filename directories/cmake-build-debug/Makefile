@@ -136,6 +136,33 @@ directories/fast:
 	$(MAKE) -f CMakeFiles/directories.dir/build.make CMakeFiles/directories.dir/build
 .PHONY : directories/fast
 
+library/date.o: library/date.c.o
+
+.PHONY : library/date.o
+
+# target to build an object file
+library/date.c.o:
+	$(MAKE) -f CMakeFiles/directories.dir/build.make CMakeFiles/directories.dir/library/date.c.o
+.PHONY : library/date.c.o
+
+library/date.i: library/date.c.i
+
+.PHONY : library/date.i
+
+# target to preprocess a source file
+library/date.c.i:
+	$(MAKE) -f CMakeFiles/directories.dir/build.make CMakeFiles/directories.dir/library/date.c.i
+.PHONY : library/date.c.i
+
+library/date.s: library/date.c.s
+
+.PHONY : library/date.s
+
+# target to generate assembly for a file
+library/date.c.s:
+	$(MAKE) -f CMakeFiles/directories.dir/build.make CMakeFiles/directories.dir/library/date.c.s
+.PHONY : library/date.c.s
+
 library/dir_sys.o: library/dir_sys.c.o
 
 .PHONY : library/dir_sys.o
@@ -203,6 +230,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... main"
 	@echo "... directories"
+	@echo "... library/date.o"
+	@echo "... library/date.i"
+	@echo "... library/date.s"
 	@echo "... library/dir_sys.o"
 	@echo "... library/dir_sys.i"
 	@echo "... library/dir_sys.s"

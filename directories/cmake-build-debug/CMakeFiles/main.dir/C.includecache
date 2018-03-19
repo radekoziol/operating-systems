@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/date.c
+stdbool.h
+-
+bits/types/time_t.h
+-
+time.h
+-
+
 /home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_sys.c
 zconf.h
 -
@@ -27,6 +35,12 @@ stdbool.h
 -
 
 /home/radekkoziol/Projects/CLionProjects/Operating systems/directories/main.c
+time.h
+-
+locale.h
+-
 library/dir_sys.c
 /home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_sys.c
+library/date.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/date.c
 
