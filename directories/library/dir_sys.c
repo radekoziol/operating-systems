@@ -7,53 +7,94 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <sys/stat.h>
-#include <string.h>
 #include <time.h>
+#include <errno.h>
+#include <string.h>
+#include <stdbool.h>
 
 
 /*
  * Prints required file info
  * File can not be linked
  */
-void print_file_info(char * path){
-
-    char *sym_link_path = "/home/radekkoziol/Downloads/slides.zip";
+void print_file_info(char *path) {
 
     // Finding absolute path
     char actual_path[PATH_MAX + 1];
-    char *ab_path= realpath(sym_link_path, actual_path);
+    char *ab_path = realpath(path, actual_path);
 
     struct stat fileStat;
-    if(stat(path,&fileStat) < 0)
+    if (stat(path, &fileStat) < 0)
         return;
 
-    if(!S_ISLNK(fileStat.st_mode)) {
-        printf("Information for %s\n", path);
-        printf("---------------------------\n");
-        printf("File Size: \t\t%li bytes\n", fileStat.st_size);
-        printf("Absolute path \t%s\n", ab_path);
-        printf("Last modified time: %s", ctime(&fileStat.st_mtime));
-        printf("File Permissions: \t");
-        printf((S_ISDIR(fileStat.st_mode)) ? "d" : "-");
-        printf((fileStat.st_mode & S_IRUSR) ? "r" : "-");
-        printf((fileStat.st_mode & S_IWUSR) ? "w" : "-");
-        printf((fileStat.st_mode & S_IXUSR) ? "x" : "-");
-        printf((fileStat.st_mode & S_IRGRP) ? "r" : "-");
-        printf((fileStat.st_mode & S_IWGRP) ? "w" : "-");
-        printf((fileStat.st_mode & S_IXGRP) ? "x" : "-");
-        printf((fileStat.st_mode & S_IROTH) ? "r" : "-");
-        printf((fileStat.st_mode & S_IWOTH) ? "w" : "-");
-        printf((fileStat.st_mode & S_IXOTH) ? "x" : "-");
-        printf("\n\n");
+    printf("%s\n", ab_path);
+    printf((S_ISDIR(fileStat.st_mode)) ? "d" : "-");
+    printf((fileStat.st_mode & S_IRUSR) ? "r" : "-");
+    printf((fileStat.st_mode & S_IWUSR) ? "w" : "-");
+    printf((fileStat.st_mode & S_IXUSR) ? "x" : "-");
+    printf((fileStat.st_mode & S_IRGRP) ? "r" : "-");
+    printf((fileStat.st_mode & S_IWGRP) ? "w" : "-");
+    printf((fileStat.st_mode & S_IXGRP) ? "x" : "-");
+    printf((fileStat.st_mode & S_IROTH) ? "r" : "-");
+    printf((fileStat.st_mode & S_IWOTH) ? "w" : "-");
+    printf((fileStat.st_mode & S_IXOTH) ? "x" : "-");
+    printf(" %li bytes", fileStat.st_size);
+    printf(" %s\n", ctime(&fileStat.st_mtime));
+
+}
+
+bool is_directory(const char *path) {
+    struct stat path_stat;
+    stat(path, &path_stat);
+    return S_ISDIR(path_stat.st_mode);
+}
+
+void list_directories(char *path) {
+
+    DIR *dir = opendir(path);
+    struct dirent *dirent;
+    struct stat file;
+
+    strcat(path, "/");
+
+    while (dir != NULL) {
+
+        errno = 0;
+        if (((dirent = readdir(dir)) != NULL) &&
+                ( strcmp(dirent->d_name,".") != 0) &&
+                ( strcmp(dirent->d_name,"..") != 0)){
+
+            char *temp_path;
+            strcpy(temp_path, path);
+
+            strcat(temp_path, dirent->d_name);
+
+            if(!S_ISLNK(file.st_mode)) {
+                stat(temp_path, &file);
+
+                print_file_info(temp_path);
+
+                if(is_directory(temp_path)) {
+                    list_directories(temp_path);
+                }
+
+            }
+        } else {
+            if (errno == 0) {
+                closedir(dir);
+                return;
+            }
+        }
     }
 }
 
-
-
 void hello() {
 
-    char path[256] = "../main.c";
+    char path[256] = "../test_dir";
 
-    print_file_info(path);
+//    print_file_info(path);
+
+    list_directories(path);
+
 
 }

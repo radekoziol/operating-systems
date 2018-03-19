@@ -17,9 +17,13 @@ dirent.h
 -
 sys/stat.h
 -
+time.h
+-
+errno.h
+-
 string.h
 -
-time.h
+stdbool.h
 -
 
 /home/radekkoziol/Projects/CLionProjects/Operating systems/directories/main.c
