@@ -12,7 +12,6 @@
 #include <ftw.h>
 #include <stdio.h>
 #include <errno.h>
-#include <stdint.h>
 #include <time.h>
 #include <zconf.h>
 #include <stdbool.h>
@@ -25,7 +24,6 @@ bool (*fun)(time_t*);
 time_t *arg;
 
 int print_file_info_nftw(const char *fpath, const struct stat *sb, int tflag, struct FTW *ftwbuf) {
-
 
     stat(fpath, sb);
 

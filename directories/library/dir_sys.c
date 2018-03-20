@@ -58,15 +58,18 @@ void print_file_info(char *path) {
 /*
  * List directories base on condition (method f)
  */
-void list_files(char *path, bool (*f)(time_t*), time_t  arg) {
+void list_files(char *fpath, bool (*f)(time_t*), time_t  arg) {
 
     // Opening dir, preparing variables
-    DIR *dir = opendir(path);
+    DIR *dir = opendir(fpath);
     struct dirent *dirent;
     struct stat file;
 
-    // In order to effectively iterate, lets slash is added to path
+    // In order to effectively iterate, slash is added to path
+    char *path = calloc(256, sizeof(char));
+    strcpy(path, fpath);
     strcat(path, "/");
+
 
     while (dir != NULL) {
 
