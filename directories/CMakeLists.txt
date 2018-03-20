@@ -3,6 +3,6 @@ project(directories C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_library(directories main.c library/dir_sys.c library/date.c)
+add_library(directories main.c library/dir_sys.c library/date.c library/dir_nftw.c)
 
 add_executable(main main.c)

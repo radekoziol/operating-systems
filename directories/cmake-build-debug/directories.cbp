@@ -121,6 +121,9 @@
 		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/date.c">
 			<Option target="directories"/>
 		</Unit>
+		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_nftw.c">
+			<Option target="directories"/>
+		</Unit>
 		<Unit filename="/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_sys.c">
 			<Option target="directories"/>
 		</Unit>

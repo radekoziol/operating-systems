@@ -14,6 +14,26 @@ bits/types/time_t.h
 time.h
 -
 
+/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_nftw.c
+stdlib.h
+-
+unistd.h
+-
+ftw.h
+-
+stdio.h
+-
+errno.h
+-
+stdint.h
+-
+time.h
+-
+zconf.h
+-
+stdbool.h
+-
+
 /home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_sys.c
 zconf.h
 -
@@ -43,4 +63,6 @@ library/dir_sys.c
 /home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_sys.c
 library/date.c
 /home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/date.c
+library/dir_nftw.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/directories/library/dir_nftw.c
 

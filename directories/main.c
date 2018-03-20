@@ -10,6 +10,8 @@
 #include <locale.h>
 #include "library/dir_sys.c"
 #include "library/date.c"
+#include "library/dir_nftw.c"
+
 
 int
 main(int argc, char **argv) {
@@ -41,8 +43,9 @@ main(int argc, char **argv) {
 
     char path[256] = "../test_dir";
 
-    list_directories(path, is_later, t1);
+//    list_files(path, is_later, t1);
 
+    list_files_nftw(path, is_later, t1);
 
     return 0;
 }

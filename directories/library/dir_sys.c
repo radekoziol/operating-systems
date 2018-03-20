@@ -12,19 +12,14 @@
 #include <string.h>
 #include <stdbool.h>
 
-time_t* get_args(time_t time1, time_t time2){
-
-    time_t * time = calloc(2, sizeof(time_t));
-    time[0] = time1;
-    time[1] = time2;
-
-    return time;
-}
-
-
+/*
+ * Checks if given path is directory
+ */
 bool is_directory(const char *path) {
+
     struct stat path_stat;
     stat(path, &path_stat);
+
     return S_ISDIR(path_stat.st_mode);
 }
 
@@ -60,37 +55,52 @@ void print_file_info(char *path) {
 }
 
 
-void list_directories(char *path, bool (*f)(time_t*), time_t arg) {
+/*
+ * List directories base on condition (method f)
+ */
+void list_files(char *path, bool (*f)(time_t*), time_t  arg) {
 
+    // Opening dir, preparing variables
     DIR *dir = opendir(path);
     struct dirent *dirent;
     struct stat file;
 
+    // In order to effectively iterate, lets slash is added to path
     strcat(path, "/");
 
     while (dir != NULL) {
 
         errno = 0;
-        if (((dirent = readdir(dir)) != NULL) &&
-                ( strcmp(dirent->d_name,".") != 0) &&
-                ( strcmp(dirent->d_name,"..") != 0)){
+        if (((dirent = readdir(dir)) != NULL) && // If it went ok
+                ( strcmp(dirent->d_name,".") != 0) && // Not same directory
+                ( strcmp(dirent->d_name,"..") != 0)){ // Not prev directory
 
+            // Creating template to create paths to file
             char *temp_path = calloc(256, sizeof(char));
-
             strcpy(temp_path, path);
 
+            // Concatenating with current file
             strcat(temp_path, dirent->d_name);
 
+            // If it is not symbolic link
             if(!S_ISLNK(file.st_mode)) {
 
                 stat(temp_path, &file);
 
-                if(f(get_args(file.st_mtime, arg)))
+                // Preparing arguments for condition
+                time_t * date = calloc(2, sizeof(time_t));
+                // Current time modification here
+                date[0] = file.st_mtime;
+                // Given input
+                date[1] = arg;
+
+                // Condition
+                if(f(date))
                     print_file_info(temp_path);
 
-                if(is_directory(temp_path)) {
-                    list_directories(temp_path,f,arg);
-                }
+                // Recursively for next directory
+                if(is_directory(temp_path))
+                    list_files(temp_path,f,arg);
 
             }
         } else {
