@@ -1,0 +1,4 @@
+/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles/main.dir
+/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles/directories.dir

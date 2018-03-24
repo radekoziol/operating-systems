@@ -1,0 +1,50 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/date.c
+stdbool.h
+-
+bits/types/time_t.h
+-
+time.h
+-
+locale.h
+-
+stdio.h
+-
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/dir_sys.c
+zconf.h
+-
+stdlib.h
+-
+stdio.h
+-
+dirent.h
+-
+sys/stat.h
+-
+time.h
+-
+errno.h
+-
+string.h
+-
+stdbool.h
+-
+
+/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/main.c
+time.h
+-
+string.h
+-
+library/date.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/date.c
+library/dir_sys.c
+/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/dir_sys.c
+
