@@ -4,6 +4,7 @@
 
 #if defined(__linux__) || defined(__MINT__)
 # define _GNU_SOURCE /* strptime(), getsubopt() */
+
 #endif
 
 #include <wait.h>
@@ -12,6 +13,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <sys/resource.h>
+
 
 void
 parse_line(FILE *f, char *command, char *args){
@@ -44,9 +47,69 @@ parse_line(FILE *f, char *command, char *args){
 }
 
 
+void set_limits( int time_limit, int mem_limit) {
+
+    if((time_limit <= 0) || (mem_limit <= 0)){
+       printf("Those limits: ");
+        printf("time: %d, memory: %d", time_limit,mem_limit);
+        printf("are impossible!");
+        exit(-1);
+    }
+
+    struct rlimit lim;
+
+    lim.rlim_cur = (rlim_t) time_limit;
+    setrlimit (RLIMIT_CPU, &lim);
+
+    lim.rlim_cur = (rlim_t) mem_limit;
+    setrlimit (RLIMIT_AS, &lim);
+
+}
+
+void execute_command(char *command, char *args, int time_limit, int mem_limit){
+
+    pid_t child_pid;
+    int status, command_s;
+    status = command_s = 0;
+
+    child_pid = vfork();
+
+    if( 0 == child_pid ){
+
+        printf("Executing ");
+        printf(command);
+        printf(args);
+        printf("\n");
+
+        set_limits(time_limit,mem_limit);
+
+        if(args[0] != NULL)
+            command_s = execlp(command, command, args, (char *) NULL);
+        else
+            command_s = execlp(command, command, (char *) NULL);
+
+        if(command_s == -1){
+            printf("Process went wrong!\n");
+            exit(-1);
+        }
+        _exit(127); /* terminate the child  */
+    }
+
+    // this way, the father waits for all the child processes
+    while ( wait(&status) > 0 );
+    printf("\n");
+
+}
+
+
 
 int
 main(int argc, char **argv) {
+
+    int time_l = 100;
+    int mem_l = 20;
+    mem_l = 1048576*mem_l;
+
 
     FILE *f;
     f = fopen("../file.txt", "r");
@@ -67,45 +130,14 @@ main(int argc, char **argv) {
         if(beg_char)
             fseek(f,-1,SEEK_CUR);
 
-
         parse_line(f,command,args);
 
-        pid_t child_pid;
-        int status, command_s;
-        status = command_s = 0;
-
-        child_pid = vfork();
-
-        if( 0 == child_pid ){
-
-            printf("Executing ");
-            printf(command);
-            printf(args);
-            printf("\n");
-
-            if(args[0] != NULL)
-                command_s = execlp(command, command, args, (char *) NULL);
-            else
-                command_s = execlp(command, command, (char *) NULL);
-
-            if(command_s == -1){
-                printf("Process went wrong!\n");
-                exit(-1);
-            }
-            _exit(127); /* terminate the child  */
-        }
-
-        // this way, the father waits for all the child processes
-        while ( wait(&status) > 0 )
+        execute_command(command,args,time_l,mem_l);
 
         beg_char = false;
-        printf("\n");
-
     }
 
     fclose(f);
-
-
 
 
 
