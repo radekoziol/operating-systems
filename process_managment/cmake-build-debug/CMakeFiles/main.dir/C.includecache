@@ -6,45 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/date.c
-stdbool.h
--
-bits/types/time_t.h
--
-time.h
--
-locale.h
--
-stdio.h
--
-
-/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/dir_sys.c
-zconf.h
--
-stdlib.h
--
-stdio.h
--
-dirent.h
--
-sys/stat.h
--
-time.h
--
-errno.h
--
-string.h
--
-stdbool.h
--
-signal.h
--
-
 /home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/main.c
 wait.h
 -
-library/date.c
-/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/date.c
-library/dir_sys.c
-/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/dir_sys.c
+bits/types/FILE.h
+-
+zconf.h
+-
+stdio.h
+-
+stdlib.h
+-
+stdbool.h
+-
 

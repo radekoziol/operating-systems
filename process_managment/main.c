@@ -7,8 +7,11 @@
 #endif
 
 #include <wait.h>
-#include "library/date.c"
-#include "library/dir_sys.c"
+#include <bits/types/FILE.h>
+#include <zconf.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 void
 parse_line(FILE *f, char *command, char *args){
