@@ -129,11 +129,36 @@ CMakeFiles/directories.dir/library/date.c.o.provides: CMakeFiles/directories.dir
 CMakeFiles/directories.dir/library/date.c.o.provides.build: CMakeFiles/directories.dir/library/date.c.o
 
 
+CMakeFiles/directories.dir/library/dir_nftw.c.o: CMakeFiles/directories.dir/flags.make
+CMakeFiles/directories.dir/library/dir_nftw.c.o: ../library/dir_nftw.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/directories.dir/library/dir_nftw.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/directories.dir/library/dir_nftw.c.o   -c "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/dir_nftw.c"
+
+CMakeFiles/directories.dir/library/dir_nftw.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/directories.dir/library/dir_nftw.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/dir_nftw.c" > CMakeFiles/directories.dir/library/dir_nftw.c.i
+
+CMakeFiles/directories.dir/library/dir_nftw.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/directories.dir/library/dir_nftw.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/dir_nftw.c" -o CMakeFiles/directories.dir/library/dir_nftw.c.s
+
+CMakeFiles/directories.dir/library/dir_nftw.c.o.requires:
+
+.PHONY : CMakeFiles/directories.dir/library/dir_nftw.c.o.requires
+
+CMakeFiles/directories.dir/library/dir_nftw.c.o.provides: CMakeFiles/directories.dir/library/dir_nftw.c.o.requires
+	$(MAKE) -f CMakeFiles/directories.dir/build.make CMakeFiles/directories.dir/library/dir_nftw.c.o.provides.build
+.PHONY : CMakeFiles/directories.dir/library/dir_nftw.c.o.provides
+
+CMakeFiles/directories.dir/library/dir_nftw.c.o.provides.build: CMakeFiles/directories.dir/library/dir_nftw.c.o
+
+
 # Object files for target directories
 directories_OBJECTS = \
 "CMakeFiles/directories.dir/main.c.o" \
 "CMakeFiles/directories.dir/library/dir_sys.c.o" \
-"CMakeFiles/directories.dir/library/date.c.o"
+"CMakeFiles/directories.dir/library/date.c.o" \
+"CMakeFiles/directories.dir/library/dir_nftw.c.o"
 
 # External object files for target directories
 directories_EXTERNAL_OBJECTS =
@@ -141,9 +166,10 @@ directories_EXTERNAL_OBJECTS =
 libdirectories.a: CMakeFiles/directories.dir/main.c.o
 libdirectories.a: CMakeFiles/directories.dir/library/dir_sys.c.o
 libdirectories.a: CMakeFiles/directories.dir/library/date.c.o
+libdirectories.a: CMakeFiles/directories.dir/library/dir_nftw.c.o
 libdirectories.a: CMakeFiles/directories.dir/build.make
 libdirectories.a: CMakeFiles/directories.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libdirectories.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking C static library libdirectories.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/directories.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/directories.dir/link.txt --verbose=$(VERBOSE)
 
@@ -155,6 +181,7 @@ CMakeFiles/directories.dir/build: libdirectories.a
 CMakeFiles/directories.dir/requires: CMakeFiles/directories.dir/main.c.o.requires
 CMakeFiles/directories.dir/requires: CMakeFiles/directories.dir/library/dir_sys.c.o.requires
 CMakeFiles/directories.dir/requires: CMakeFiles/directories.dir/library/date.c.o.requires
+CMakeFiles/directories.dir/requires: CMakeFiles/directories.dir/library/dir_nftw.c.o.requires
 
 .PHONY : CMakeFiles/directories.dir/requires
 

@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/date.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles/directories.dir/library/date.c.o"
+  "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/dir_nftw.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles/directories.dir/library/dir_nftw.c.o"
   "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/dir_sys.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles/directories.dir/library/dir_sys.c.o"
   "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/main.c" "/home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/cmake-build-debug/CMakeFiles/directories.dir/main.c.o"
   )

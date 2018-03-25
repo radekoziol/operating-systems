@@ -163,6 +163,33 @@ library/date.c.s:
 	$(MAKE) -f CMakeFiles/directories.dir/build.make CMakeFiles/directories.dir/library/date.c.s
 .PHONY : library/date.c.s
 
+library/dir_nftw.o: library/dir_nftw.c.o
+
+.PHONY : library/dir_nftw.o
+
+# target to build an object file
+library/dir_nftw.c.o:
+	$(MAKE) -f CMakeFiles/directories.dir/build.make CMakeFiles/directories.dir/library/dir_nftw.c.o
+.PHONY : library/dir_nftw.c.o
+
+library/dir_nftw.i: library/dir_nftw.c.i
+
+.PHONY : library/dir_nftw.i
+
+# target to preprocess a source file
+library/dir_nftw.c.i:
+	$(MAKE) -f CMakeFiles/directories.dir/build.make CMakeFiles/directories.dir/library/dir_nftw.c.i
+.PHONY : library/dir_nftw.c.i
+
+library/dir_nftw.s: library/dir_nftw.c.s
+
+.PHONY : library/dir_nftw.s
+
+# target to generate assembly for a file
+library/dir_nftw.c.s:
+	$(MAKE) -f CMakeFiles/directories.dir/build.make CMakeFiles/directories.dir/library/dir_nftw.c.s
+.PHONY : library/dir_nftw.c.s
+
 library/dir_sys.o: library/dir_sys.c.o
 
 .PHONY : library/dir_sys.o
@@ -233,6 +260,9 @@ help:
 	@echo "... library/date.o"
 	@echo "... library/date.i"
 	@echo "... library/date.s"
+	@echo "... library/dir_nftw.o"
+	@echo "... library/dir_nftw.i"
+	@echo "... library/dir_nftw.s"
 	@echo "... library/dir_sys.o"
 	@echo "... library/dir_sys.i"
 	@echo "... library/dir_sys.s"

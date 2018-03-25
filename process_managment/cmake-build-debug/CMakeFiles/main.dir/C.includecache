@@ -37,11 +37,11 @@ string.h
 -
 stdbool.h
 -
+signal.h
+-
 
 /home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/main.c
-time.h
--
-string.h
+wait.h
 -
 library/date.c
 /home/radekkoziol/Projects/CLionProjects/Operating systems/process_managment/library/date.c

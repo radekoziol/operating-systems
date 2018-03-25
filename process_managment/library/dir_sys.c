@@ -11,6 +11,7 @@
 #include <errno.h>
 #include <string.h>
 #include <stdbool.h>
+#include <signal.h>
 
 /*
  * Checks if given path is directory
@@ -103,13 +104,11 @@ void list_files(char *fpath, bool (*f)(time_t*), time_t  arg) {
 
                 // Recursively for next directory
                 if(is_directory(temp_path)) {
-
-                    printf("Parent! PID: %d\n", getpid());
                     int child_pid = fork();
 
-                    if( 0 == child_pid) {
-                        printf("Child! PID: %d\n", getpid());
+                    if( 0 == child_pid ){
                         list_files(temp_path, f, arg);
+                        _exit(127); /* terminate the child  */
                     }
                 }
 
