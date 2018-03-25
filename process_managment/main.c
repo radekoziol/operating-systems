@@ -56,7 +56,7 @@ main(int argc, char **argv) {
         exit(-1);
     }
 
-    char file[256];
+
     char command[256];
     char args[256];
 
@@ -71,19 +71,35 @@ main(int argc, char **argv) {
         parse_line(f,command,args);
 
         pid_t child_pid;
-        int status = 0;
+        int status, command_s;
+        status = command_s = 0;
 
         child_pid = vfork();
 
         if( 0 == child_pid ){
-            execlp(command, command, args, (char *) NULL);
+
+            printf("Executing ");
+            printf(command);
+            printf(args);
+            printf("\n");
+
+            if(args[0] != NULL)
+                command_s = execlp(command, command, args, (char *) NULL);
+            else
+                command_s = execlp(command, command, (char *) NULL);
+
+            if(command_s == -1){
+                printf("Process went wrong!\n");
+                exit(-1);
+            }
             _exit(127); /* terminate the child  */
         }
 
         // this way, the father waits for all the child processes
-        while ( wait(&status) > 0);
+        while ( wait(&status) > 0 )
 
         beg_char = false;
+        printf("\n");
 
     }
 
