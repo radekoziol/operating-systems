@@ -49,7 +49,6 @@ execute_command(char *command, char *args[256], int time_limit, int mem_limit){
         // Setting limits
         set_limits(time_limit,mem_limit);
 
-        dup2(pipes[1], STDOUT_FILENO);
         // Running command
         if(args[1] == NULL)
             command_s = execlp(command, command, (char *) NULL);
@@ -73,28 +72,28 @@ execute_command(char *command, char *args[256], int time_limit, int mem_limit){
 void
 parse_line(FILE *f, char *command, char *args[256]){
 
-    char file [256];
+    char file[256];
     int i,j,k;
 
     for(i = 0; i < 256; i++)
-        file[i] = NULL;
+        file[i] = '\0';
 
     // Reading line
     fscanf(f, "%[^\n]", file);
 
     // Reading command
     i = 0;
-    while ((file[i] != ' ') && (file[i] != NULL)) {
+    while ((file[i] != ' ') && (file[i] != '\0')) {
         command[i] = file[i];
         i++;
     }
     // Has to end with NULL
-    command[i] = NULL;
+    command[i] = '\0';
     // According to execvp syntax
     args[0] = command;
 
-    if(file[i] == NULL){
-        args[1] = NULL;
+    if(file[i] == '\0'){
+        args[1] = '\0';
         return;
     }
 
@@ -103,14 +102,14 @@ parse_line(FILE *f, char *command, char *args[256]){
     k = 0;
 
     // Now we need to split arguments into args array
-    while(file[i] != NULL){
+    while(file[i] != '\0'){
 
         if(file[i] != ' ') {
             args[j][k] = file[i];
             k++;
         }
         else{
-            args[j][k] = NULL;
+            args[j][k] = '\0';
             k = 0;
             j++;
         }
@@ -118,7 +117,7 @@ parse_line(FILE *f, char *command, char *args[256]){
     }
 
     // Last argument
-    args[j][k] = NULL;
+    args[j][k] = '\0';
     args[j+1] = NULL;
 
 }
@@ -131,7 +130,7 @@ execute_file(char * path, int time_lim, int mem_lim){
     f = fopen(path, "r");
 
     if (f == NULL) {
-        printf("Error while opening file!");
+        printf("Error while opening file!\n");
         exit(-1);
     }
 
@@ -160,8 +159,7 @@ execute_file(char * path, int time_lim, int mem_lim){
         printf("Executing ");
         int i = 0;
         while(args[i] != NULL) {
-            printf(" ");
-            printf(args[i++]);
+            printf(" %s", args[i++]);
         }
         printf("\n");
 

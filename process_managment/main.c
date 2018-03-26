@@ -7,35 +7,33 @@
 
 #endif
 
-#include <wait.h>
-#include <bits/types/FILE.h>
-#include <zconf.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include "library/utils.c"
 
 int
 main(int argc, char **argv) {
 
 
+//    Example input
+
+//    argv[1] = "../file.txt";
+//    argv[2] = "10";
+//    argv[3] = "100";
+//    argc = 3;
+
     if ((argc == 1) || strcmp(argv[1], "-help") == 0) {
         printf("Arguments are: \n"
                        "   path time_limit memory_limit \n");
-
+        exit(0);
     }
 
-//    Example input
-    argv[0] = "../file.txt";
-    argv[1] = "10";
-    argv[2] = "100";
-
-
-    int time_l = (int) strtol(argv[1], NULL, 10);
-    int mem_l = (int) strtol(argv[2], NULL, 10);
+    int time_l = (int) strtol(argv[2], NULL, 10);
+    int mem_l = (int) strtol(argv[3], NULL, 10);
+    // Converting to MB
     mem_l = 1048576*mem_l;
 
-    char* path= argv[0];
+    char* path= argv[1];
 
     execute_file(path,time_l,mem_l);
 
