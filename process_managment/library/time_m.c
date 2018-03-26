@@ -29,7 +29,26 @@ parse_to_double(struct timeval end){
     return strtod(array1,NULL);
 }
 
-void
+double * measure_time(){
+
+    struct rusage usage;
+    struct timeval user_end, system_end;
+
+    getrusage(RUSAGE_CHILDREN, &usage);
+    user_end = usage.ru_utime;
+    system_end = usage.ru_stime;
+
+    double system_time = parse_to_double(system_end);
+
+    double user_time = parse_to_double(user_end);
+
+    double * result = calloc(3, sizeof(double));
+    result[0] = user_time;
+    result[1] = system_time;
+
+    return result;
+}
+        void
 print_results(double *results) {
 
     printf("User time : ");
@@ -40,3 +59,4 @@ print_results(double *results) {
     printf("\n\n");
 
 }
+
