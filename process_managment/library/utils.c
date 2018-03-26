@@ -32,7 +32,7 @@ set_limits( int time_limit, int mem_limit) {
 }
 
 void
-execute_command(char *command, char *args, int time_limit, int mem_limit){
+execute_command(char *command, char *args[256], int time_limit, int mem_limit){
 
     pid_t child_pid;
     int status, command_s;
@@ -44,15 +44,14 @@ execute_command(char *command, char *args, int time_limit, int mem_limit){
 
         printf("Executing ");
         printf(command);
-        printf(args);
+        int i = 1;
+        while(args[i] != NULL)
+            printf(args[i++]);
         printf("\n");
 
         set_limits(time_limit,mem_limit);
 
-        if(args[0] != NULL)
-            command_s = execlp(command, command, args, (char *) NULL);
-        else
-            command_s = execlp(command, command, (char *) NULL);
+        command_s = execvp(command, args);
 
         if(command_s == -1){
             printf("Process went wrong!\n");
@@ -68,17 +67,13 @@ execute_command(char *command, char *args, int time_limit, int mem_limit){
 }
 
 void
-parse_line(FILE *f, char *command, char *args){
+parse_line(FILE *f, char *command, char *args[256]){
 
     char file [256];
 
-    int i;
-    for (i = 0; i < 256; i++) {
-        file[i] = command[i] = args[i] = NULL;
-    }
+    int i,j,k;
 
     fscanf(f, "%[^\n]", file);
-
 
     i = 0;
     while ((file[i] != ' ') && (i < 256)) {
@@ -86,22 +81,32 @@ parse_line(FILE *f, char *command, char *args){
         i++;
     }
     command[i] = NULL;
-
     i++;
-    int l = 0;
 
-    while ((i < 256) && (file[i] != NULL)) {
-        args[l++] = file[i++];
+    j = 1;
+    args[0] = command;
+    k = 0;
+    while(file[i] != NULL){
+
+        if(file[i] != ' ') {
+            args[j][k] = file[i];
+            k++;
+        }
+        else{
+            args[j][k] = NULL;
+            k = 0;
+            j++;
+        }
+        i++;
     }
-    args[i] = NULL;
+
+    args[j][k] = NULL;
+    args[j+1] = NULL;
 
 }
 
 void
 execute_file(char * path, int time_lim, int mem_lim){
-
-    // Converting to MB
-    mem_lim = 1048576*mem_lim;
 
     FILE *f;
     f = fopen(path, "r");
@@ -113,7 +118,10 @@ execute_file(char * path, int time_lim, int mem_lim){
 
 
     char command[256];
-    char args[256];
+    char *args[256];
+
+    for (int i=0; i<256; i++)
+        args[i] = (char *)malloc(256 * sizeof(char));
 
     bool beg_char = true;
 

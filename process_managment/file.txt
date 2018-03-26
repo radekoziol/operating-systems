@@ -1,3 +1,1 @@
-ls -l
-pwd
-pwd
+ls -l /bin
