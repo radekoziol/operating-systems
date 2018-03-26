@@ -177,7 +177,7 @@ void test(){
 
         //"Copying file with library functions time measurement"
         result = run_time_test((void (*)(char *, char *, int, int)) copy_lib_test,
-                path1,path2,record_num,record_length);
+                               path1,path2,record_num,record_length);
 
         for(j = 0; j < 3; j++){
             results[3][j] += result[j];

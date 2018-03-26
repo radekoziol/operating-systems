@@ -11,7 +11,7 @@
 #include <sys/resource.h>
 
 
-char * parse_to_string(struct timeval start, struct timeval end){
+double parse_to_double(struct timeval start, struct timeval end){
 
     __time_t sec_diff = end.tv_sec - start.tv_sec;
     __suseconds_t usec_diff = end.tv_usec - start.tv_usec ;
@@ -27,7 +27,7 @@ char * parse_to_string(struct timeval start, struct timeval end){
     strcat(array1,array2);
 
 
-    return array1;
+    return strtod(array1,NULL);
 }
 
 double * run_time_test(void (*f)()){
@@ -46,19 +46,18 @@ double * run_time_test(void (*f)()){
     user_end = usage.ru_utime;
     system_end = usage.ru_stime;
     clock_t end = clock();
+
     double real_time_m = (double)(end - begin) / CLOCKS_PER_SEC;
 
-    char real_time[10];
-    snprintf(real_time, 10, "%f", real_time_m);
+    double system_time = parse_to_double(system_start,system_end);
 
-    char * system_time = parse_to_string(system_start,system_end);
+    double user_time = parse_to_double(user_start,user_end);
 
-    char * user_time = parse_to_string(user_start,user_end);
 
     double * result = calloc(3, sizeof(double));
     result[0] = real_time_m;
-    result[1] = atof(system_time);
-    result[2] = atof(user_time);
+    result[1] = system_time;
+    result[2] = user_time;
 
     return result;
 
