@@ -1,1 +1,4 @@
 ls -l /bin
+ls -l
+pwd
+./ex_script

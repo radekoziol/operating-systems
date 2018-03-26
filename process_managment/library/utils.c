@@ -10,6 +10,7 @@
 #include <sys/resource.h>
 #include <wait.h>
 #include <stdbool.h>
+#include "time_m.c"
 
 void
 set_limits( int time_limit, int mem_limit) {
@@ -40,6 +41,9 @@ execute_command(char *command, char *args[256], int time_limit, int mem_limit){
 
     child_pid = vfork();
 
+    struct rusage usage;
+    struct timeval user_start, user_end, system_start, system_end;
+
     if( 0 == child_pid ){
 
         printf("Executing ");
@@ -63,6 +67,22 @@ execute_command(char *command, char *args[256], int time_limit, int mem_limit){
     // this way, the father waits for all the child processes
     while ( wait(&status) > 0 );
     printf("\n");
+
+    getrusage(RUSAGE_CHILDREN, &usage);
+    user_end = usage.ru_utime;
+    system_end = usage.ru_stime;
+
+
+    double system_time = parse_to_double(system_end);
+
+    double user_time = parse_to_double(user_end);
+
+
+    double * result = calloc(3, sizeof(double));
+    result[0] = user_time;
+    result[1] = system_time;
+
+    print_results(result);
 
 }
 
