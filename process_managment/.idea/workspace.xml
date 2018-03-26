@@ -34,16 +34,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="utils.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/library/utils.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1800">
-              <caret line="100" column="52" lean-forward="false" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
+            <state relative-caret-position="306">
+              <caret line="49" column="41" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
               <folding>
                 <element signature="e#47#75#0" expanded="true" />
                 <element signature="e#200#627#0" expanded="false" />
-                <element signature="e#629#1436#0" expanded="false" />
                 <element signature="e#1438#1901#0" expanded="false" />
+                <element signature="e#1903#2451#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -69,12 +69,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="time_m.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="time_m.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/library/time_m.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="180">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding>
+                <element signature="e#46#65#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -191,7 +193,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15056000" />
+    <option name="totallyTimeSpent" value="15596000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="25" width="1309" height="743" extended-state="6" />
@@ -238,7 +240,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/library/date.c" />
     <entry file="file://$PROJECT_DIR$/library.h" />
     <entry file="file://$PROJECT_DIR$/library.c" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
@@ -319,6 +320,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="130" column="17" lean-forward="false" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -420,6 +422,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="130" column="17" lean-forward="false" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -433,9 +436,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/library/time_m.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding />
+        <state relative-caret-position="180">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#46#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/utils.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="49" column="41" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+          <folding>
+            <element signature="e#47#75#0" expanded="true" />
+            <element signature="e#200#627#0" expanded="false" />
+            <element signature="e#1438#1901#0" expanded="false" />
+            <element signature="e#1903#2451#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

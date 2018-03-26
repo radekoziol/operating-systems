@@ -1,5 +1,0 @@
-Blocks array was successfully allocated!
-Blocks were successfully added!
-Closet block to 789:
-NSNFWZQFJM with block sum = 788
-Adding and deleting went successfully!

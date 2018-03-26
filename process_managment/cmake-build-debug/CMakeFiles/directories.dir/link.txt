@@ -1,2 +1,0 @@
-/usr/bin/ar qc libdirectories.a  CMakeFiles/directories.dir/main.c.o CMakeFiles/directories.dir/library/dir_sys.c.o CMakeFiles/directories.dir/library/date.c.o CMakeFiles/directories.dir/library/dir_nftw.c.o
-/usr/bin/ranlib libdirectories.a

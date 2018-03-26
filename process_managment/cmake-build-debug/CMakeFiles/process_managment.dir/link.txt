@@ -1,2 +1,0 @@
-/usr/bin/ar qc libprocess_managment.a  CMakeFiles/process_managment.dir/library.c.o
-/usr/bin/ranlib libprocess_managment.a

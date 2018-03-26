@@ -1,4 +1,0 @@
-/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/main.dir
-/home/radekkoziol/Projects/CLionProjects/Operating systems/input_output/cmake-build-debug/CMakeFiles/input_output.dir

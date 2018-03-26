@@ -1,6 +1,0 @@
-/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/MyLib_static.dir
-/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/MyLib_shared.dir
-/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/objlib.dir
-/home/radekkoziol/Projects/CLionProjects/Operating systems/mem&lib&time_managment/cmake-build-debug/CMakeFiles/main.dir
