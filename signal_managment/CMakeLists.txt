@@ -3,6 +3,6 @@ project(untitled C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_library(untitled library.c library.h)
+add_library(lib ex1/main.c)
 
-add_executable(main library.c)
+add_executable(main ex1/main.c)
