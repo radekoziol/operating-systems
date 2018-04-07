@@ -4,6 +4,7 @@
 #include <signal.h>
 #include <time.h>
 #include <memory.h>
+#include <wait.h>
 
 static volatile sig_atomic_t got_sigstp_signal = 0;
 static volatile sig_atomic_t got_sigint_signal = 0;
@@ -17,7 +18,7 @@ void continue_program(int signum) {
 }
 
 int main() {
-
+    
     struct sigaction action,sa;
 
     memset(&sa, 0, sizeof(struct sigaction));
@@ -30,7 +31,6 @@ int main() {
     // Setting handler for stopping
     sigaction (SIGINT, NULL, &action);
 
-    
     action.sa_handler = &continue_program;
     action.sa_flags = SA_NODEFER;
     sigemptyset(&action.sa_mask);
@@ -41,15 +41,20 @@ int main() {
 
     while (1) {
 
-        time_t rawtime;
-        struct tm *timeinfo;
+        int status;
+        char *args[2];
+
         // Setting global to 0
         got_sigstp_signal = 0;
 
-        time(&rawtime);
-        timeinfo = localtime(&rawtime);
-        printf("Current local time and date: %s", asctime(timeinfo));
-        sleep(1);
+        args[0] = "./print_date";        // first arg is the full path to the executable
+        args[1] = NULL;             // list of args must be NULL terminated
+
+        if ( fork() == 0 )
+            execv( args[0], args ); // child: call execv with the path and the args
+        else
+            wait( &status );        // parent: wait for the child (not really necessary)
+
 
         // Checking if SIGINT was received
         if (got_sigint_signal) {
