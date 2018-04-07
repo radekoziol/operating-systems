@@ -28,7 +28,8 @@ parse_to_double(struct timeval end){
     return strtod(array1,NULL);
 }
 
-double * measure_time(){
+double *
+measure_time(){
 
     struct rusage usage;
     struct timeval user_end, system_end;
@@ -47,7 +48,8 @@ double * measure_time(){
 
     return result;
 }
-        void
+
+void
 print_results(double *results) {
 
     printf("User time : ");

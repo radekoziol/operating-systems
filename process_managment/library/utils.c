@@ -49,6 +49,9 @@ execute_command(char *command, char *args[256], int time_limit, int mem_limit){
         // Setting limits
         set_limits(time_limit,mem_limit);
 
+        if(command[0] == '`')
+            _exit(127);
+                    
         // Running command
         if(args[1] == NULL)
             command_s = execlp(command, command, (char *) NULL);
@@ -57,7 +60,7 @@ execute_command(char *command, char *args[256], int time_limit, int mem_limit){
 
         if(command_s != 0){
             printf("Process went wrong!\n");
-            exit(-1);
+            kill(0, SIGTERM);
         }
         _exit(127); /* terminate the child  */
     }
