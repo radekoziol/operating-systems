@@ -18,7 +18,7 @@ void continue_program(int signum) {
 }
 
 int main() {
-    
+
     struct sigaction action,sa;
 
     memset(&sa, 0, sizeof(struct sigaction));
