@@ -11,12 +11,6 @@ int get_random_signal() {
     return 0;
 }
 
-int work(int rand_time) {
-
-    sleep(rand_time);
-    return rand_time;
-}
-
 // Sets global arrays to default
 void set_arr(int size, int child_pid[], int child_status[], int child_work[]) {
     for (int j = 0; j < size; j++) {
