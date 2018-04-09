@@ -9,22 +9,12 @@
 #include <signal.h>
 
 int get_random_signal() {
-    return 40;
-}
-
-// Sets global arrays to default
-void set_arr(int size, int child_pid[], int child_status[], int child_work[]) {
-    for (int j = 0; j < size; j++) {
-        child_status[j] = 0;
-        child_pid[j] = -10;
-        child_work[j] = 0;
-    }
+    return rand() % (SIGRTMAX - SIGRTMIN) + SIGRTMIN;
 }
 
 
 int work() {
-
-    sleep(1);
-
-    return 1;
+    int t = rand() % 4 + 1;
+    sleep((unsigned int) t);
+    return t;
 }

@@ -38,10 +38,22 @@ void sig_usr1(int signo, siginfo_t *info, void *extra) {
 }
 
 
-int main() {
+int main(int argc, char **argv) {
 
-    int N = 10;
-    int M = 5;
+    argc = 2;
+    argv[1] = "10";
+    argv[2] = "5";
+
+    if ((argc == 1) || strcmp(argv[1], "-help") == 0) {
+        printf("Arguments are: \n"
+                       "   child_number request_number \n");
+        exit(0);
+    }
+    int N = (int) strtol(argv[1], NULL, 10);
+    int M = (int) strtol(argv[2], NULL, 10);
+
+
+
 
     for (int j = 0; j < N; j++) {
         child_pid[j] = -10;
@@ -73,7 +85,6 @@ int main() {
 
     for (int i = 0; i < N; ++i) {
 
-        printf("%d\n",i);
         if ((child_pid[i] = fork()) == 0) {
 
             if (signal(SIGUSR2, sig_usr2) == SIG_ERR)
@@ -107,7 +118,7 @@ int main() {
             if(children_can_run)
                 raise(get_random_signal());
 
-            
+
             if((status == -1) && (children_can_run))
                 printf("[PARENT] Process went unsuccessfully!\n");
             else if((status != -1) && (children_can_run))
