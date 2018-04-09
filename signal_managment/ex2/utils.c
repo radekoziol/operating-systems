@@ -6,9 +6,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <signal.h>
 
 int get_random_signal() {
-    return 0;
+    return 40;
 }
 
 // Sets global arrays to default
@@ -20,18 +21,10 @@ void set_arr(int size, int child_pid[], int child_status[], int child_work[]) {
     }
 }
 
-void print_info(int size, int child_pid[], int child_status[],int child_work[]) {
 
-    printf("\n**********************************\n");
+int work() {
 
-    for (int j = 0; j < size; j++){
-        printf("Process %d:\n"
-                       " - executed with status %d\n"
-                       " - worked for %d sec\n",
-               child_pid[j], child_status[j],child_work[j]);
-    }
+    sleep(1);
 
-
-    printf("\n**********************************\n");
-
+    return 1;
 }
