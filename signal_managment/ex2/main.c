@@ -40,9 +40,9 @@ void sig_usr1(int signo, siginfo_t *info, void *extra) {
 
 int main(int argc, char **argv) {
 
-    argc = 2;
-    argv[1] = "10";
-    argv[2] = "5";
+//    argc = 2;
+//    argv[1] = "10";
+//    argv[2] = "5";
 
     if ((argc == 1) || strcmp(argv[1], "-help") == 0) {
         printf("Arguments are: \n"
@@ -51,8 +51,6 @@ int main(int argc, char **argv) {
     }
     int N = (int) strtol(argv[1], NULL, 10);
     int M = (int) strtol(argv[2], NULL, 10);
-
-
 
 
     for (int j = 0; j < N; j++) {
@@ -100,11 +98,9 @@ int main(int argc, char **argv) {
             }
 
             printf("[PARENT] Process %d starts\n", getpid());
+
             int time = work();
 
-            union sigval r_val;
-            r_val.sival_int = getpid();
-//            sigqueue(ppid, get_random_signal(), r_val);
             printf("[PARENT] Process %d ends with time %d sec\n", getpid(), time);
 
             _exit(0);
@@ -114,9 +110,6 @@ int main(int argc, char **argv) {
 
             int status = 0;
             status = wait(&status);
-
-            if(children_can_run)
-                raise(get_random_signal());
 
 
             if((status == -1) && (children_can_run))
