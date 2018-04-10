@@ -7,126 +7,126 @@
 #include "../ex2/utils.c"
 
 int child_pid;
-int parent_pid;
-bool can_exit = 0;
-// Parent allowance for children to execute
-bool children_can_run = false;
-// Counter of request sent to parent
-volatile sig_atomic_t request_num = 0;
-pid_t real_time_sig = -2;
+bool can_finish = 0;
+// Default values
+int first_signal = SIGUSR1;
+int second_signal = SIGUSR2;
+
+int child_c = 0;
+int parent_c = 0;
 
 
-void real_signal_handler(int signo, siginfo_t *info, void *extra) {
+void sig_usr2_ch(int signo, siginfo_t *info, void *context) {
     char buffer[100];
-    sprintf(buffer, "[PARENT] Received real time signal: %s\n", strsignal(signo));
+    sprintf(buffer, "[CHILD]  %s received from parent.\n", strsignal(second_signal));
     write(1, buffer, strlen(buffer));
-    real_time_sig = info->si_value.sival_int;
-}
-
-void sig_usr2_ch(int signo) {
-    char buffer[100];
-    sprintf(buffer, "[CHILD]  SIGUSR2 received from parent.\n");
-    write(1, buffer, strlen(buffer));
-    can_exit = 1;
+    can_finish = 1;
     exit(EXIT_SUCCESS);
 }
 
-void sig_usr1_p(int signo) {
+void sig_usr1_ch(int signo, siginfo_t *info, void *context) {
+    child_c++;
     char buffer[100];
-    sprintf(buffer, "[PARENT]  SIGUSR1 received from child.\n");
+    sprintf(buffer, "[CHILD]  Sending back signal %s to parent\n", strsignal(first_signal));
+    write(1, buffer, strlen(buffer));
+    kill(getppid(), SIGUSR1);
+}
+
+void sig_usr1_p(int signo, siginfo_t *info, void *context) {
+    parent_c++;
+    char buffer[100];
+    sprintf(buffer, "[PARENT] Received signal %s from child.\n", strsignal(first_signal));
     write(1, buffer, strlen(buffer));
 }
 
-
-void sig_usr1_ch(int signo) {
-    request_num++;
+void sig_int_p(int signo, siginfo_t *info, void *context) {
     char buffer[100];
-    sprintf(buffer, "[CHILD]  Sending back SIGUSR1 to parent.\n");
+    sprintf(buffer, "[PARENT] %s received.\n", strsignal(first_signal));
     write(1, buffer, strlen(buffer));
-    kill(getppid(), SIGUSR1);
+    exit(-1);
 }
 
 
 int main(int argc, char **argv) {
 
-    argc = 2;
-    argv[1] = "10";
-
-//    if ((argc == 1) || strcmp(argv[1], "-help") == 0) {
-//        printf("Arguments are: \n"
-//                       "   child_number request_number \n");
-//        exit(0);
-//    }
-    int L = (int) strtol(argv[1], NULL, 10);
+//    argc = 2;
+//    argv[1] = "10";
+//    argv[2] = "1";
 
 
-    // Parent pid
-    parent_pid = getpid();
-
-
-    struct sigaction action;
-
-    action.sa_flags = SA_SIGINFO;
-//    action.sa_sigaction = &sig_usr1_p;
-//
-//    if (sigaction(SIGUSR1, &action, NULL) == -1) {
-//        perror("sigusr: sigaction");
-//        return 0;
-//    }
-
-    if (signal(SIGUSR1, sig_usr1_p) == SIG_ERR)
-        printf("Something went wrong!\n");
-
-    for (int i = SIGRTMIN; i <= SIGRTMAX; i++) {
-        action.sa_sigaction = real_signal_handler;
-        if (sigaction(i, &action, NULL) == -1) {
-            printf("ER?\n");
-            exit(-1);
-        }
+    if ((argc == 1) || strcmp(argv[1], "-help") == 0) {
+        printf("Arguments are: \n"
+                       "   child_number request_number \n");
+        exit(0);
     }
 
-    sigset_t signal_set;/* sygnały do blokowania */
+    int L = (int) strtol(argv[1], NULL, 10);
+    int type = (int) strtol(argv[2], NULL, 10);
+
+    if(type == 3){
+        first_signal = SIGRTMIN + 2;
+        second_signal = SIGRTMAX - 2;
+    }
 
     if ((child_pid = fork()) == 0) {
 
-
+        // Unblocking signals
         sigset_t newmask;
         sigset_t oldmask;
         sigemptyset(&newmask);
         sigfillset(&newmask);
 
-        sigdelset(&newmask, SIGUSR1);
-        sigdelset(&newmask, SIGUSR2);
+        sigdelset(&newmask, first_signal);
+        sigdelset(&newmask, second_signal);
 
         sigprocmask(SIG_SETMASK, &newmask, &oldmask);
 
+        // Setting handlers
         struct sigaction act;
         act.sa_flags = SA_SIGINFO;
         sigemptyset(&act.sa_mask);
 
+        act.sa_sigaction = sig_usr1_ch;
+        if (sigaction(first_signal, &act, NULL) == -1) {
+            printf("[ERROR] Can't catch signal %d.\n", first_signal);
+        }
 
-        if (signal(SIGUSR1, sig_usr1_ch) == SIG_ERR)
-            printf("Something went wrong!\n");
+        act.sa_sigaction = sig_usr2_ch;
+        if (sigaction(second_signal, &act, NULL) == -1) {
+            printf("[ERROR] Can't catch signal %d.\n", second_signal);
+        }
 
-        if (signal(SIGUSR2, sig_usr2_ch) == SIG_ERR)
-            printf("Something went wrong!\n");
-
-        while(!can_exit);
+        while(!can_finish);
 
         _exit(0);
 
     } else {
 
+        // Setting handlers for parent
+        struct sigaction act;
+        act.sa_flags = SA_SIGINFO;
+        sigemptyset(&act.sa_mask);
 
-
-        for (int i = 0; i < L; i++) {
-            printf("[PARENT] SENDING SIGUSR1 to child!\n");
-            kill(child_pid, SIGUSR1);
-            pause();
+        act.sa_sigaction = sig_usr1_p;
+        if (sigaction(first_signal, &act, NULL) == -1) {
+            printf("[ERROR] Can't catch signal %d.\n", first_signal);
+        }
+        act.sa_sigaction = sig_int_p;
+        if (sigaction(SIGINT, &act, NULL) == -1) {
+            printf("[ERROR] Can't catch signal %d.\n", SIGINT);
         }
 
-        printf("[PARENT] SENDING SIGUSR2 to child!\n");
-        kill(child_pid, SIGUSR2);
+        for (int i = 0; i < L; i++) {
+            printf("[PARENT] Sending %s to child!\n",strsignal(first_signal));
+            kill(child_pid, first_signal);
+            if(type == 2)
+                pause();
+        }
+
+        int status;
+        wait(&status);
+        printf("[PARENT] Sending %s to child!\n",strsignal(second_signal));
+        kill(child_pid, second_signal);
 
         waitpid(child_pid, NULL, 0);
         exit(EXIT_SUCCESS);
