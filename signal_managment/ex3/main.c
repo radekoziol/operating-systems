@@ -49,6 +49,8 @@ void sig_int_p(int signo, siginfo_t *info, void *context) {
 
 int main(int argc, char **argv) {
 
+
+//    Example input
 //    argc = 2;
 //    argv[1] = "10";
 //    argv[2] = "1";
@@ -56,12 +58,17 @@ int main(int argc, char **argv) {
 
     if ((argc == 1) || strcmp(argv[1], "-help") == 0) {
         printf("Arguments are: \n"
-                       "   child_number request_number \n");
+                       "   signal_num type<1,2,3> \n");
         exit(0);
     }
 
     int L = (int) strtol(argv[1], NULL, 10);
     int type = (int) strtol(argv[2], NULL, 10);
+
+    if((type >= 4) || (type <= 0)){
+        printf("Type argument can have value of 1,2 or 3!\n"
+               "For more information use option -help \n");
+    }
 
     if(type == 3){
         first_signal = SIGRTMIN + 2;
