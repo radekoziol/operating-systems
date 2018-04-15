@@ -3,6 +3,6 @@ project(piepelines C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_library(piepelines main.c)
+add_library(piepelines main.c library/utils.c)
 
 add_executable(main main.c)
