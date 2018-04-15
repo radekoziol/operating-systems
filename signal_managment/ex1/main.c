@@ -50,10 +50,11 @@ int main() {
         args[0] = "./print_date";        // first arg is the full path to the executable
         args[1] = NULL;             // list of args must be NULL terminated
 
+
         if ( fork() == 0 )
             execv( args[0], args ); // child: call execv with the path and the args
-        else
-            wait( &status );        // parent: wait for the child (not really necessary)
+//        else
+//            wait( &status );        // parent: wait for the child
 
 
         // Checking if SIGINT was received
