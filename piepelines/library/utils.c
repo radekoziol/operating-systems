@@ -42,55 +42,100 @@ void print_info(char commands[256][256], char *args[256]) {
         printf(" %s |", args[c]);
         c++;
     }
+    printf("\n");
 }
 
+int
+execute_pipe(char command[256][256], char *args[256]) {
+
+    // Descriptor that saves pipe and child
+    int fd_save[2], fd_ch[2];
+
+    // Reading length
+    int N = 0;
+    while (command[N][0] != '\0') N++;
+
+    for (int i = 0; i < N; i++) {
+        pipe(fd_ch);
+
+        if (fork() == 0) {
+
+            // Reading old input (no problem at begg)
+            dup2(fd_save[0], STDIN_FILENO);
+
+            // If not last one new input
+            if (i != N - 1)
+                dup2(fd_ch[1], STDOUT_FILENO);
+
+            close(fd_ch[0]);
+
+            // Executing
+            int command_s;
+            if (args[0] == NULL)
+                command_s = execlp(command[i], command[i], (char *) NULL);
+            else
+                command_s = execlp(command[i], command[i], args[i], NULL);
+
+            if (command_s != 0) {
+                printf("Process went wrong!\n");
+                kill(0, SIGTERM);
+                return -1;
+            }
+
+        } else {
+            // Waiting for child
+            int status;
+            while ( wait(&status) > 0 );
+            // Saving
+            close(fd_ch[1]);
+            fd_save[0] = fd_ch[0];
+        }
+    }
+    return 0;
+}
 
 void
-execute_pipe(char command[256][256], char *args[256], int time_limit, int mem_limit){
+execute_line(char command[256][256], char *args[256], int time_limit, int mem_limit) {
 
-    print_info(command,args);
-
+    print_info(command, args);
 
     pid_t child_pid;
     int status, command_s;
-    status = command_s = 0;
+    status = 0;
 
-//    // Creating new process
-//    int pipes[2];
-//    pipe(pipes);
-//    child_pid = vfork();
-//
-//    if( 0 == child_pid ){
-//
-//        // Setting limits
-//        set_limits(time_limit,mem_limit);
-//
+    // Creating new process
+    child_pid = vfork();
+
+    if (0 == child_pid) {
+
+        // Setting limits
+        set_limits(time_limit, mem_limit);
+
 //        if(command[0] == '`')
 //            _exit(127);
-//
-//
-//        // Running command
-//        if(args[1] == NULL)
-//            command_s = execlp(command, command, (char *) NULL);
-//        else
-//            command_s = execvp(command, args);
-//
-//        if(command_s != 0){
-//            printf("Process went wrong!\n");
-//            kill(0, SIGTERM);
-//        }
-//        _exit(127); /* terminate the child  */
-//    }
-//
-//    // this way, the father waits for all the child processes
-//    while ( wait(&status) > 0 );
+
+
+        if (execute_pipe(command, args)) {
+            printf("Process went wrong!\n");
+            kill(0, SIGTERM);
+        }
+        _exit(127); /* terminate the child  */
+    }
+
+    // this way, the father waits for all the child processes
+    while (wait(&status) > 0);
 
 }
 
 int
 parse_line(const char file[256], int i, char *command, char args[256]) {
 
-    int j, k;
+    int j, k = 0;
+
+    while(args[k] != '\0'){
+        args[k] = '\0';
+        k++;
+    }
 
     // Assuming next char is '|'
     while (file[i] == ' ') i++;
@@ -140,13 +185,13 @@ execute_file(char *path, int time_lim, int mem_lim) {
         exit(-1);
     }
 
-    // Command
+    // Commands
     char commands[256][256];
     // Arguments
     char *args[256];
 
     for (int i = 0; i < 256; i++) {
-        args[i] = (char *) malloc(256 * sizeof(char));
+        args[i] = (char *) calloc(256 ,sizeof(char));
     }
 
     // Iterating over each line in file
@@ -168,10 +213,8 @@ execute_file(char *path, int time_lim, int mem_lim) {
         while ((x = parse_line(line, x, commands[p_n++], args[p_n])) > 0);
         commands[p_n][0] = '\0';
 
-
-
-        // Executing command
-        execute_pipe(commands,args,time_lim,mem_lim);
+        // Executing commands
+        execute_line(commands, args, time_lim, mem_lim);
 
         beg_char = false;
     }

@@ -1,1 +1,2 @@
-ps aux | grep root | wc -l
+ps aux | grep root   | wc -l
+ls -l |     ls -l
