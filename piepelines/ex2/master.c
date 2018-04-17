@@ -44,15 +44,15 @@ main(int argc, char **argv) {
     while (1) {
 
         char buf[MAX_BUF];
-        for(int i = 0; i < MAX_BUF; i++)
+        for (int i = 0; i < MAX_BUF; i++)
             buf[i] = '\0';
 
         /* open, read, and display the message from the FIFO */
         fd = open(path, O_RDONLY);
 
-        if(read(fd, buf, MAX_BUF))
+        if (read(fd, buf, MAX_BUF))
             printf("Received:\n%s", buf);
-        else{ // if nothing comes
+        else { // if nothing comes
             printf("\nUnable to read more!. Exiting program\n");
             exit(0);
         }

@@ -18,7 +18,7 @@ main(int argc, char **argv) {
 //    argv[2] = "5";
 
     // No real input control
-    const char * path = argv[1];
+    const char *path = argv[1];
     const int N = (int) strtol(argv[2], NULL, 10);
 
     int fd;
@@ -27,17 +27,12 @@ main(int argc, char **argv) {
     fd = open(path, O_WRONLY);
     FILE *date_output = NULL;
 
-    dup2(fd,STDOUT_FILENO);
+    dup2(fd, STDOUT_FILENO);
 
-    for(int i = 1; i <= N; i ++){
+    for (int i = 1; i <= N; i++) {
 
-        char buffer [MAX_BUF];
-        char message[MAX_BUF];
-
-        int x = getpid();
-        int length = snprintf( NULL, 0, "%d", x );
-        char* str = malloc((size_t) (length + 1));
-        snprintf(str, (size_t) (length + 1), "%d", x );
+        char buffer[MAX_BUF];
+        char out[MAX_BUF];
 
         date_output = popen("date", "r");
 
@@ -49,17 +44,14 @@ main(int argc, char **argv) {
         }
         buffer[buf_c] = '\0';
 
-        sprintf(message, "%s%s\n", buffer, str);
+        sprintf(out, "%s%i\n", buffer, getpid());
 
-        write(fd, message, strlen(message));
-
-        free(str);
+        write(fd, out, strlen(out));
         sleep(2);
     }
 
     close(fd);
     pclose(date_output);
-
 
 
     return 0;
