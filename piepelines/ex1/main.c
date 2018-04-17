@@ -24,10 +24,10 @@ main(int argc, char **argv) {
 
 //    Example input
 
-    argv[1] = "../file.txt";
-    argv[2] = "10";
-    argv[3] = "100";
-    argc = 3;
+//    argv[1] = "../file.txt";
+//    argv[2] = "10";
+//    argv[3] = "100";
+//    argc = 3;
 
     if ((argc == 1) || strcmp(argv[1], "-help") == 0) {
         printf("Arguments are: \n"

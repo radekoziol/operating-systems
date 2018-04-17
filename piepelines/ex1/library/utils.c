@@ -48,6 +48,10 @@ void print_info(char commands[256][256], char *args[256]) {
 int
 execute_pipe(char command[256][256], char *args[256]) {
 
+    // Avoiding comments
+    if(command[0][0] == '#')
+        _exit(127);
+
     // Descriptor that saves pipe and child
     int fd_save[2], fd_ch[2];
 
@@ -68,6 +72,7 @@ execute_pipe(char command[256][256], char *args[256]) {
                 dup2(fd_ch[1], STDOUT_FILENO);
 
             close(fd_ch[0]);
+
 
             // Executing
             int command_s;
@@ -110,10 +115,6 @@ execute_line(char command[256][256], char *args[256], int time_limit, int mem_li
 
         // Setting limits
         set_limits(time_limit, mem_limit);
-
-//        if(command[0] == '`')
-//            _exit(127);
-
 
         if (execute_pipe(command, args)) {
             printf("Process went wrong!\n");
