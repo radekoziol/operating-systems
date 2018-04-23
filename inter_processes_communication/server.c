@@ -23,6 +23,7 @@
 
 static volatile sig_atomic_t got_sigint_signal = 0;
 
+int id = 0;
 int msgqid, rc;
 
 /* message buffer for msgsnd and msgrcv calls */
@@ -83,22 +84,46 @@ int main() {
         write(fd, buf, sizeof(buf));
 
         struct msgbuf msg3;
-        msg3.mtype = 1;
-        sprintf(msg3.mtext, "%s\n", " ");
 
-        msgrcv(msgqid, &msg3, 1024, 0, 0);
+        if(msgrcv(msgqid, &msg3, 1024, 0, 0)){
 
-        printf("received msg: %s\n", msg3.mtext);
+            if(fork() == 0){
 
-        if(got_sigint_signal){
-            printf("\nExiting\n");
-            close(fd);
-            /* remove the FIFO */
-            unlink(path);
+                printf("received msg: %s\n", msg3.mtext);
+                printf("sending identifier: %d\n",id);
 
-            msgctl(msgqid, IPC_RMID, NULL);
-            exit(0);
+                int client_id = (int) strtol(msg3.mtext, NULL, 10);
+
+                msg3.mtype = 1;
+                sprintf(msg3.mtext, "%d", id);
+                rc = msgsnd(client_id, &msg3, sizeof(msg3.mtext), 0);
+
+                if (rc < 0) {
+                    perror(strerror(errno));
+                    printf("msgsnd failed, rc = %d\n", rc);
+                    return 1;
+                }
+
+
+                sleep(5);
+                printf("Work is done!\n");
+                _exit(EXIT_SUCCESS);
+            }else{
+                id++;
+                if(got_sigint_signal){
+                    printf("\nExiting\n");
+                    close(fd);
+                    /* remove the FIFO */
+                    unlink(path);
+
+                    msgctl(msgqid, IPC_RMID, NULL);
+                    exit(0);
+                }
+            }
         }
+
+
+
 
 
     }
