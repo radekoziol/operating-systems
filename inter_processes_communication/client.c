@@ -64,6 +64,30 @@ int main() {
         printf("Received from server %s\n", msg2.mtext);
         close(fd);
     }
+    int id = (int) strtol(msg2.mtext,NULL,10);
+
+    struct msgbuf msg3;
+    struct msgbuf msg4;
+
+    msg3.mtype = 2;
+    sprintf(msg3.mtext, "%d:%s", id, "Hello");
+
+    printf("sending msg: %s\n", msg3.mtext);
+
+    rc = msgsnd(server_id, &msg3, sizeof(msg3.mtext), 0);
+
+    if (rc < 0) {
+        perror(strerror(errno));
+        printf("msgsnd failed, rc = %d\n", rc);
+        return 1;
+    }
+
+    if (msgrcv(client_id, &msg4, 1024, 0, 0)) {
+
+        printf("Received from server %s\n", msg4.mtext);
+        close(fd);
+    }
+
 
 
     msgctl(client_id, IPC_RMID, NULL);
