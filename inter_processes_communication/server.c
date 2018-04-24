@@ -16,6 +16,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#include "utils.c"
+
 #define MSGTXTLEN 128   // msg text length
 #define MSGPERM 0600    // msg queue permission
 
@@ -30,59 +32,11 @@ struct msgbuf {
     long mtype;         /* typ komunikatu  r */
     char mtext[MSGTXTLEN];      /* tresc komunikatu */
 };
-
-bool in_operation_format(char mtext[128]);
+        // swap the values in the two given variables
 
 void stop_program(int signum) {
     got_sigint_signal = 1;
 }
-
-int extract_id(const char mtext[128]) {
-
-    int it = 0;
-    char id[32];
-    while (mtext[it] != ':') {
-        id[it] = mtext[it];
-        it++;
-    }
-    id[it] = '\0';
-
-    return (int) strtol(id, NULL, 10);
-
-}
-
-void calculate(char msg[128], long i) {
-    sleep(2);
-}
-
-bool in_id_format(char mtext[128]) {
-    int it = 0;
-    while (mtext[it] != '\0') {
-        if (!(mtext[it] >= 38 && mtext[it] <= 57))
-            return false;
-        it++;
-    }
-    return true;
-}
-
-bool in_operation_format(char mtext[128]) {
-
-    int it = 0;
-    char id[128];
-    while (mtext[it] != '\0' && mtext[it] != ':' && it < 128) {
-        id[it] = mtext[it];
-        it++;
-    }
-
-    if (mtext[it] == ':') {
-        id[it] = '\0';
-        if (!in_id_format(id))
-            return false;
-    }
-
-    return true;
-}
-
 
 int main() {
 
@@ -111,12 +65,13 @@ int main() {
 
     // Sharing server id
     int fd;
-    char *myfifo = "/tmp/myfifo";
+    char *myfifo = "/tmp/fifo";
     /* create the FIFO (named pipe) */
     mkfifo(myfifo, 0666);
 
 
     while (1) {
+
 
         // Sharing id
         fd = open(myfifo, O_WRONLY);
@@ -124,12 +79,24 @@ int main() {
         sprintf(buf, "%d ", msgqid);
         write(fd, buf, sizeof(buf));
 
+        // Exiting program - closing pipes etc.
+        if (got_sigint_signal) {
+            printf("\nExiting\n");
+            close(fd);
+            /* remove the FIFO */
+            unlink(myfifo);
+
+            msgctl(msgqid, IPC_RMID, NULL);
+            exit(0);
+        }
+
+
         struct msgbuf msg;
         if (msgrcv(msgqid, &msg, 1024, 0, 0)) {
 
-            printf("Received message: %s\n", msg.mtext);
             // Saving id of client before fork
             if (msg.mtype == 1) {
+                printf("Received message: %s\n", msg.mtext);
                 client_id[id] = (int) strtol(msg.mtext, NULL, 10);
             }
             if (fork() == 0) {
@@ -144,10 +111,11 @@ int main() {
                         printf("msgsnd failed, rc = %d\n", rc);
                         return 1;
                     }
-                } else if ((msg.mtype > 1) && (in_operation_format(msg.mtext))) {
+                } else if ((msg.mtype > 1) && msg.mtype <= 4 && (in_operation_format(msg.mtext))) {
                     printf("Received operation request %s\n", msg.mtext);
 
                     int input_id = extract_id(msg.mtext);
+                    parse_to_operation(msg.mtext);
 
                     printf("Sending back to %d!\n", client_id[input_id]);
 
@@ -156,7 +124,8 @@ int main() {
                         rc = msgsnd(client_id[id], &msg, sizeof(msg.mtext), 0);
                     } else {
                         if (client_id[input_id] != -1) {
-                            printf("Starting calculation! %s\n", msg.mtext);
+                            printf("Starting calculation!\n");
+                            calculate(msg.mtext,msg.mtype);
                             printf("Sending back results!\n");
                             rc = msgsnd(client_id[input_id], &msg, sizeof(msg.mtext), 0);
                         } else {
@@ -164,7 +133,11 @@ int main() {
                             rc = msgsnd(client_id[input_id], &msg, sizeof(msg.mtext), 0);
                         }
                     }
+                } else if (msg.mtype == 5){
+                    printf("Ending program!\n");
+                    kill(getppid(),SIGINT);
                 }
+
                 // Killing child
                 _exit(EXIT_SUCCESS);
 
@@ -172,16 +145,7 @@ int main() {
                 // Increase id counter
                 if (msg.mtype == 1)
                     id++;
-                // Exiting program - closing pipes etc.
-                if (got_sigint_signal) {
-                    printf("\nExiting\n");
-                    close(fd);
-                    /* remove the FIFO */
-                    unlink(myfifo);
 
-                    msgctl(msgqid, IPC_RMID, NULL);
-                    exit(0);
-                }
             }
         }
 

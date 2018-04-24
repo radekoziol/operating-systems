@@ -10,6 +10,7 @@
 #include <memory.h>
 #include <stdlib.h>
 #include <errno.h>
+#include "utils.c"
 
 #define MSGTXTLEN 128   // msg text length
 #define MSGPERM 0600    // msg queue permission
@@ -24,7 +25,7 @@ struct msgbuf {
 int main() {
 
     int fd;
-    char *myfifo = "/tmp/myfifo";
+    char *myfifo = "/tmp/fifo";
     char buf[MAX_BUF];
 
     /* open, read, and display the message from the FIFO */
@@ -69,8 +70,8 @@ int main() {
     struct msgbuf msg3;
     struct msgbuf msg4;
 
-    msg3.mtype = 2;
-    sprintf(msg3.mtext, "%d:%s", id, "Hello");
+    msg3.mtype = 3;
+    sprintf(msg3.mtext, "%d:%s", id, "2*2");
 
     printf("sending msg: %s\n", msg3.mtext);
 
