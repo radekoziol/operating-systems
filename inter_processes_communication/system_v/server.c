@@ -27,11 +27,6 @@ int id = 0;
 int msgqid, rc;
 int client_id[MSGTXTLEN];
 
-/* message buffer for msgsnd and msgrcv calls */
-struct msgbuf {
-    long mtype;         /* typ komunikatu  r */
-    char mtext[MSGTXTLEN];      /* tresc komunikatu */
-};
         // swap the values in the two given variables
 
 void stop_program(int signum) {
@@ -64,27 +59,28 @@ int main() {
     }
 
     // Sharing server id
-    int fd;
-    char *myfifo = "/tmp/fifo";
-    /* create the FIFO (named pipe) */
-    mkfifo(myfifo, 0666);
+    // Open file in write mode
+    FILE *fp = fopen("../server_id.txt","w+");
 
+    // If file opened successfully, then write the string to file
+    if ( fp )
+    {
+        char writestr[100];
+        sprintf(writestr,"%d",msgqid);
+        fputs(writestr,fp);
+    }
+    else
+    {
+        printf("Failed to open the file\n");
+    }
+    //Close the file
+    fclose(fp);
 
     while (1) {
 
-
-        // Sharing id
-        fd = open(myfifo, O_WRONLY);
-        char buf[1024];
-        sprintf(buf, "%d ", msgqid);
-        write(fd, buf, sizeof(buf));
-
-        // Exiting program - closing pipes etc.
+        // Exiting program
         if (got_sigint_signal) {
             printf("\nExiting\n");
-            close(fd);
-            /* remove the FIFO */
-            unlink(myfifo);
 
             msgctl(msgqid, IPC_RMID, NULL);
             exit(0);
@@ -92,6 +88,7 @@ int main() {
 
 
         struct msgbuf msg;
+        msg.mtype = 0;
         if (msgrcv(msgqid, &msg, 1024, 0, 0)) {
 
             // Saving id of client before fork
@@ -142,6 +139,7 @@ int main() {
                 _exit(EXIT_SUCCESS);
 
             } else {
+
                 // Increase id counter
                 if (msg.mtype == 1)
                     id++;

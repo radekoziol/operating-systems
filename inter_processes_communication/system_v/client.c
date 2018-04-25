@@ -16,22 +16,27 @@
 #define MSGPERM 0600    // msg queue permission
 #define MAX_BUF 1024
 
-/* message buffer for msgsnd and msgrcv calls */
-struct msgbuf {
-    long mtype;         /* typ komunikatu  r */
-    char mtext[MSGTXTLEN];      /* tresc komunikatu */
-};
+
 
 int main() {
 
-    int fd;
-    char *myfifo = "/tmp/fifo";
     char buf[MAX_BUF];
+    // Open file in write mode
+    FILE *fp = fopen("../server_id.txt","r");
 
-    /* open, read, and display the message from the FIFO */
-    fd = open(myfifo, O_RDONLY);
-    if (read(fd, buf, MAX_BUF))
-        printf("Received: %s\n", buf);
+    // If file opened successfully, then write the string to file
+    if ( fp )
+    {
+        char writestr[100];
+        fread(writestr,100, sizeof(char),fp);
+    }
+    else
+    {
+        printf("Failed to open the file\n");
+    }
+    //Close the file
+    fclose(fp);
+
     int server_id = (int) strtol(buf, NULL, 10);
 
     // Creating private queue
@@ -49,7 +54,7 @@ int main() {
     msg1.mtype = 1;
     sprintf(msg1.mtext, "%d", client_id);
 
-    printf("sending msg: %s\n", msg1.mtext);
+    printf("Sending request for private channel: %s\n", msg1.mtext);
 
     int rc = msgsnd(server_id, &msg1, sizeof(msg1.mtext), 0);
 
@@ -61,34 +66,36 @@ int main() {
 
 
     if (msgrcv(client_id, &msg2, 1024, 0, 0)) {
-
         printf("Received from server %s\n", msg2.mtext);
-        close(fd);
     }
     int id = (int) strtol(msg2.mtext,NULL,10);
 
     struct msgbuf msg3;
     struct msgbuf msg4;
 
-    msg3.mtype = 3;
-    sprintf(msg3.mtext, "%d:%s", id, "2*2");
 
-    printf("sending msg: %s\n", msg3.mtext);
 
-    rc = msgsnd(server_id, &msg3, sizeof(msg3.mtext), 0);
 
-    if (rc < 0) {
-        perror(strerror(errno));
-        printf("msgsnd failed, rc = %d\n", rc);
-        return 1;
+    for(int i = 1; i < 5; i++){
+
+        msg3 = generate_random_calculation_request(id);
+        printf("Sending operation request: %s\n", msg3.mtext);
+
+        rc = msgsnd(server_id, &msg3, sizeof(msg3.mtext), 0);
+        if (rc < 0) {
+            perror(strerror(errno));
+            printf("msgsnd failed, rc = %d\n", rc);
+            return 1;
+        }
+
+
+        msg4.mtype = 0;
+        if (msgrcv(client_id, &msg4, 1024, 0, 0)) {
+
+            printf("Received calculations from server %s\n", msg4.mtext);
+        }
+
     }
-
-    if (msgrcv(client_id, &msg4, 1024, 0, 0)) {
-
-        printf("Received from server %s\n", msg4.mtext);
-        close(fd);
-    }
-
 
 
     msgctl(client_id, IPC_RMID, NULL);
