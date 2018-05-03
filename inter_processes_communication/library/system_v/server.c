@@ -15,6 +15,7 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "../utils.c"
 
 #include "utils.c"
 

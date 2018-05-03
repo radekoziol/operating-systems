@@ -9,21 +9,14 @@
 #include <stdlib.h>
 #include <mqueue.h>
 #include "utils.c"
-
-#define MSGTXTLEN 128   // msg text length
-#define MSGPERM 0600    // msg queue permission
-#define MAX_BUF 1024
-#define MSG_SIZE 1024
+#include "posix.h"
 
 char queue_name[128] = "/client_queue";
 
-int main() {
-
-    mqd_t qd_server, qd_client;   // queue descriptors
+void read_server_name(char *server_name) {
 
     // Open file in write mode
     FILE *fp = fopen("../server_id.txt", "r");
-    char server_name[MSG_SIZE];
     for (int i = 0; i < MSG_SIZE; i++) server_name[i] = '\0';
 
     // If file opened successfully, then write the string to file
@@ -34,7 +27,11 @@ int main() {
     }
     //Close the file
     fclose(fp);
-    // Reading queue name
+}
+
+int server_up() {
+
+    mqd_t mqd;
 
     // Creating private queue
     struct mq_attr attr;
@@ -43,7 +40,6 @@ int main() {
     attr.mq_msgsize = MSG_SIZE;
     attr.mq_curmsgs = 0;
 
-    mqd_t mqd;
 
     if ((mqd = mq_open(queue_name, O_CREAT | O_RDONLY, 0644, &attr)) == -1) {
         perror("mq_open() error");
@@ -54,9 +50,11 @@ int main() {
     mq_getattr(mqd, &attr);
     printf("max #msgs = %ld,max #bytes/msg = %ld,#currently on queue = %ld\n",
            attr.mq_maxmsg, attr.mq_msgsize, attr.mq_curmsgs);
+    return mqd;
+}
 
-    printf("%s\n", server_name);
 
+mqd_t open_server(const char *server_name) {
     mqd_t s_mqd;
 
     if ((s_mqd = mq_open(server_name, O_WRONLY)) == -1) {
@@ -65,9 +63,22 @@ int main() {
     }
     printf("Server queue successfully opened!\n");
 
+    return s_mqd;
+}
+
+
+int main() {
+
+    char server_name[MSG_SIZE];
+
+    read_server_name(server_name);
+
+    mqd_t s_mqd = open_server(server_name);
+
+    mqd_t mqd = server_up();
+
     char msg[1024];
     sprintf(msg, "%s:%s", "1", queue_name);
-
 
     if (mq_send(s_mqd, msg, strlen(msg), 1) >= 0) {
         printf("Mssg send successfully\n");
@@ -81,10 +92,9 @@ int main() {
         printf("Received id from server: %s\n", msg1);
     }
 
-    long id = strtol(msg1,NULL,10);
+    long id = strtol(msg1, NULL, 10);
 
-
-    for(int i = 1; i < 5; i++){
+    for (int i = 1; i < 5; i++) {
 
         char *op_req = calloc(128, sizeof(char));
         op_req = generate_random_calculation_request(id);
@@ -99,7 +109,7 @@ int main() {
             exit(-1);
         }
 
-        
+
         char result[MSG_SIZE];
         memset(result, 0, sizeof result);
         if (mq_receive(mqd, result, sizeof(result), NULL) >= 0) {

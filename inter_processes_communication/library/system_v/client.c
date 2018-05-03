@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include "utils.c"
+#include "../utils.c"
 
 #define MSGTXTLEN 128   // msg text length
 #define MSGPERM 0600    // msg queue permission

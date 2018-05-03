@@ -9,23 +9,16 @@
 #include <bits/types/sig_atomic_t.h>
 #include <signal.h>
 #include <stdlib.h>
-
 #include "utils.c"
+#include "../utils.c"
+#include "posix.h"
+#define SERVER_NAME "/test_queue"
 
-#define MSGTXTLEN 128   // msg text length
-#define MSGPERM 0600    // msg queue permission
-#define MSG_SIZE 1024
-#define MAX_MSG 10
-#define SERVER_NAME "/test_queue12511"
 
 static volatile sig_atomic_t got_sigint_signal = 0;
 
 int id = 0;
 const char *client_id[MSGTXTLEN];
-
-int extract_id(char msg[1024]);
-
-int extract_operation_id(char msg[1024]);
 
 void send_msg(const char *q_name, char *message) {
 
@@ -141,12 +134,6 @@ int main() {
     int type;
     while (1) {
 
-        sleep(2);
-
-
-        mq_getattr(mqd, &attr);
-        printf("max #msgs = %ld,max #bytes/msg = %ld,#currently on queue = %ld\n",
-               attr.mq_maxmsg, attr.mq_msgsize, attr.mq_curmsgs);
         // Exiting program
         if (got_sigint_signal) {
             printf("\nExiting\n");
