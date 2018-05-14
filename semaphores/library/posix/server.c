@@ -46,7 +46,7 @@ int server_up() {
     sigaction(SIGINT, NULL, &action);
 
     struct mq_attr attr;
-    attr.mq_flags = 0;
+    attr.mq_flags = O_NONBLOCK;
     attr.mq_maxmsg = MAX_MSG;
     attr.mq_msgsize = MSG_SIZE;
     attr.mq_curmsgs = 0;
@@ -58,7 +58,6 @@ int server_up() {
         exit(-1);
     }
 
-    attr.mq_maxmsg = MAX_MSG;
     printf("Queue successfully created with following attributes: \n");
     mq_getattr(mqd, &attr);
     printf("max #msgs = %ld,max #bytes/msg = %ld,#currently on queue = %ld\n",
@@ -93,7 +92,7 @@ void intialize_shop(struct barbershop *b_shop) {
 
 int main() {
 
-    int N = 10;
+    int N = 5;
 
     int r1;
 
@@ -133,8 +132,10 @@ int main() {
 
     char msg[MSG_SIZE];
     while (1) {
-        struct mq_attr attr;
 
+        struct mq_attr attr;
+        mq_getattr(mqd, &attr);
+        barber_s->c_number = (int) attr.mq_curmsgs;
 
         // Exiting program
         if (got_sigint_signal) {
@@ -153,27 +154,29 @@ int main() {
             exit(EXIT_SUCCESS);
         }
 
-        mq_getattr(mqd, &attr);
-        if (attr.mq_curmsgs == 0) {
+        if (barber_s->c_number == 0) {
             barber_s->is_sleeping = true;
             printf("[Barber] Going to sleep\n");
 //            print_time();
             sem_wait(&barber_s->b_s);
 
-            memset(msg, '\0', 1024);
-            if (mq_receive(mqd, msg, sizeof(msg), NULL) >= 0) {
-                printf("[Barber] Received message %s\n", msg);
-
-                pid_t pid;
-                if ((pid = (pid_t) strtol(msg, NULL, 10)) < 0) {
-                    printf("[Barber] Wrong pid format! \n");
-                    //            print_time();
-                } else {
-                    barber_s->is_sleeping = false;
+            if(got_sigint_signal){
+                memset(msg, '\0', 1024);
+                if (mq_receive(mqd, msg, sizeof(msg), NULL) >= 0) {
                     printf("[Barber] Somebody woke me up!\n");
-                    //            print_time();
-                    cut_client(pid);
-                    sem_post(&barber_s->c_s[pid % barber_s->c_max_number]);
+                    barber_s->is_sleeping = false;
+                    printf("[Barber] Received message %s\n", msg);
+
+                    pid_t pid;
+                    if ((pid = (pid_t) strtol(msg, NULL, 10)) < 0) {
+                        printf("[Barber] Wrong pid format! \n");
+                        //            print_time();
+                    } else {
+                        barber_s->is_sleeping = false;
+                        //            print_time();
+                        cut_client(pid);
+                        sem_post(&barber_s->c_s[pid % MAX_CLIENT_NO]);
+                    }
                 }
             }
         } else {
@@ -186,7 +189,7 @@ int main() {
                     //            print_time();
                 } else {
                     cut_client(pid);
-                    sem_post(&barber_s->c_s[pid % barber_s->c_max_number]);
+                    sem_post(&barber_s->c_s[pid % MAX_CLIENT_NO]);
                 }
             }
 

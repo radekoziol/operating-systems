@@ -10,6 +10,8 @@
 #include <sys/mman.h>
 #include <semaphore.h>
 #include <memory.h>
+#include <errno.h>
+#include <wait.h>
 #include "utils.c"
 #include "main.h"
 
@@ -37,7 +39,7 @@ int server_up() {
 
 int main() {
 
-    int S = 5;
+    int cl_num = 5,visit_num = 3;
 
     int fd = shm_open(MEMORY_NAME, O_RDWR, 0);
     if (fd == -1)
@@ -54,44 +56,56 @@ int main() {
 
     mqd = server_up();
 
-    for (int i = 0; i < S; i++) {
+    for (int i = 0; i < cl_num; i++) {
+
         if (fork() == 0) {
 
-            char msg[MSG_SIZE];
+            for (int j = 0; j < visit_num; j++) {
 
-            memset(msg, '\0', MSG_SIZE);
-            sprintf(msg, "%d", getpid());
-            printf("c num %d, max c num %d\n", barber_s->c_number, barber_s->c_max_number);
+                char msg[MSG_SIZE];
 
-            if (barber_s->c_number < barber_s->c_max_number) {
+                memset(msg, '\0', MSG_SIZE);
+                sprintf(msg, "%d", getpid());
 
                 if (barber_s->is_sleeping) {
+                    barber_s->is_sleeping = false;
+                    printf("[Client %d] Waking up barber\n",getpid());
                     sem_post(&barber_s->b_s);
-                }
-
-                if (mq_send(mqd, msg, strlen(msg), 1) >= 0) {
-                    printf("[Client] Message send\n");
+                    // print_time();
+                    errno = mq_send(mqd, msg, strlen(msg), 1);
                     sem_wait(&barber_s->c_s[getpid() % MAX_CLIENT_NO]);
-
-                } else {
-                    perror("mq_open() error");
-                    exit(-1);
+                    printf("[Client %d] Leaving barbershop!\n",getpid());
+                    // print_time();
+                } else if (barber_s->c_number < barber_s->c_max_number) {
+                    errno = mq_send(mqd, msg, strlen(msg), 1);
+                    if (errno != EAGAIN) {
+                        barber_s->c_number++;
+                        printf("[Client %d] Added to queue successfully!\n",getpid());
+                        // print_time();
+                        sem_wait(&barber_s->c_s[getpid() % MAX_CLIENT_NO]);
+                        printf("[Client %d] Leaving barbershop!\n",getpid());
+                        barber_s->c_number--;
+                        // print_time();
+                    }
+                } else if (barber_s->c_number >= barber_s->c_max_number){
+                    printf("[BARBER SHOP] Can not add more clients\n");
+                    //print_time();
                 }
-
-
-
-            } else {
-
-                printf("[BARBER SHOP] Can not add more clients\n");
-                //print_time();
-                exit(EXIT_SUCCESS);
 
             }
 
-
             exit(EXIT_SUCCESS);
+
         }
+
+
     }
+
+    pid_t child_pid, wpid;
+    int status = 0;
+
+    while ((wpid = wait(&status)) > 0); // this way, the father waits for all the child processes
+
 
 
 }
