@@ -1,6 +1,9 @@
 CC=gcc
 CFLAGS=-Wall
 
-main: main.o
-	$(CC) $(CFLAGS) -o main main.c -pthread -lrt
+server: server.o
+	$(CC) $(CFLAGS) -o server server.c -pthread -lrt
+
+client: client.o
+	$(CC) $(CFLAGS) -o client client.c -pthread -lrt
 
