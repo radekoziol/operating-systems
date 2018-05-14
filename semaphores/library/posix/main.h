@@ -15,6 +15,9 @@
 #define MSG_SIZE 128
 #define MAX_MSG 10
 
+struct timespec start, end;
+static volatile sig_atomic_t got_sigint_signal = 0;
+
 struct barbershop{
     int c_number;
     int c_max_number;

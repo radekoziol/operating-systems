@@ -7,90 +7,20 @@
 #include <stdio.h>
 #include <memory.h>
 #include <bits/types/sig_atomic_t.h>
-#include <signal.h>
 #include <stdlib.h>
 #include <sys/mman.h>
 #include <semaphore.h>
 #include <zconf.h>
+#include <time.h>
 #include "utils.c"
-#include "main.h"
 
 mqd_t mqd;
-static volatile sig_atomic_t got_sigint_signal = 0;
-
-
-void cut_client(pid_t pid) {
-
-    printf("[Barber] Starting to cut client %d\n", pid);
-    //            print_time();
-    sleep(2);
-    printf("[Barber] Finished cut of client %d\n", pid);
-    //            print_time();
-}
-
-void stop_program(int signum) {
-    got_sigint_signal = 1;
-}
-
-int server_up() {
-
-    // Setting handler for stopping
-    struct sigaction action, sa;
-
-    memset(&sa, 0, sizeof(struct sigaction));
-    sa.sa_handler = &stop_program;
-    if (sigaction(SIGINT, &sa, NULL) == -1) {
-        perror("sigaction");
-        return EXIT_FAILURE;
-    }
-    sigaction(SIGINT, NULL, &action);
-
-    struct mq_attr attr;
-    attr.mq_flags = O_NONBLOCK;
-    attr.mq_maxmsg = MAX_MSG;
-    attr.mq_msgsize = MSG_SIZE;
-    attr.mq_curmsgs = 0;
-
-    mqd_t mqd;
-
-    if ((mqd = mq_open(SERVER_NAME, O_CREAT | O_RDONLY, 0644, &attr)) == -1) {
-        perror("mq_open() error");
-        exit(-1);
-    }
-
-    printf("Queue successfully created with following attributes: \n");
-    mq_getattr(mqd, &attr);
-    printf("max #msgs = %ld,max #bytes/msg = %ld,#currently on queue = %ld\n",
-           attr.mq_maxmsg, attr.mq_msgsize, attr.mq_curmsgs);
-
-    return mqd;
-}
-
-void server_down(mqd_t mqd) {
-    /* cleanup */
-    mq_unlink(SERVER_NAME);
-    mq_close(mqd);
-    exit(0);
-}
-
-
-void intialize_shop(struct barbershop *b_shop) {
-
-    struct barbershop shop;
-
-    mqd = server_up();
-
-    pid_t *pid_ar = (pid_t *) malloc(MAX_CLIENT_NO * sizeof(pid_t));
-    shop.client_id = pid_ar;
-
-
-    shop.c_number = 0;
-    shop.is_sleeping = false;
-
-    b_shop = &shop;
-}
 
 int main() {
+
+
+    /* measure monotonic time */
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);    /* mark start time */
 
     int N = 5;
 
@@ -112,16 +42,15 @@ int main() {
 
     mqd = server_up();
 
-
     barber_s->client_id = (pid_t *) malloc(MAX_CLIENT_NO * sizeof(pid_t));
-    barber_s->b_s = *sem_open("barber_sem",O_CREAT, 0666, 0);
-    for(int i =0; i<MAX_CLIENT_NO; i++){
+    barber_s->b_s = *sem_open("barber_sem", O_CREAT, 0666, 0);
+    for (int i = 0; i < MAX_CLIENT_NO; i++) {
         char num[2];
-        memset(num,'\0',2);
-        sprintf(num,"%d",i);
+        memset(num, '\0', 2);
+        sprintf(num, "%d", i);
         char name[64];
-        strcat(name,num);
-        barber_s->c_s[i] = *sem_open(name,O_CREAT, 0666, 0);
+        strcat(name, num);
+        barber_s->c_s[i] = *sem_open(name, O_CREAT, 0666, 0);
     }
 
 
@@ -155,25 +84,24 @@ int main() {
         }
 
         if (barber_s->c_number == 0) {
+
             barber_s->is_sleeping = true;
-            printf("[Barber] Going to sleep\n");
-//            print_time();
+            print_time("[Barber] Going to sleep");
             sem_wait(&barber_s->b_s);
 
-            if(got_sigint_signal){
+            if (got_sigint_signal) {
                 memset(msg, '\0', 1024);
                 if (mq_receive(mqd, msg, sizeof(msg), NULL) >= 0) {
-                    printf("[Barber] Somebody woke me up!\n");
+                    print_time("[Barber] Somebody woke me up!");
                     barber_s->is_sleeping = false;
-                    printf("[Barber] Received message %s\n", msg);
+                    print_time("[Barber] Received message %s");
 
                     pid_t pid;
                     if ((pid = (pid_t) strtol(msg, NULL, 10)) < 0) {
-                        printf("[Barber] Wrong pid format! \n");
-                        //            print_time();
+                        print_time("[Barber] Wrong pid format!");
+                        print_time(NULL);
                     } else {
                         barber_s->is_sleeping = false;
-                        //            print_time();
                         cut_client(pid);
                         sem_post(&barber_s->c_s[pid % MAX_CLIENT_NO]);
                     }
@@ -185,8 +113,8 @@ int main() {
 
                 pid_t pid;
                 if ((pid = (pid_t) strtol(msg, NULL, 10)) < 0) {
-                    printf("[Barber] Wrong pid format! \n");
-                    //            print_time();
+                    print_time("[Barber] Wrong pid format!");
+                    print_time(NULL);
                 } else {
                     cut_client(pid);
                     sem_post(&barber_s->c_s[pid % MAX_CLIENT_NO]);
