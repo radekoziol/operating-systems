@@ -14,14 +14,30 @@
 #include <errno.h>
 
 #include <wait.h>
+
 #include "utils.c"
 
 mqd_t mqd;
 
 
-int main() {
+int main(int argc, char **argv) {
 
-    int cl_num = 5, visit_num = 3;
+
+    // Example input
+//    argc = 2;
+//    argv[1] = "5";
+//    argv[2] = "3";
+
+
+    if ((argc < 2) || strcmp(argv[1], "-help") == 0) {
+        printf("Arguments are: \n"
+               "   client_num visit_num \n");
+        exit(0);
+    }
+
+    int cl_num = (int) strtol(argv[1], NULL, 10);
+    int visit_num = (int) strtol(argv[2], NULL, 10);;
+
 
     int fd = shm_open(MEMORY_NAME, O_RDWR, 0);
     if (fd == -1)
@@ -36,9 +52,13 @@ int main() {
 
     struct barbershop *barber_s = barber;
 
+    start_t = barber_s->start;
+
     mqd = server_open();
 
     for (int i = 0; i < cl_num; i++) {
+        print_time("xd");
+
 
         if (fork() == 0) {
 

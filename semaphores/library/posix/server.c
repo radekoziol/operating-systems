@@ -16,13 +16,20 @@
 
 mqd_t mqd;
 
-int main() {
+int main(int argc, char **argv) {
 
 
-    /* measure monotonic time */
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start);    /* mark start time */
+//    Example input
+//    argc = 1;
+//    argv[1] = "5";
 
-    int N = 5;
+    if ((argc == 0) || strcmp(argv[1], "-help") == 0) {
+        printf("Arguments are: \n"
+               "   seats_num \n");
+        exit(0);
+    }
+
+    int N = (int) strtol(argv[1], NULL, 10);
 
     int r1;
 
@@ -40,10 +47,14 @@ int main() {
         error_and_die("mmap");
     close(fd);
 
+    clock_gettime(CLOCK_MONOTONIC_RAW, &barber_s->start);    /* mark start time */
+    start_t = barber_s->start;
+
     mqd = server_up();
 
     barber_s->client_id = (pid_t *) malloc(MAX_CLIENT_NO * sizeof(pid_t));
     barber_s->b_s = *sem_open("barber_sem", O_CREAT, 0666, 0);
+
     for (int i = 0; i < MAX_CLIENT_NO; i++) {
         char num[2];
         memset(num, '\0', 2);
@@ -89,12 +100,11 @@ int main() {
             print_time("[Barber] Going to sleep");
             sem_wait(&barber_s->b_s);
 
-            if (got_sigint_signal) {
+            if (!got_sigint_signal) {
                 memset(msg, '\0', 1024);
                 if (mq_receive(mqd, msg, sizeof(msg), NULL) >= 0) {
                     print_time("[Barber] Somebody woke me up!");
                     barber_s->is_sleeping = false;
-                    print_time("[Barber] Received message %s");
 
                     pid_t pid;
                     if ((pid = (pid_t) strtol(msg, NULL, 10)) < 0) {

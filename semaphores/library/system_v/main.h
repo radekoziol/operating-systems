@@ -6,6 +6,9 @@
 #define SEMAPHORES_MAIN_H
 
 #include <stdbool.h>
+#include <sys/ipc.h>
+#include <sys/types.h>
+#include <sys/sem.h>
 
 #define FIFO_NAME "/tmp/myfifao"
 #define MAX_BUF 1024
@@ -15,38 +18,37 @@
 #define MAX_CLIENT_NO 28
 #define MSG_SIZE 128
 #define MAX_MSG 10
-#include <sys/ipc.h>
-#include <sys/types.h>
-#include <sys/sem.h>
 
-
-struct timespec start, end;
 static volatile sig_atomic_t got_sigint_signal = 0;
 
-struct sembuf post_s = {0, 1, 0};
-struct sembuf wait_s = {0, -1, 0};
 union semun {
     int val;
     struct semid_ds *buf;
-    ushort * array;
+    ushort *array;
 } argument;
 
 
 struct msgbuf {
-    long mtype;         /* typ komunikatu  r */
-    char mtext[32];      /* tresc komunikatu */
-}msg ;
+    long mtype;
+    char mtext[32];
+};
+
 
 struct barbershop {
+    // For time measurement
+    struct timespec start;
+    // IPC
     mqd_t mqd;
-    int c_number;
-    int c_max_number;
+    // Current client number and max client number
+    int c_number, c_max_number;
     bool is_sleeping;
+    // Array of clients pid
     pid_t *client_id;
     // Semaphores
     int b_s;
-    int c_s[28];
-
+    // Limits due to
+    // https://stackoverflow.com/questions/16630261/creating-my-first-unix-server-client-but-getting-a-shmget-invalid-argument-er
+    int c_s[MAX_CLIENT_NO/2];
 };
 
 

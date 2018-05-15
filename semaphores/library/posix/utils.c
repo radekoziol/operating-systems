@@ -11,8 +11,8 @@
 //
 // Created by radekkoziol on 24.04.18.
 //
-
 #define BILLION 1000000000L
+struct barbershop *barber_s;
 
 void error_and_die(const char *msg) {
     perror(msg);
@@ -23,17 +23,18 @@ void error_and_die(const char *msg) {
 void print_time(char *msg) {
 
     printf("%s", msg);
-    clock_gettime(CLOCK_MONOTONIC_RAW, &end);    /* mark the end time */
-    uint64_t diff = (uint64_t) (BILLION * (end.tv_sec - start.tv_sec) + end.tv_nsec - start.tv_nsec);
+    struct timespec end;
 
-    char time[32];
-    memset(time, '\0', 32);
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);    /* mark the end time */
+    uint64_t diff = (uint64_t) (BILLION * (end.tv_sec - start_t.tv_sec) + end.tv_nsec - start_t.tv_nsec);
+
     float seconds = (float) (diff / 1000000000.0);
 
     printf(" - time = %f seconds\n", seconds);
 }
 
-int server_open() {
+
+mqd_t server_open() {
 
     mqd_t mqd;
 
@@ -95,14 +96,14 @@ int server_up() {
 void cut_client(pid_t pid) {
 
     char msg[128];
-    memset(msg,'\0',128);
-    sprintf(msg, "%s %d","[Barber] Starting to cut client ", pid );
+    memset(msg, '\0', 128);
+    sprintf(msg, "%s %d", "[Barber] Starting to cut client ", pid);
     print_time(msg);
 
     sleep(2); // brubrubu
 
-    memset(msg,'\0',128);
-    sprintf(msg, "%s %d","[Barber] Finished cut of client ", pid );
+    memset(msg, '\0', 128);
+    sprintf(msg, "%s %d", "[Barber] Finished cut of client ", pid);
     print_time(msg);
 }
 

@@ -8,19 +8,27 @@
 #include <time.h>
 #include "utils.c"
 #include  <sys/shm.h>
-#include <sys/types.h>
-#include <sys/ipc.h>
-#include <sys/sem.h>
 
 
+extern void print_time(char *msg);
 
-int main() {
 
-    struct barbershop *barber_s;
-    /* measure monotonic time */
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start);    /* mark start time */
+struct barbershop *barber_s;
 
-    int N = 5;
+int main(int argc, char **argv) {
+
+//    Example input
+//    argc = 1;
+//    argv[1] = "5";
+
+    if ((argc == 0) || strcmp(argv[1], "-help") == 0) {
+        printf("Arguments are: \n"
+               "   seats_num \n");
+        exit(0);
+    }
+
+    int N = (int) strtol(argv[1], NULL, 10);
+
     key_t s_key, b_sem;
     int shm_id;
 
@@ -36,10 +44,12 @@ int main() {
         error_and_die("shmat");
 
 
+    set_time(barber_s);
     barber_s->c_number = 0;
     barber_s->is_sleeping = false;
     barber_s->c_max_number = N;
     barber_s->mqd = server_up();
+    barber_s->client_id = (pid_t *) malloc(N * sizeof(pid_t));
 
     if ((b_sem = ftok(SHARED_MEMORY_KEY, PROJECT_ID)) == -1)
         error_and_die("ftok");
@@ -58,9 +68,6 @@ int main() {
         if ((semctl(barber_s->c_s[i], 0, SETVAL, argument)) < 0)
             error_and_die("semctl");
     }
-
-
-    barber_s->client_id = (pid_t *) malloc(MAX_CLIENT_NO * sizeof(pid_t));
 
 
     while (1) {
@@ -88,10 +95,11 @@ int main() {
             sem_w(&barber_s->b_s);
 
             if (!got_sigint_signal) {
-                msg.mtype = 1;
+                struct msgbuf msg;
                 if (msgrcv(barber_s->mqd, &msg, sizeof(msg.mtext), 0, 0) >= 0) {
                     print_time("[Barber] Somebody woke me up!");
                     barber_s->is_sleeping = false;
+                    print_time("[Barber] Received message %s");
 
                     pid_t pid;
                     if ((pid = (pid_t) strtol(msg.mtext, NULL, 10)) < 0) {
@@ -102,6 +110,7 @@ int main() {
                         cut_client(pid);
                         sem_p(&barber_s->c_s[pid % MAX_CLIENT_NO]);
                     }
+
                 }
             }
         } else {

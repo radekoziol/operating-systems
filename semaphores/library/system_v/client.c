@@ -12,16 +12,33 @@
 #include <wait.h>
 #include "utils.c"
 
-mqd_t mqd;
+
+struct barbershop *barber_s;
+
+extern void print_time(char *msg);
+
+int main(int argc, char **argv) {
 
 
-int main() {
+    // Example inputa
+//    argc = 2;
+//    argv[1] = "5";
+//    argv[2] = "3";
 
-    int cl_num = 5, visit_num = 3;
-    struct barbershop *barber_s;
+
+    if ((argc < 2) || strcmp(argv[1], "-help") == 0) {
+        printf("Arguments are: \n"
+               "   client_num visit_num \n");
+        exit(0);
+    }
+
+    int cl_num = (int) strtol(argv[1], NULL, 10);
+    int visit_num = (int) strtol(argv[2], NULL, 10);;
+
 
     // Get shared memory
     int s_key, shm_id;
+
 
     if ((s_key = ftok(SHARED_MEMORY_KEY, PROJECT_ID)) == -1)
         error_and_die("ftok");

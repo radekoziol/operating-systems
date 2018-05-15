@@ -15,6 +15,7 @@
 // Created by radekkoziol on 24.04.18.
 //
 int msgqid;
+struct barbershop *barber_s;
 
 #define MSGPERM 0600    // msg queue permission
 #define BILLION 1000000000L
@@ -24,15 +25,20 @@ void error_and_die(const char *msg) {
     exit(EXIT_FAILURE);
 }
 
+void set_time(struct barbershop *b_s) {
+    barber_s = b_s;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &barber_s->start);    /* mark start time */
+}
 
 void print_time(char *msg) {
 
     printf("%s", msg);
-    clock_gettime(CLOCK_MONOTONIC_RAW, &end);    /* mark the end time */
-    uint64_t diff = (uint64_t) (BILLION * (end.tv_sec - start.tv_sec) + end.tv_nsec - start.tv_nsec);
+    struct timespec end;
 
-    char time[32];
-    memset(time, '\0', 32);
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);    /* mark the end time */
+    uint64_t diff = (uint64_t) (BILLION * (end.tv_sec - barber_s->start.tv_sec) + end.tv_nsec -
+                                barber_s->start.tv_nsec);
+
     float seconds = (float) (diff / 1000000000.0);
 
     printf(" - time = %f seconds\n", seconds);
