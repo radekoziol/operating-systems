@@ -31,22 +31,27 @@ void initialize_variables(char *pString[]) {
     in_filter_def = "";
     out_img = "../ex_images/output.ascii.pgm";
 
-    int err;
-    if ((err = extract_description(&w, &h, &m)) < 0) {
-        printf("Wrong file format! Error num: %d\n", err);
+    int ret;
+    if ((ret = extract_description(&w, &h, &m)) < 0) {
+        printf("Wrong file format! Error num: %d\n", ret);
         exit(EXIT_FAILURE);
     }
 
     printf("[Parent] weight = %d, height = %d, shades = %d\n", w, h, m);
 
+    pix = (short **) malloc((w + 1) * sizeof(short *));
+    for (int i = 0; i < w + 1; i++)
+        pix[i] = (short *) malloc((h + 1) * sizeof(short));
 
-    pix = (short **) malloc(w * sizeof(short *));
-    for (int i = 0; i < w; i++)
-        pix[i] = (short *) malloc(h * sizeof(short));
+    // ??
+    filter = (float **) malloc((c + 1) * sizeof(float *));
+    for (int i = 0; i < c + 1; i++)
+        filter[i] = (float *) malloc((c + 1) * sizeof(float));
 
-    filter = (float **) malloc(c * sizeof(float *));
-    for (int i = 0; i < c; i++)
-        filter[i] = (float *) malloc(c * sizeof(float));
+    if ((ret = extract_image(ret)) < 0) {
+        printf("Wrong file format! Error num: %d\n", ret);
+        exit(EXIT_FAILURE);
+    }
 
 }
 
@@ -61,11 +66,19 @@ main(int argc, char *argv[]) {
 
     printf("[Parent] Successfully processed image!\n");
 
-    pthreads_create(th_num, ex);
+    for (int i = 0; i < h; i++) {
+        for (int j = 0; j < w; j++)
+            printf("%d ", pix[j][i]);
+        printf("\n");
+    }
 
-    pthreads_wait(th_num);
 
-    printf("parent: end\n");
+
+//    pthreads_create(th_num, ex);
+//
+//    pthreads_wait(th_num);
+//
+//    printf("parent: end\n");
 
     return 0;
 }
