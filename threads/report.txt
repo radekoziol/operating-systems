@@ -1,0 +1,69 @@
+**** Thread number = 1
+[Parent] For 5 times c = 3,filtering took 0.082061 sec
+[Parent] For 5 times c = 6,filtering took 0.117528 sec
+[Parent] For 5 times c = 12,filtering took 1.065938 sec
+[Parent] For 5 times c = 24,filtering took 5.190818 sec
+[Parent] For 5 times c = 48,filtering took 21.103464 sec
+
+**** Thread number = 2
+[Parent] For 5 times c = 3,filtering took 0.044768 sec
+[Parent] For 5 times c = 6,filtering took 0.168218 sec
+[Parent] For 5 times c = 12,filtering took 0.075680 sec
+[Parent] For 5 times c = 24,filtering took 2.126147 sec
+[Parent] For 5 times c = 48,filtering took 11.127165 sec
+
+**** Thread number = 3
+[Parent] For 5 times c = 3,filtering took 0.031559 sec
+[Parent] For 5 times c = 6,filtering took 0.122505 sec
+[Parent] For 5 times c = 12,filtering took 0.091808 sec
+[Parent] For 5 times c = 24,filtering took 2.007798 sec
+[Parent] For 5 times c = 48,filtering took 7.122742 sec
+
+**** Thread number = 4
+[Parent] For 5 times c = 3,filtering took 0.027110 sec
+[Parent] For 5 times c = 6,filtering took 0.112906 sec
+[Parent] For 5 times c = 12,filtering took 0.018018 sec
+[Parent] For 5 times c = 24,filtering took 2.002811 sec
+[Parent] For 5 times c = 48,filtering took 8.032505 sec
+
+**** Thread number = 5
+[Parent] For 5 times c = 3,filtering took 0.036463 sec
+[Parent] For 5 times c = 6,filtering took 0.126278 sec
+[Parent] For 5 times c = 12,filtering took 0.088702 sec
+[Parent] For 5 times c = 24,filtering took 1.137814 sec
+[Parent] For 5 times c = 48,filtering took 7.011131 sec
+
+**** Thread number = 6
+[Parent] For 5 times c = 3,filtering took 0.031858 sec
+[Parent] For 5 times c = 6,filtering took 0.115128 sec
+[Parent] For 5 times c = 12,filtering took 0.107343 sec
+[Parent] For 5 times c = 24,filtering took 2.103823 sec
+[Parent] For 5 times c = 48,filtering took 7.170225 sec
+
+**** Thread number = 7
+[Parent] For 5 times c = 3,filtering took 0.030400 sec
+[Parent] For 5 times c = 6,filtering took 0.111747 sec
+[Parent] For 5 times c = 12,filtering took 0.092115 sec
+[Parent] For 5 times c = 24,filtering took 1.042472 sec
+[Parent] For 5 times c = 48,filtering took 7.016282 sec
+
+**** Thread number = 8
+[Parent] For 5 times c = 3,filtering took 0.042467 sec
+[Parent] For 5 times c = 6,filtering took 0.143433 sec
+[Parent] For 5 times c = 12,filtering took 0.124604 sec
+[Parent] For 5 times c = 24,filtering took 1.054386 sec
+[Parent] For 5 times c = 48,filtering took 6.074014 sec
+
+**** Thread number = 9
+[Parent] For 5 times c = 3,filtering took 0.025987 sec
+[Parent] For 5 times c = 6,filtering took 0.114780 sec
+[Parent] For 5 times c = 12,filtering took 0.184867 sec
+[Parent] For 5 times c = 24,filtering took 1.018126 sec
+[Parent] For 5 times c = 48,filtering took 6.196249 sec
+
+**** Thread number = 10
+[Parent] For 5 times c = 3,filtering took 0.026643 sec
+[Parent] For 5 times c = 6,filtering took 0.095983 sec
+[Parent] For 5 times c = 12,filtering took 0.033522 sec
+[Parent] For 5 times c = 24,filtering took 1.088287 sec
+[Parent] For 5 times c = 48,filtering took 6.068972 sec
