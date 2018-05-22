@@ -1,0 +1,126 @@
+[Parent] Reading image..
+[Parent] Allocating memory for img :weight = 512, height = 512, shades = 245
+[Parent] Successfully processed image!
+[Parent] Successfully generated matrix!
+[Parent] Performing tests!
+
+**** Thread number = 1
+[Parent] Average of 5 tests where c = 3, filtering took 0.078946 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.115466 sec
+[Parent] Average of 5 tests where c = 12, filtering took 1.066682 sec
+[Parent] Average of 5 tests where c = 24, filtering took 5.007545 sec
+[Parent] Average of 5 tests where c = 48, filtering took 19.171155 sec
+
+**** Thread number = 2
+[Parent] Average of 5 tests where c = 3, filtering took 0.041746 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.168812 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.076652 sec
+[Parent] Average of 5 tests where c = 24, filtering took 2.098512 sec
+[Parent] Average of 5 tests where c = 48, filtering took 10.183920 sec
+
+**** Thread number = 3
+[Parent] Average of 5 tests where c = 3, filtering took 0.031147 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.120224 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.080812 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.130589 sec
+[Parent] Average of 5 tests where c = 48, filtering took 7.130947 sec
+
+**** Thread number = 4
+[Parent] Average of 5 tests where c = 3, filtering took 0.024498 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.092110 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.163615 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.043241 sec
+[Parent] Average of 5 tests where c = 48, filtering took 7.099078 sec
+
+**** Thread number = 5
+[Parent] Average of 5 tests where c = 3, filtering took 0.029027 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.108597 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.016040 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.144781 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.148494 sec
+
+**** Thread number = 6
+[Parent] Average of 5 tests where c = 3, filtering took 0.026469 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.094550 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.180234 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.012076 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.146755 sec
+
+**** Thread number = 7
+[Parent] Average of 5 tests where c = 3, filtering took 0.025785 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.093685 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.175684 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.074187 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.137286 sec
+
+**** Thread number = 8
+[Parent] Average of 5 tests where c = 3, filtering took 0.025883 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.094279 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.175003 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.052626 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.121513 sec
+
+**** Thread number = 9
+[Parent] Average of 5 tests where c = 3, filtering took 0.025838 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.096406 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.168770 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.060485 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.116258 sec
+
+**** Thread number = 15
+[Parent] Average of 5 tests where c = 3, filtering took 0.025146 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.093306 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.180051 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.037885 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.175749 sec
+
+**** Thread number = 16
+[Parent] Average of 5 tests where c = 3, filtering took 0.025861 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.097243 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.173963 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.098022 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.071601 sec
+
+**** Thread number = 17
+[Parent] Average of 5 tests where c = 3, filtering took 0.033956 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.121082 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.061552 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.081086 sec
+[Parent] Average of 5 tests where c = 48, filtering took 6.151651 sec
+
+**** Thread number = 18
+[Parent] Average of 5 tests where c = 3, filtering took 0.026118 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.095936 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.176179 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.110272 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.109008 sec
+
+**** Thread number = 19
+[Parent] Average of 5 tests where c = 3, filtering took 0.029471 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.101668 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.012474 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.176477 sec
+[Parent] Average of 5 tests where c = 48, filtering took 6.059134 sec
+
+**** Thread number = 50
+[Parent] Average of 5 tests where c = 3, filtering took 0.025015 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.094080 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.166490 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.048091 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.151607 sec
+
+**** Thread number = 51
+[Parent] Average of 5 tests where c = 3, filtering took 0.025237 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.093048 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.167674 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.043161 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.153991 sec
+
+**** Thread number = 100
+[Parent] Average of 5 tests where c = 3, filtering took 0.025778 sec
+[Parent] Average of 5 tests where c = 6, filtering took 0.093850 sec
+[Parent] Average of 5 tests where c = 12, filtering took 0.167680 sec
+[Parent] Average of 5 tests where c = 24, filtering took 1.047744 sec
+[Parent] Average of 5 tests where c = 48, filtering took 5.125247 sec
+
+

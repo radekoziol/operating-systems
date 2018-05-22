@@ -15,7 +15,7 @@ pthread_t thread_id[MAX_THREAD_NUM];
 void *filter_image(int N);
 
 // paths
-char * in_img, *in_filter_def, *out_img;
+char in_img[MAX_PATH_LEN], in_filter_def[MAX_PATH_LEN], out_img[MAX_PATH_LEN];
 int w,h,m,c,th_num;
 short **in_pix, **out_pix;
 float **filter;

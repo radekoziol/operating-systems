@@ -32,8 +32,8 @@ void filter_pix(int x, int y) {
 
 void filter_rect(int x1, int y1, int x2, int y2) {
 
-//    printf("[Thread %li] Filtering rectangle from (%d,%d) to (%d,%d)!\n",
-//           (long) pthread_self(), x1, y1, x2, y2);
+    printf("[Thread %li] Filtering rectangle from (%d,%d) to (%d,%d)!\n",
+           (long) pthread_self(), x1, y1, x2, y2);
 
     for (int i = x1; i <= x2; i++)
         for (int j = y1; j <= y2; j++)
@@ -41,11 +41,11 @@ void filter_rect(int x1, int y1, int x2, int y2) {
 
 }
 
-void *
-filter_image(int N) {
+void *filter_image(int N) {
 
 //    struct timeval t0, t1, dt;
 //    gettimeofday(&t0, NULL);
+
 
     if (N == 0)
         filter_rect(N * w / th_num, 0, (N + 1) * w / th_num, h - 1);
@@ -60,5 +60,7 @@ filter_image(int N) {
 
 //    fprintf(stdout, "[Thread %ld] I took %d.%06d sec\n",
 //            (long) pthread_self(), (int) dt.tv_sec, (int) dt.tv_usec);
+
+    return 0;
 
 }

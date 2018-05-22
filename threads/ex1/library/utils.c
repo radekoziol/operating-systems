@@ -17,13 +17,13 @@ void error_and_die(char *msg) {
 
 void pthreads_create(int num, void *fun) {
     for (int i = 0; i < num; i++) {
-        if (pthread_create(&thread_id[i], NULL, fun, (void *) i) != 0)
+        if (pthread_create(&thread_id[i], NULL, fun, (void *) (intptr_t) i) != 0)
             error_and_die("pthread_create");
     }
 }
 
 void pthreads_wait(int num) {
-    // wait here for child
+    // wait
     for (int i = 0; i < num; i++)
         pthread_join(thread_id[i], NULL);
 
@@ -36,7 +36,7 @@ int extract_description(int *w, int *h, int *m) {
 
     FILE *file = fopen(in_img, "r");
     if (file == NULL) {
-        error_and_die("fopen");
+        error_and_die(in_img);
     }
 
     char wgth[8];
@@ -124,7 +124,7 @@ float read_next_float(const char *line, int *c_indic) {
     if (line[c] != '\n') c++;
 
 
-    if(pix[0] == '\0')
+    if (pix[0] == '\0')
         return 0;
 
     char *end_ptr;
@@ -160,11 +160,11 @@ int read_next_pixel(const char *line, int *c_indic) {
     if (line[c] != '\n') c++;
 
 
-    if(pix[0] == '\0')
+    if (pix[0] == '\0')
         return 0;
 
     char *end_ptr;
-    int ret = (int) strtol(pix, &end_ptr,10);
+    int ret = (int) strtol(pix, &end_ptr, 10);
     if (pix == end_ptr) {
         printf("Unable to convert '%s'\n", pix);
         exit(EXIT_FAILURE);
@@ -181,14 +181,13 @@ int extract_image(int start_line) {
 
     FILE *file = fopen(in_img, "r");
     if (file == NULL) {
-        perror("Error while opening file");
-        exit(EXIT_FAILURE);
+        error_and_die(in_img);
     }
 
     char *line = NULL;
     size_t len = 0;
-    while(start_line != 1){
-        if( getline(&line, &len, file) == -1){
+    while (start_line != 1) {
+        if (getline(&line, &len, file) == -1) {
             fclose(file);
             return -1;
         }
@@ -218,7 +217,7 @@ int extract_filter() {
 
     FILE *file = fopen(in_filter_def, "r");
     if (file == NULL) {
-        error_and_die("fopen");
+        error_and_die(in_img);
     }
 
 
@@ -264,10 +263,10 @@ int extract_filter() {
 
 }
 
-void print_pixels() {
-    for (int i = 0; i < h; i++) {
-        for (int j = 0; j < w; j++)
-            printf("%d ", in_pix[j][i]);
+void print_pixels(float **ar, int x, int y) {
+    for (int i = 0; i < x; i++) {
+        for (int j = 0; j < y; j++)
+            printf("%f ", ar[j][i]);
         printf("\n");
     }
 }
@@ -285,7 +284,6 @@ float sum(float **pDouble) {
 /* Assuming sum of filter array elements is 1*/
 void get_random_filter_array() {
 
-    int prec = 1000;
     srand((unsigned int) time(NULL));
 
     for (int i = 0; i < c; i++)
@@ -294,11 +292,9 @@ void get_random_filter_array() {
 
 
     float f_sum = sum(filter);
-    while (!(f_sum > 0.99 && f_sum < 1.11)) {
+    while (!(f_sum > 0.999 && f_sum < 1.001)) {
         int i = rand() % c;
         int j = rand() % c;
-
-//        printf("i= %d j= %d\n", i, j);
 
         if (f_sum > 1)
             filter[i][j] /= rand() % c + 1;
@@ -311,30 +307,44 @@ void get_random_filter_array() {
 //        for (int i = 0; i < c; i++)
 //            for (int j = 0; j < c; j++)
 //                if (filter[i][j] < 0.001) {
-//                    filter[i][j] += 0.007;
+//                    filter[i][j] += 0.0005;
 //                    counter--;
 //                    if (counter == 0)
 //                        break;
 //                }
 
-
     }
 
 }
 
-void initialize_variables(char *argv[]) {
+void free_ar() {
+
+    free(filter);
+//    free(in_pix);
+    free(out_pix);
+}
+
+void allocate_ar() {
+
+    printf("[Parent] Allocating memory for img :weight = %d, height = %d, shades = %d\n", w, h, m);
+
+    in_pix = (short **) malloc((w) * sizeof(short *));
+    for (int i = 0; i < w + 1; i++)
+        in_pix[i] = (short *) malloc((h) * sizeof(short));
+
+    out_pix = (short **) malloc((w) * sizeof(short *));
+    for (int i = 0; i < w + 1; i++)
+        out_pix[i] = (short *) malloc((h) * sizeof(short));
+}
+
+void initialize_variables(char *argv[], int argc) {
 
     if ((th_num = (int) strtol(argv[1], NULL, 10)) == 0)
-        error_and_die("strtol: wrong thread number!\n");
+        error_and_die("strtol: can not parse thread number!\n");
 
-    in_img = malloc(MAX_PATH_LEN);
-    in_filter_def = malloc(MAX_PATH_LEN);
-    out_img = malloc(MAX_PATH_LEN);
 
-    in_img = argv[2];
-    in_filter_def = argv[3];
-    out_img = argv[4];
-
+    memset(in_img, '\0', MAX_PATH_LEN);
+    strcpy(in_img, argv[2]);
 
     printf("[Parent] Reading image..\n");
 
@@ -344,15 +354,7 @@ void initialize_variables(char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    printf("[Parent] weight = %d, height = %d, shades = %d\n", w, h, m);
-
-    in_pix = (short **) malloc((w + 1) * sizeof(short *));
-    for (int i = 0; i < w + 1; i++)
-        in_pix[i] = (short *) malloc((h + 1) * sizeof(short));
-
-    out_pix = (short **) malloc((w + 1) * sizeof(short *));
-    for (int i = 0; i < w + 1; i++)
-        out_pix[i] = (short *) malloc((h + 1) * sizeof(short));
+    allocate_ar();
 
     if ((ret = extract_image(ret)) < 0) {
         printf("Wrong file format! Error num: %d\n", ret);
@@ -361,30 +363,43 @@ void initialize_variables(char *argv[]) {
 
     printf("[Parent] Successfully processed image!\n");
 
-    if ((ret = extract_filter()) < 0) {
-        printf("Wrong file format! Error num: %d\n", ret);
-        exit(EXIT_FAILURE);
+    memset(out_img, '\0', MAX_PATH_LEN);
+    memset(in_filter_def, '\0', MAX_PATH_LEN);
+
+    if (argc > 4) {
+
+        strcpy(in_filter_def, argv[3]);
+        strcpy(out_img, argv[4]);
+
+        if ((ret = extract_filter()) < 0) {
+            printf("Wrong file format! Error num: %d\n", ret);
+            exit(EXIT_FAILURE);
+        }
+        printf("[Parent] Successfully read filter matrix!\n");
+    } else {
+
+        strcpy(out_img, argv[3]);
+
+        srand((unsigned int) time(NULL));
+
+        // size [3,65]
+        c = rand() % 63 + 3;
+
+        filter = (float **) malloc((c + 1) * sizeof(float *));
+        for (int i = 0; i < c + 1; i++)
+            filter[i] = (float *) malloc((c + 1) * sizeof(float));
+
+        get_random_filter_array();
+        printf("[Parent] Successfully generated matrix!\n");
     }
-    // or this
-    // Allocating
-
-//    filter = (float **) malloc((c + 1) * sizeof(float *));
-//    for (int i = 0; i < c + 1; i++)
-//        filter[i] = (float *) malloc((c + 1) * sizeof(float));
-//
-//    get_random_filter_array();
-
-
-    printf("[Parent] Successfully generated/read filter matrix!\n");
 
 }
 
 void write_to_output_file() {
-    int ret;
 
     FILE *file = fopen(out_img, "w");
     if (file == NULL) {
-        error_and_die("fopen");
+        error_and_die(out_img);
     }
 
     // Adding header
@@ -417,40 +432,53 @@ void write_to_output_file() {
     fclose(file);
 }
 
-void perform_test(int test_number) {
+void perform_test(int test_number, int max_th_num) {
 
-    struct timeval dt;
+    int i = 1;
+    while (i < max_th_num) {
+
+        th_num = i;
+        printf("\n**** Thread number = %d\n", i);
 
 
-    c = 3;
-    while (c < 65) {
+        struct timeval dt;
 
-        filter = (float **) malloc((c + 1) * sizeof(float *));
-        for (int i = 0; i < c + 1; i++)
-            filter[i] = (float *) malloc((c + 1) * sizeof(float));
+        c = 3;
+        while (c < 65) {
 
-        get_random_filter_array();
+            filter = (float **) malloc((c + 1) * sizeof(float *));
+            for (int j = 0; j < c + 1; j++)
+                filter[j] = (float *) malloc((c + 1) * sizeof(float));
 
-        struct timeval t0, t1;
-        gettimeofday(&t0, NULL);
+            get_random_filter_array();
 
-        for (int i = 0; i < test_number; i++) {
-            pthreads_create(th_num, filter_image);
+            struct timeval t0, t1;
+            gettimeofday(&t0, NULL);
 
-            pthreads_wait(th_num);
+            for (int j = 0; j < test_number; j++) {
+                pthreads_create(th_num, filter_image);
+
+                pthreads_wait(th_num);
+            }
+
+            gettimeofday(&t1, NULL);
+            timersub(&t1, &t0, &dt);
+
+            fprintf(stdout, "[Parent] Average of %d tests where c = %d, filtering took %d.%06d sec\n",
+                    test_number, c, (int) dt.tv_sec / test_number, (int) dt.tv_usec / test_number);
+
+
+            write_to_output_file();
+
+            free(filter);
+
+            c *= 2;
         }
 
-        gettimeofday(&t1, NULL);
-        timersub(&t1, &t0, &dt);
-
-        fprintf(stdout, "[Parent] For %d times c = %d,filtering took %d.%06d sec\n",
-                test_number, c, (int) dt.tv_sec/test_number, (int) dt.tv_usec/test_number);
-
-
-        free(filter);
-
-        c *= 2;
+        i++;
     }
 
+
+    free_ar();
 }
 
