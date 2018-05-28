@@ -21,10 +21,6 @@ void error_and_die(char *msg) {
 
 void pthreads_create(pthread_t *id_ar, int num, void *fun) {
 
-    pthread_attr_t attr;
-    pthread_attr_init(&attr);
-
-
     for (int i = 0; i < num; i++) {
         if (pthread_create(&id_ar[i], NULL, fun, NULL) != 0)
             error_and_die("pthread_create");
@@ -38,29 +34,49 @@ void pthreads_wait(pthread_t *id_ar, int num) {
 
 }
 
+void read_string(const char *string) {
+
+    bool print = false;
+
+    switch (comp) {
+        case '>':
+            print = strlen(string) > fix_len;
+            break;
+        case '<':
+            print = strlen(string) < fix_len;
+            break;
+        default:
+            print = strlen(string) == fix_len;
+            break;
+    }
+
+//    if (print)
+        printf("[Client %lu] Read %s\n", pthread_self(), string);
+}
+
 void client() {
 
     sem_wait(&cl_c);
-    const int p = cl_counter;
+    const int p = cl_counter % buf_size;
     cl_counter++;
     sem_post(&cl_c);
 
-    printf("[Client %lu] Trying to read!\n", pthread_self());
     while (1) {
 
+        if (print_more_info && printf("[Client %lu] Trying to read from %d!\n", pthread_self(),p)) {}
+
         if (sem_wait(&sem[p][0]) == 0) {
-            printf("[Client %lu] Reading\n", pthread_self());
 
             if (buffer[p] != NULL) {
-                printf("[Client %lu] Read %s\n", pthread_self(), buffer[cl_counter - 1]);
 
-                printf("[Client %lu] Freeing memory!\n", pthread_self());
+                read_string(buffer[p]);
+
+                if (print_more_info && printf("[Client %lu] Freeing memory!\n", pthread_self())) {}
+
                 free(buffer[p]);
 
-                sleep(1);
-                printf("[Client %lu] Done!\n", pthread_self());
-
                 sem_post(&sem[p][0]);
+                is_cl_alive[p] = false;
                 pthread_exit(NULL);
             } else {
                 printf("[Client %lu] Nothing is there!\n", pthread_self());
@@ -75,29 +91,50 @@ void client() {
 
 }
 
+void append_text(const int p) {
+
+    sem_wait(&line_sem);
+    int read_till = line_read;
+    line_read++;
+    sem_post(&line_sem);
+
+    FILE *f = fopen("../example_text.txt", "r");
+    if (f == NULL)
+        error_and_die("fopen : unable to open text!\n");
+
+    char line[256];
+    memset(line, '\0', sizeof(line));
+
+    int counter = 0;
+    while (fgets(line, sizeof line, f) != NULL) {
+        if (counter == read_till) {
+            buffer[p] = malloc(strlen(line) * sizeof(char));
+            strcpy(buffer[p], line);
+            break;
+        }
+        counter++;
+    }
+
+    fclose(f);
+
+}
+
 void producer() {
 
-
     sem_wait(&pr_c);
-    const int p = pr_counter;
+    const int p = pr_counter % buf_size;
     pr_counter++;
     sem_post(&pr_c);
-
-    printf("[Producer %lu] Trying to add new product!\n", pthread_self());
 
     while (1) {
 
         if (sem_wait(&sem[p][0]) == 0) {
 
-            printf("[Producer %lu] Adding!\n", pthread_self());
+            if (print_more_info && printf("[Producer %lu] Adding to %d!\n", pthread_self(),p)) {}
 
-            char example_text[128] = "This is test!\n";
-            buffer[p] = malloc(sizeof(example_text));
-            strcpy(buffer[p], example_text);
+            append_text(p);
 
-            sleep(1);
-
-            printf("[Producer %lu] Done!\n", pthread_self());
+            if (print_more_info && printf("[Producer %lu] Done!\n", pthread_self())) {}
 
             int value = 1;
             if (sem_getvalue(&sem[p][1], &value) != 0)
@@ -107,7 +144,7 @@ void producer() {
 
             sem_post(&sem[p][0]);
 
-
+            is_prod_alive[p] = false;
             pthread_exit(NULL);
         }
     }
