@@ -31,8 +31,10 @@ unsigned int buf_size, c_num, p_num, fix_len,max_time;
 char comp = '\0';
 bool print_more_info = false;
 
-volatile int cl_counter = 0;
-volatile int pr_counter = 0;
+int cl_counter = 0;
+int pr_counter = 0;
+int last_buf;
+
 pthread_mutex_t *mutex, cl_c, pr_c, line_mut;
 pthread_cond_t **cond;
 FILE *f;

@@ -10,31 +10,34 @@
 #include <pthread.h>
 #include <stdbool.h>
 
-
 #ifndef EX2_MAIN_H
 #define EX2_MAIN_H
 
 #define MAX_BUF_SIZE 1024
 #define MAX_PRODUCERS_NUM 128
 #define MAX_CLIENTS_NUM 128
-
-
+// Main buffer
 char *buffer[MAX_BUF_SIZE];
 
+// Threads
 pthread_t prod_id[MAX_PRODUCERS_NUM];
-bool is_prod_alive[MAX_BUF_SIZE];
 pthread_t cl_id[MAX_CLIENTS_NUM];
-bool is_cl_alive[MAX_BUF_SIZE];
-pthread_t time_controller;
+pthread_t end_pr;
 
+// Input
 unsigned int buf_size, c_num, p_num, fix_len,max_time;
-unsigned int line_read = 100;
 char comp = '\0';
 bool print_more_info = false;
 
-volatile int cl_counter = 0;
-volatile int pr_counter = 0;
+// Read line counters
+int cl_counter = 0;
+int pr_counter = 0;
+int last_buf;
+// Semaphores
 sem_t **sem, cl_c, pr_c, line_sem;
+
+//
+FILE* file;
 
 
 #endif //EX2_MAIN_H
