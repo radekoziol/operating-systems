@@ -32,11 +32,10 @@ bool print_more_info = false;
 // Read line counters
 int cl_counter = 0;
 int pr_counter = 0;
-int last_buf;
+
 // Semaphores
 sem_t **sem, cl_c, pr_c, line_sem;
 
-//
 FILE* file;
 
 

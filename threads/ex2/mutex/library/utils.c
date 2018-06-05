@@ -12,9 +12,6 @@
 #include <signal.h>
 #include "../main.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
-
 int max(unsigned int c, unsigned int p) {
     return c > p ? c : p;
 }
@@ -39,10 +36,6 @@ void pthreads_wait(pthread_t *id_ar, int num) {
 
 }
 
-bool cl_wait() {
-    return buffer[last_buf - 1] == NULL;
-}
-
 void free_space() {
 
     for (int i = 0; i < max(c_num, p_num); i++) {
@@ -63,10 +56,22 @@ void free_space() {
     exit(EXIT_SUCCESS);
 }
 
+bool cl_wait() {
+
+    for(int i = 0; i < buf_size; i++)
+        if(buffer[i] != NULL) return false;
+
+    return true;
+
+//    return buffer[last_buf - 1] == NULL;
+}
+
 void force_stop() {
 
-    printf("[Main] Waiting for clients to read rest\n");
-    while (!cl_wait());
+    if(max_time != 0){
+        printf("[Main] Waiting for clients to read rest\n");
+        while (!cl_wait());
+    }
 
     printf("[Main] Killing threads\n");
     for (int i = 0; i < p_num; i++) {
@@ -100,7 +105,7 @@ void initialize_arg(int argc, char *argv[]) {
 
     if (argc < 7 || (strcmp(argv[1], "-help") == 0)) {
         printf("Arguments to program are:\n"
-               "<p_num> <c_num> <buf_size> <fix_len> <comparator> <print> <max_time>");
+               "<p_num> <c_num> <buf_size> <fix_len> <comparator> <print_more> <max_time>");
         exit(0);
     }
 
@@ -109,17 +114,18 @@ void initialize_arg(int argc, char *argv[]) {
     sprintf(buf, "%s %s %s %s %s %s %s", argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
 
     comp = '\0';
-    char print = '\0';
-    if (sscanf(buf, "%d %d %d %d %c %c %d",
-               &p_num, &c_num, &buf_size, &fix_len, &comp, &print, &max_time) != 7) {
+    char print[128];
+    memset(print,'\0',128);
+    if (sscanf(buf, "%d %d %d %d %c %s %d",
+               &p_num, &c_num, &buf_size, &fix_len, &comp, print, &max_time) != 7) {
         printf("Wrong arguments format!\n");
         exit(-1);
     }
 
-    if (print == 't') print_more_info = true;
+    if (strcmp(print, "true") == 0) print_more_info = true;
 
     printf("[Main] Creating %d clients, %d producers, buffer of size %d, "
-           "fix_len = %d, comp = %c, print = %c\n",
+           "fix_len = %d, comp = %c, print = %s\n",
            c_num, p_num, buf_size, fix_len, comp, print);
 
     pthread_mutex_init(&line_mut, NULL);
@@ -156,7 +162,7 @@ void initialize_arg(int argc, char *argv[]) {
     // Setting handler for stopping
     sigaction(SIGINT, NULL, &action);
 
-    f = fopen("../pan-tadeusz.txt", "r");
+    f = fopen("./pan-tadeusz.txt", "r");
     if (f == NULL)
         error_and_die("fopen : unable to open text!\n");
 
@@ -181,7 +187,7 @@ int read_counter(char o) {
     return p;
 }
 
-void read_string(const char *string) {
+bool check_string(const char *string) {
 
     bool print = false;
 
@@ -197,8 +203,7 @@ void read_string(const char *string) {
             break;
     }
 
-//    if (print)
-    printf("[Client %lu] Read\n%s", pthread_self(), string);
+    return print;
 }
 
 void append_text(const int p) {
@@ -209,12 +214,13 @@ void append_text(const int p) {
     memset(line, '\0', sizeof(line));
 
     if (f && fgets(line, 1024, f) != NULL) {
+        if (print_more_info && printf("[Producer %lu] Adding to %d!\n", pthread_self(), p)) {}
         buffer[p] = calloc(strlen(line) + 1, sizeof(char));
         strcpy(buffer[p], line);
     } else {
         printf("*** End of file ***\n");
-        last_buf = p;
         kill(getpid(), SIGINT);
+        pthread_mutex_lock(&line_mut);
         return;
     }
 
@@ -222,6 +228,8 @@ void append_text(const int p) {
 }
 
 void client() {
+
+    pthread_detach(pthread_self());
 
     // Blocking SIGINT
     sigset_t set;
@@ -238,14 +246,14 @@ void client() {
         pthread_mutex_lock(&mutex[p]);
 
         while (buffer[p] == NULL) {
-            printf("[Client %lu] Nothing is there!\n", pthread_self());
-            printf("[Client %lu] Waiting!\n", pthread_self());
+            if(print_more_info && printf("[Client %lu] Nothing is there! Waiting!\n", pthread_self()));
             pthread_cond_wait(&cond[p][0], &mutex[p]);
         }
 
-        read_string(buffer[p]);
+        if(check_string(buffer[p]))
+            printf("[Client %lu] Read\n%s", pthread_self(), buffer[p]);
 
-        if (print_more_info && printf("[Client %lu] Freeing memory!\n", pthread_self())) {}
+        if (print_more_info && printf("[Client %lu] Freeing memory!\n", pthread_self()));
         free(buffer[p]);
         buffer[p] = NULL;
 
@@ -262,6 +270,8 @@ void client() {
 
 void producer() {
 
+    pthread_detach(pthread_self());
+
     // Blocking SIGINT
     sigset_t set;
     sigemptyset(&set);
@@ -274,28 +284,20 @@ void producer() {
 
         pthread_mutex_lock(&mutex[p]);
 
-        if (print_more_info && printf("[Producer %lu] Waiting to write to %d!\n", pthread_self(), p)) {}
-
         while (buffer[p] != NULL) {
+            if (print_more_info && printf("[Producer %lu] Waiting to write to %d!\n", pthread_self(), p)) {}
             pthread_cond_wait(&cond[p][1], &mutex[p]);
         }
-
-        if (print_more_info && printf("[Producer %lu] Adding to %d!\n", pthread_self(), p)) {}
 
         append_text(p);
 
         if (print_more_info && printf("[Producer %lu] Done!\n", pthread_self())) {}
 
-        pthread_cond_broadcast(&cond[p][0]);
-
         pthread_mutex_unlock(&mutex[p]);
 
-        p = read_counter('p');
+        pthread_cond_broadcast(&cond[p][0]);
 
+        p = read_counter('p');
     }
 
-
 }
-
-
-#pragma clang diagnostic pop

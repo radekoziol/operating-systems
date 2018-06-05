@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 //    argv[3] = "10";
 //    argv[4] = "5";
 //    argv[5] = "<";
-//    argv[6] = "t";
+//    argv[6] = "true";
 //    argv[7] = "5";
 
     initialize_arg(argc, argv);

@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <semaphore.h>
-#include <bits/signum.h>
 #include <signal.h>
 #include "../main.h"
 
@@ -66,13 +65,17 @@ void free_space() {
 }
 
 bool cl_wait() {
-    return buffer[last_buf - 1] == NULL;
+    for(int i = 0; i < buf_size; i++)
+        if(buffer[i] != NULL) return false;
+    return true;
 }
 
 void force_stop() {
 
-    printf("[Main] Waiting for clients to read rest\n");
-    while (!cl_wait());
+    if(max_time != 0){
+        printf("[Main] Waiting for clients to read rest\n");
+        while (!cl_wait());
+    }
 
     printf("[Main] Killing threads\n");
     for (int i = 0; i < p_num; i++) {
@@ -114,18 +117,18 @@ void initialize_arg(int argc, char *argv[]) {
     memset(buf, '\0', sizeof(buf));
     sprintf(buf, "%s %s %s %s %s %s %s", argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
 
-    comp = '\0';
-    char print = '\0';
-    if (sscanf(buf, "%d %d %d %d %c %c %d",
-               &p_num, &c_num, &buf_size, &fix_len, &comp, &print, &max_time) != 7) {
+    char print[128];
+    memset(print, '\0', 128);
+    if (sscanf(buf, "%d %d %d %d %c %s %d",
+               &p_num, &c_num, &buf_size, &fix_len, &comp, print, &max_time) != 7) {
         printf("Wrong arguments format!\n");
         exit(-1);
     }
 
-    if (print == 't') print_more_info = true;
+    if (strcmp(print, "true") == 0) print_more_info = true;
 
     printf("[Main] Creating %d clients, %d producers, buffer of size %d, "
-           "fix_len = %d, comp = %c, print = %c\n",
+           "fix_len = %d, comp = %c, print = %s\n",
            c_num, p_num, buf_size, fix_len, comp, print);
 
     sem_init(&line_sem, 0, 1);
@@ -146,7 +149,7 @@ void initialize_arg(int argc, char *argv[]) {
         }
     }
 
-    struct sigaction action, sa;
+    struct sigaction sa;
 
     memset(&sa, 0, sizeof(struct sigaction));
     sa.sa_handler = (__sighandler_t) &force_stop;
@@ -156,16 +159,13 @@ void initialize_arg(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    file = fopen("../pan-tadeusz.txt", "r");
+    file = fopen("./pan-tadeusz.txt", "r");
     if (file == NULL)
         error_and_die("open : unable to open text!\n");
 
     memset(buf, '\0', sizeof(buf));
 
 }
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 void append_text(int p) {
 
@@ -175,16 +175,35 @@ void append_text(int p) {
     memset(line, '\0', sizeof(line));
 
     if (file && fgets(line, 1024, file) != NULL) {
+        if (print_more_info && printf("[Producer %lu] Adding to %d!\n", pthread_self(), p)) {}
         buffer[p] = calloc(strlen(line) + 1, sizeof(char));
         strcpy(buffer[p], line);
     } else {
         printf("*** End of file ***\n");
-        last_buf = p;
         kill(getpid(), SIGINT);
         sem_wait(&line_sem);
     }
 
     sem_post(&line_sem);
+}
+
+bool check_string(const char *string) {
+
+    bool print = false;
+
+    switch (comp) {
+        case '>':
+            print = strlen(string) > fix_len;
+            break;
+        case '<':
+            print = strlen(string) < fix_len;
+            break;
+        default:
+            print = strlen(string) == fix_len;
+            break;
+    }
+
+    return print;
 }
 
 void producer() {
@@ -202,11 +221,10 @@ void producer() {
         // Lock
         sem_wait(&sem[p][0]);
 
-        if (print_more_info && printf("[Producer %lu] Adding to %d!\n", pthread_self(), p)) {}
 
         if (buffer[p] != NULL) {
             sem_post(&sem[p][0]);
-            printf("[Producer %lu] Waiting for client to read!\n", pthread_self());
+            if (print_more_info && printf("[Producer %lu] Waiting for client to read!\n", pthread_self()));
             sem_wait(&sem[p][2]);
         } else {
 
@@ -233,29 +251,6 @@ void producer() {
 
 }
 
-void read_string(const char *string) {
-
-    bool print = false;
-
-    switch (comp) {
-        case '>':
-            print = strlen(string) > fix_len;
-            break;
-        case '<':
-            print = strlen(string) < fix_len;
-            break;
-        default:
-            print = strlen(string) == fix_len;
-            break;
-    }
-
-//    if (print)
-    printf("[Client %lu] Read \n%s", pthread_self(), string);
-}
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
-
 void client() {
 
     int p = read_counter('c');
@@ -274,10 +269,10 @@ void client() {
 
         if (buffer[p] != NULL) {
 
-            read_string(buffer[p]);
+            if (check_string(buffer[p]))
+                printf("[Client %lu] Read\n%s", pthread_self(), buffer[p]);
 
             if (print_more_info && printf("[Client %lu] Freeing memory!\n", pthread_self())) {}
-
             free(buffer[p]);
             buffer[p] = NULL;
 
