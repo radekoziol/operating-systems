@@ -10,5 +10,14 @@
 int cl_sock[MAX_CLIENT_NUM];
 int cl_counter = 0;
 
+struct message{
+    // 0 -> register, 1-> operation
+    int type;
+    char sender_name[32];
+    // ADD, SUB, MUL, DIV
+    char operation[3];
+    int arg1,arg2;
+};
+
 
 #endif //SOCKETS_SERVER_H
