@@ -10,6 +10,7 @@
 int cl_sock[MAX_CLIENT_NUM];
 int cl_counter = 0;
 
+
 struct message{
     // 0 -> register, 1-> operation
     int type;

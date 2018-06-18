@@ -13,11 +13,13 @@
 
 #include "utils.c"
 #include "../server.h"
+#include <sys/un.h>
+
 
 struct epoll_event *events;
 pthread_t ping_thread;
-int sockfd, calc_id = 0;
 char *cl_names[MAX_CLIENT_NUM];
+int sockfd_innet = -1, sockfd_unix = -1;
 
 void accept_connection(int sock, int epoll_fd) {
     struct epoll_event event;
@@ -70,83 +72,132 @@ void ping_clients() {
 
 #pragma clang diagnostic pop
 
-void force_stop() {
-
+void force_stop(int signum) {
 
     pthread_cancel(ping_thread);
-    close(sockfd);
-}
+    for (int i = 0; i < cl_counter; i++)
+        free(cl_names[i]);
 
-void set_signal_handler() {
-
-    struct sigaction sa;
-
-    memset(&sa, 0, sizeof(struct sigaction));
-    sa.sa_handler = (__sighandler_t) &force_stop;
-
-    if (sigaction(SIGINT, &sa, NULL) == -1) {
-        perror("sigaction");
-        exit(EXIT_FAILURE);
-    }
+    close(sockfd_unix);
+    close(sockfd_innet);
 }
 
 bool name_exist(char *response) {
 
     for (int i = 0; i < MAX_CLIENT_NUM; i++)
-        if (strcmp(cl_names, response) == 0)
+        if (cl_names[i] != NULL && strcmp(cl_names[i], response) == 0)
             return true;
+
+
+}
+
+void run_innet_sock(int portno, char *host_addr) {
+
+    struct sockaddr_in serv_addr_innet;
+
+
+    if ((sockfd_innet = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+        error_and_die("socket: error while opening socket\n");
+
+    if (setsockopt(sockfd_innet, SOL_SOCKET, SO_REUSEADDR, &(int) {1}, sizeof(int)) < 0)
+        error_and_die("setsockopt(SO_REUSEADDR) failed");
+
+    make_unblocking(sockfd_innet);
+
+
+    bzero((char *) &serv_addr_innet, sizeof(serv_addr_innet));
+
+    portno = 51717;
+    serv_addr_innet.sin_family = AF_INET;
+    serv_addr_innet.sin_addr.s_addr = inet_addr(host_addr);
+    serv_addr_innet.sin_port = htons(portno);
+
+    if (bind(sockfd_innet, (struct sockaddr *) &serv_addr_innet, sizeof(serv_addr_innet)) < 0)
+        error_and_die("bind: ERROR on binding\n");
+
+}
+
+void run_unix_sock(char *addr) {
+
+    if ((sockfd_unix = socket(AF_UNIX, SOCK_STREAM, 0)) < 0)
+        error_and_die("socket: error while opening socket\n");
+
+    if (setsockopt(sockfd_unix, SOL_SOCKET, SO_REUSEADDR, &(int) {1}, sizeof(int)) < 0)
+        error_and_die("setsockopt(SO_REUSEADDR) failed");
+
+    make_unblocking(sockfd_unix);
+
+    struct sockaddr_un serv_addr_unix = {AF_UNIX, addr};
+
+    if (bind(sockfd_unix, (struct sockaddr *) &serv_addr_unix, sizeof(serv_addr_unix)) < 0)
+        error_and_die("bind: ERROR on binding\n");
+
+
+}
+
+int create_epoll(int *efd, struct epoll_event *event) {
+
+
+    if ((*efd = epoll_create1(0)) < 0) {
+        perror("Epoll initialization error");
+        exit(-1);
+    }
+
+
+
+    if (sockfd_unix != -1) {
+        listen(sockfd_unix, 5);
+        if (epoll_ctl(*efd, EPOLL_CTL_ADD, sockfd_unix, event) < 0) {
+            perror("Epoll error adding socket");
+            exit(-1);
+        }
+
+    } else if (sockfd_innet != -1) {
+        listen(sockfd_innet, 5);
+
+        if (epoll_ctl(*efd, EPOLL_CTL_ADD, sockfd_innet, event) < 0) {
+            perror("Epoll error adding socket");
+            exit(-1);
+        }
+    }
 
 
 }
 
 int main(int argc, char *argv[]) {
 
-    set_signal_handler();
+    // Example input
+    argc = 3;
+    argv[1] = "127.0.0.1";
+    argv[2] = "51717";
+
+    if (argc == 1) {
+        fprintf(stderr, "ERROR, no port provided\n");
+        exit(1);
+    }
+
+    char *host_addr, *unix_addr;
+    int portnum;
+
+    if (argc == 2) {
+        unix_addr = argv[1];
+        run_unix_sock(unix_addr);
+    } else {
+        host_addr = argv[1];
+        portnum = (int) strtol(argv[2], NULL, 10);
+        run_innet_sock(portnum, host_addr);
+    }
+
+    signal(SIGINT, &force_stop);
 
     memset(cl_names, NULL, MAX_CLIENT_NUM);
 
-    int portno;
-    struct sockaddr_in serv_addr;
-    char *host_addr = "127.0.0.1";
-
-
-//    if (argc < 2) {
-//        fprintf(stderr, "ERROR, no port provided\n");
-//        exit(1);
-//    }
-
-    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-        error_and_die("socket: error while opening socket\n");
-
-    make_unblocking(sockfd);
-
-    bzero((char *) &serv_addr, sizeof(serv_addr));
-
-    portno = 51717;
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = inet_addr(host_addr);
-    serv_addr.sin_port = htons(portno);
-
-    if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
-        error_and_die("bind: ERROR on binding\n");
-
-    listen(sockfd, 5);
-
-    int efd;
-    if ((efd = epoll_create1(0)) < 0) {
-        perror("Epoll initialization error");
-        exit(-1);
-    }
-
     struct epoll_event event;
-
-    event.data.fd = sockfd;
+    event.data.fd = sockfd_innet;
     event.events = EPOLLIN;
 
-    if (epoll_ctl(efd, EPOLL_CTL_ADD, sockfd, &event) < 0) {
-        perror("Epoll error adding socket");
-        exit(-1);
-    }
+    int efd;
+    create_epoll(&efd,&event);
 
     events = (struct epoll_event *) calloc(MAX_CLIENT_NUM, sizeof(event));
     if (!events) {
@@ -169,21 +220,26 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < n; i++) {
             printf("Checking event for fd = %d\n", events[i].data.fd);
 
-            if (sockfd == events[i].data.fd) {
-                accept_connection(sockfd, efd);
+            if (sockfd_innet == events[i].data.fd) {
+                accept_connection(sockfd_innet, efd);
             } else {
+                char response[256];
+                strcpy(response, receive_response(events[i].data.fd));
+
                 if (cl_names[events[i].data.fd] == NULL) {
-                    char *response = receive_response(events[i].data.fd);
                     if (name_exist(response)) {
                         send(events[i].data.fd, "This name exists!", 18, 0);
-                        epoll_ctl(efd, EPOLL_CTL_DEL, sockfd, &event);
+                        epoll_ctl(efd, EPOLL_CTL_DEL, events[i].data.fd, &event);
                     } else {
-                        cl_names[events[i].data.fd] = receive_response(events[i].data.fd);
+                        cl_names[events[i].data.fd] = malloc(strlen(response));
+                        strcpy(cl_names[events[i].data.fd], response);
                         printf("Name: %s\n", cl_names[events[i].data.fd]);
                         send_operation(events[i].data.fd);
                     }
                 } else {
-                    printf("Response: %s\n", receive_response(events[i].data.fd));
+                    printf("Response from %s: %s\n", cl_names[events[i].data.fd], response);
+//                    epoll_ctl(efd, EPOLL_CTL_DEL, events[i].data.fd, &event);
+                    close(events[i].data.fd);
                 }
 
             }
