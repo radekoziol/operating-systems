@@ -17,31 +17,58 @@ void error(char *msg) {
 int main(int argc, char *argv[]) {
 
 
-    int sockfd, portno, n;
+    // Example input
+    argc = 3;
+    argv[1] = "Radek123";
+    argv[2] = "127.0.0.1";
+    argv[3] = "51717";
 
+
+    int sockfd, portno, n;
     struct sockaddr_in serv_addr;
 
-//    char buffer[256];
-//    if (argc < 3) {
-//        fprintf(stderr, "usage %s hostname port\n", argv[0]);
-//        exit(0);
-//    }
+    if (argc < 3) {
+        printf("Arguments are: <type> <address> opt <port>\n");
+        exit(1);
+    }
 
-    portno = 51717;
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0)
-        error("ERROR opening socket");
+    portno = strtol(argv[3],NULL,10);
 
-    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &(int) {1}, sizeof(int)) < 0)
-        error("setsockopt(SO_REUSEADDR) failed");
+    if(argc == 2){
+        sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+        if (sockfd < 0)
+            error("ERROR opening socket");
 
-    bzero((char *) &serv_addr, sizeof(serv_addr));
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons((uint16_t) portno);
-    inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr);
+        if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &(int) {1}, sizeof(int)) < 0)
+            error("setsockopt(SO_REUSEADDR) failed");
 
-    if (connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
-        error("ERROR connecting");
+        bzero((char *) &serv_addr, sizeof(serv_addr));
+        serv_addr.sin_family = AF_UNIX;
+        serv_addr.sin_port = htons((uint16_t) portno);
+        inet_pton(AF_UNIX, argv[2], &serv_addr.sin_addr);
+
+        if (connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
+            error("ERROR connecting");
+
+    }else{
+        sockfd = socket(AF_INET, SOCK_STREAM, 0);
+        if (sockfd < 0)
+            error("ERROR opening socket");
+
+        if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &(int) {1}, sizeof(int)) < 0)
+            error("setsockopt(SO_REUSEADDR) failed");
+
+        bzero((char *) &serv_addr, sizeof(serv_addr));
+        serv_addr.sin_family = AF_INET;
+        serv_addr.sin_port = htons((uint16_t) portno);
+        inet_pton(AF_INET, argv[2], &serv_addr.sin_addr);
+
+        if (connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
+            error("ERROR connecting");
+
+    }
+
+
 
     char buffer[256];
 
@@ -52,9 +79,7 @@ int main(int argc, char *argv[]) {
 
     srand((unsigned int) time(NULL));
 
-    int i = rand()% 123;
-
-    sprintf(name, "%s%d", "Radek", i);
+    sprintf(name, "%s", argv[1]);
 
     send(sockfd, name, strlen(name), 0);
 
